@@ -42,8 +42,14 @@ public class Server
 
     private static void TCPConnectCallback(IAsyncResult result)
     {
-        TcpClient client = tcpListener.EndAcceptTcpClient(result);
-        tcpListener.BeginAcceptTcpClient(TCPConnectCallback, null);
+        var client = default(TcpClient);
+        try
+        {
+            client = tcpListener.EndAcceptTcpClient(result);
+            tcpListener.BeginAcceptTcpClient(TCPConnectCallback, null);
+        }
+        catch (Exception ex) { }
+
         Debug.Log($"Incoming connection from {client.Client.RemoteEndPoint}...");
 
         for (int i = 1; i <= MaxPlayers; i++)
@@ -125,7 +131,8 @@ public class Server
                 { (int)ClientPackets.welcomeReceived, ServerHandler.WelcomeReceived },
                 { (int)ClientPackets.playerMovement, ServerHandler.PlayerMovement },
                 { (int)ClientPackets.playerShooting, ServerHandler.PlayerShooting },
-                { (int)ClientPackets.playerThrowItem, ServerHandler.PlayerThrowItem},
+                { (int)ClientPackets.playerThrowItem, ServerHandler.PlayerThrowItem },
+                { (int)ClientPackets.playerChangeWeapon, ServerHandler.PlayerChangeWeapon },
             };
         Debug.Log("Initialized packets.");
     }

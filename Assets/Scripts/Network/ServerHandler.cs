@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 
 public class ServerHandler
 {
     public static void WelcomeReceived(int fromClient, Packet packet)
     {
+        Debug.Log("Welcome received");
         int clientIdCheck = packet.ReadInt();
         string username = packet.ReadString();
 
@@ -40,5 +42,12 @@ public class ServerHandler
         var direction = packet.ReadVector3();
 
         Server.clients[fromClient].player.ThrowItem(direction);
+    }
+
+    internal static void PlayerChangeWeapon(int fromClient, Packet packet)
+    {
+        var leftOrRigth = packet.ReadInt();
+
+        Server.clients[fromClient].player.ChooseWeapon(leftOrRigth);
     }
 }

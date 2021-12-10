@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ServerSend
@@ -78,6 +79,7 @@ public class ServerSend
             packet.Write(player.Username);
             packet.Write(player.transform.position);
             packet.Write(player.transform.rotation);
+            packet.Write((int)player.WeaponController.GetCurrentWeapon().Kind);
 
             SendTCPData(toClient, packet);
         }
@@ -91,6 +93,17 @@ public class ServerSend
             packet.Write(player.transform.position);
 
             SendUDPDataToAll(packet);
+        }
+    }
+
+    public static void PlayerChooseWeapon(Player player)
+    {
+        using (Packet packet = new Packet((int)ServerPackets.playerChooseWeapon))
+        {
+            packet.Write(player.Id);
+            packet.Write((int)player.WeaponController.GetCurrentWeapon().Kind);
+
+            SendTCPDataToAll(packet);
         }
     }
 

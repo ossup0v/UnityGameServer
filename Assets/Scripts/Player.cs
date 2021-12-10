@@ -1,30 +1,32 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public WeaponController WeaponController;
+    public BoosterContainer BoosterContainer;
+
     public int Id;
     public string Username;
     public CharacterController Controller;
     public Transform ShootOrigin;
-    public float Gravity = -9.81f;
+    public float Gravity = -9.81f * 2;
     public float MoveSpeed = 5f;
     public float JumpSpeed = 5f;
     public float CurrentHealth;
     public float MaxHealth = 100;
-    public float GunDistance = 25f;
-    public float GunDamage = 50f;
     public float ThrowForce = 600f;
 
     public bool IsALife => CurrentHealth > 0;
+    public bool IsDie => CurrentHealth <= 0;
     public int itemAmount = 0;
     public int maxItemAmount = 3;
 
     private bool[] _inputs;
     private float yVelocity = 0;
-
 
     private void Start()
     {
@@ -47,13 +49,15 @@ public class Player : MonoBehaviour
         Id = id;
         Username = username;
         CurrentHealth = MaxHealth;
+        WeaponController = new WeaponController(new List<WeaponBase> { new GunWeapon() });
+        BoosterContainer = new BoosterContainer();
 
         _inputs = new bool[5];
     }
 
     public void FixedUpdate()
     {
-        if (CurrentHealth <= 0)
+        if (IsDie)
             return;
 
         Vector2 inputDirection = Vector2.zero;
@@ -79,6 +83,12 @@ public class Player : MonoBehaviour
         }
 
         Move(inputDirection);
+    }
+
+    public void ChooseWeapon(int leftOrRigth)
+    {
+        WeaponController.ChangeWeapon(leftOrRigth);
+        ServerSend.PlayerChooseWeapon(this);
     }
 
     private void Move(Vector2 inputDirection)
@@ -113,21 +123,15 @@ public class Player : MonoBehaviour
 
     public void Shoot(Vector3 viewDuraction)
     {
-        if (!IsALife)
+        if (IsDie)
             return;
 
-        if (Physics.Raycast(ShootOrigin.position, viewDuraction, out var hit, GunDistance))
-        {
-            if (hit.collider.TryGetComponent<HitRegistration>(out var hitRegistration))
-            {
-                hitRegistration.RegisterHit(GunDamage);
-            }
-        }
+        WeaponController.GetCurrentWeapon().Shoot(this, viewDuraction, ShootOrigin.position);
     }
 
     public void ThrowItem(Vector3 viewDuraction)
     {
-        if (!IsALife)
+        if (IsDie)
             return;
 
         if (itemAmount > 0)
@@ -142,7 +146,7 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Player taking damage!!");
 
-        if (!IsALife)
+        if (IsDie )
             return;
 
         CurrentHealth -= damage;

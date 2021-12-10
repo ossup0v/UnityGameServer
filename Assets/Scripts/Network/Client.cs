@@ -182,6 +182,8 @@ public class Client
 
     public void SendIntoGame(string playerName)
     {
+        Debug.Log("Send into game");
+
         player = NetworkManager.Instance.InstantiatePlayer();
         player.Initialize(id, playerName);
 

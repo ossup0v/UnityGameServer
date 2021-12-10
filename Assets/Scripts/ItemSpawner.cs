@@ -24,12 +24,8 @@ public class ItemSpawner : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (HasItem && other.TryGetComponent<Player>(out var player))
-        {
             if (player.AttemptPickupItem())
-            {
                 ItemPickup(player.Id);
-            }
-        }
     }
 
     private IEnumerator SpawnItem()
