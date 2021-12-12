@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 
-public class GunWeapon : WeaponBase
+public class RocketLaucnherWeapon : WeaponBase
 {
-    public GunWeapon()
+    public RocketLaucnherWeapon()
     {
-        Damage = 20;
+        Damage = 50;
         Radius = 25;
         RadiusOfDamage = 10;
+        ImpactForce = 60f;
     }
 
-    public override WeaponKind Kind { get; } = WeaponKind.Gun;
+    public override WeaponKind Kind => WeaponKind.RocketLauncher;
 
     public override void Shoot(Player owner, Vector3 duraction, Vector3 from)
     {
@@ -21,6 +22,12 @@ public class GunWeapon : WeaponBase
                 hitRegistration.RegisterHit(GetDamage(owner), owner.Id);
                 ServerSend.PlayerHitTCP(owner, Kind, hit.transform.position);
                 return;
+
+                //TODO do this from update player position
+                //if (hit.rigidbody != null)
+                //{
+                //    hit.rigidbody.AddForce(-hit.normal * ImpactForce);
+                //}
             }
 
             ServerSend.PlayerHitUDP(owner, Kind, hit.transform.position);

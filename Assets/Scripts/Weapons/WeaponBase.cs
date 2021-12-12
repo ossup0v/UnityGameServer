@@ -1,11 +1,12 @@
 using UnityEngine;
 
-public abstract class WeaponBase : MonoBehaviour
+public abstract class WeaponBase
 {
     public abstract WeaponKind Kind { get; }
     public float Damage;
     public float Radius;
     public float RadiusOfDamage;
+    public float ImpactForce;
 
     protected float GetDamage(Player owner)
     {

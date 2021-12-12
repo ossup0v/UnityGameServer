@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ServerSend
@@ -128,7 +129,7 @@ public class ServerSend
         }
     }
 
-    public static void PlayeHealth(Player player)
+    public static void PlayerHealth(Player player)
     {
         using (Packet packet = new Packet(ServerPackets.playerHealth))
         {
@@ -139,7 +140,7 @@ public class ServerSend
         }
     }
 
-    public static void PlayeRespawn(Player player)
+    public static void PlayerRespawn(Player player)
     {
         using (Packet packet = new Packet(ServerPackets.playerRespawned))
         {
@@ -182,6 +183,8 @@ public class ServerSend
         }
     }
 
+    #region Shooting
+
     public static void SpawnProjectile(Projectile projectile, int throwedById)
     {
         using (var packet = new Packet(ServerPackets.spawnProjectile))
@@ -200,9 +203,10 @@ public class ServerSend
             packet.Write(projectile.Id);
             packet.Write(projectile.transform.position);
 
-            SendTCPDataToAll(packet);
+            SendUDPDataToAll(packet);
         }
     }
+
     public static void ProjectileExploded(Projectile projectile)
     {
         using (var packet = new Packet(ServerPackets.projectileExploded))
@@ -211,6 +215,91 @@ public class ServerSend
             packet.Write(projectile.transform.position);
 
             SendTCPDataToAll(packet);
+        }
+    }
+
+    public static void PlayerShootUDP(Player player)
+    {
+        using (var packet = new Packet(ServerPackets.playerShooting))
+        {
+            packet.Write(player.Id);
+
+            SendUDPDataToAll(packet);
+        }
+    }
+
+    public static void PlayerShootTCP(Player player)
+    {
+        using (var packet = new Packet(ServerPackets.playerShooting))
+        {
+            packet.Write(player.Id);
+
+            SendTCPDataToAll(packet);
+        }
+    }
+
+    public static void PlayerHitUDP(Player player, WeaponKind hitBy, Vector3 position)
+    {
+        using (var packet = new Packet(ServerPackets.playerHit))
+        {
+            packet.Write(player.Id);
+            packet.Write((int) hitBy);
+            packet.Write(position);
+
+            SendUDPDataToAll(packet);
+        }
+    }
+
+    public static void PlayerHitTCP(Player player, WeaponKind hitBy, Vector3 position)
+    {
+        using (var packet = new Packet(ServerPackets.playerHit))
+        {
+            packet.Write(player.Id);
+            packet.Write((int) hitBy);
+            packet.Write(position);
+
+            SendTCPDataToAll(packet);
+        }
+    }
+    #endregion
+
+    public static void InitRatingTable(int toClient, Dictionary<int, RatingEntity> rating)
+    {
+        using (Packet packet = new Packet(ServerPackets.ratingTableInit))
+        {
+            packet.Write(rating.Count);
+            
+            foreach (var enity in rating.Values)
+            {
+                packet.Write(enity.PlayerId);
+                packet.Write(enity.Username);
+                packet.Write(enity.Killed);
+                packet.Write(enity.Died);
+            }
+
+            SendTCPData(toClient, packet);
+        }
+    }
+
+    public static void UpdateRatingTable(int playerKillerId, int playerDieId)
+    {
+        using (Packet packet = new Packet(ServerPackets.ratingTableUpdate))
+        {
+            packet.Write(playerKillerId);
+            packet.Write(playerDieId);
+
+            SendTCPDataToAll(packet);
+        }
+    }
+
+    public static void AddPlayerRatingTable(int toClient, Player entity)
+    {
+        using (Packet packet = new Packet(ServerPackets.ratingTableNewPlayer))
+        {
+            packet.Write(entity.Id);
+            packet.Write(entity.Username);
+
+            SendTCPData(toClient, packet);
         }
     }
     #endregion

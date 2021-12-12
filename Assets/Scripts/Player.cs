@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     public float JumpSpeed = 5f;
     public float CurrentHealth;
     public float MaxHealth = 100;
-    public float ThrowForce = 600f;
+    public float ThrowForce = 600f * 2 * 4 * 10;
 
     public bool IsALife => CurrentHealth > 0;
     public bool IsDie => CurrentHealth <= 0;
@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
         Id = id;
         Username = username;
         CurrentHealth = MaxHealth;
-        WeaponController = new WeaponController(new List<WeaponBase> { new GunWeapon() });
+        WeaponController = new WeaponController(new List<WeaponBase> { new GunWeapon(), new RocketLaucnherWeapon() });
         BoosterContainer = new BoosterContainer();
 
         _inputs = new bool[5];
@@ -79,7 +79,7 @@ public class Player : MonoBehaviour
         }
         if (_inputs[4])
         {
-            inputDirection.x += 1;
+            //inputDirection.x += 1;
         }
 
         Move(inputDirection);
@@ -142,7 +142,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, int attackerPlayerId)
     {
         Debug.Log("Player taking damage!!");
 
@@ -156,12 +156,13 @@ public class Player : MonoBehaviour
             CurrentHealth = 0;
             Controller.enabled = false;
             transform.position = new Vector3(0f, 25f, 0);
-
+            RatingManager.KillAndDeath(attackerPlayerId, Id);
+            ServerSend.UpdateRatingTable(attackerPlayerId, Id);
             ServerSend.PlayerPosition(this);
             StartCoroutine(Respawn());
         }
 
-        ServerSend.PlayeHealth(this);
+        ServerSend.PlayerHealth(this);
     }
 
     private IEnumerator Respawn()
@@ -170,6 +171,6 @@ public class Player : MonoBehaviour
 
         CurrentHealth = MaxHealth;
         Controller.enabled = true;
-        ServerSend.PlayeRespawn(this);
+        ServerSend.PlayerRespawn(this);
     }
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-   
     public static Dictionary<int, Projectile> Projectiles = new Dictionary<int,Projectile>();
     private static int nextPjectileId = 1;
 
@@ -52,7 +51,7 @@ public class Projectile : MonoBehaviour
         {
             if (collider.TryGetComponent<Player>(out var player))
             {
-                player.TakeDamage(explotionDamage);
+                player.TakeDamage(explotionDamage, ThrowedByPlayer);
             }
         }
 

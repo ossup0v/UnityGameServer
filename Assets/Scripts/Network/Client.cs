@@ -198,11 +198,15 @@ public class Client
             }
         }
 
+        RatingManager.InitPlayer(player);
+        ServerSend.InitRatingTable(id, RatingManager.Rating);
+
         foreach (Client client in Server.clients.Values)
         {
             if (client.player != null)
             {
                 ServerSend.SpawnPlayer(client.id, player);
+                ServerSend.AddPlayerRatingTable(client.id, player);
             }
         }
 
@@ -210,6 +214,7 @@ public class Client
         {
             ServerSend.CreateItemSpawner(id, itemSpawner.SpawnerId, itemSpawner.transform.position, itemSpawner.HasItem);
         }
+
     }
 
     private void Disconnect()
