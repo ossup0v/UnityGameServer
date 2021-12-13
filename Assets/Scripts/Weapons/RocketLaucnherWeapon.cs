@@ -5,7 +5,7 @@ public class RocketLaucnherWeapon : WeaponBase
     public RocketLaucnherWeapon()
     {
         Damage = 50;
-        Radius = 25;
+        Radius = 100;
         RadiusOfDamage = 10;
         ImpactForce = 60f;
     }
@@ -20,7 +20,7 @@ public class RocketLaucnherWeapon : WeaponBase
             if (hit.collider.TryGetComponent<HitRegistration>(out var hitRegistration))
             {
                 hitRegistration.RegisterHit(GetDamage(owner), owner.Id);
-                ServerSend.PlayerHitTCP(owner, Kind, hit.transform.position);
+                ServerSend.PlayerHitTCP(owner, Kind, hit.point);
                 return;
 
                 //TODO do this from update player position
@@ -30,7 +30,7 @@ public class RocketLaucnherWeapon : WeaponBase
                 //}
             }
 
-            ServerSend.PlayerHitUDP(owner, Kind, hit.transform.position);
+            ServerSend.PlayerHitUDP(owner, Kind, hit.point);
         }
     }
 }

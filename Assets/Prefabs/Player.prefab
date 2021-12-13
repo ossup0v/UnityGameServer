@@ -196,6 +196,12 @@ MonoBehaviour:
   CurrentHealth: 0
   MaxHealth: 100
   ThrowForce: 4000
+  ShiftMultiplayer: 2
+  SpawnPoints:
+  - {x: -25, y: 2.75, z: 12}
+  - {x: 25, y: 2.75, z: 12}
+  - {x: -25, y: 2.75, z: -12}
+  - {x: 25, y: 2.75, z: -12}
   itemAmount: 0
   maxItemAmount: 3
 --- !u!143 &6820213605173019620

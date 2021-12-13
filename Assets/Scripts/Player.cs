@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
     public float CurrentHealth;
     public float MaxHealth = 100;
     public float ThrowForce = 600f * 2 * 4 * 10;
+    public float ShiftMultiplayer = 2f;
+    public Vector3[] SpawnPoints;
 
     public bool IsALife => CurrentHealth > 0;
     public bool IsDie => CurrentHealth <= 0;
@@ -52,7 +54,7 @@ public class Player : MonoBehaviour
         WeaponController = new WeaponController(new List<WeaponBase> { new GunWeapon(), new RocketLaucnherWeapon() });
         BoosterContainer = new BoosterContainer();
 
-        _inputs = new bool[5];
+        _inputs = new bool[6];
     }
 
     public void FixedUpdate()
@@ -79,7 +81,11 @@ public class Player : MonoBehaviour
         }
         if (_inputs[4])
         {
-            //inputDirection.x += 1;
+            //space
+        }
+        if (_inputs[5])
+        { 
+            //shift
         }
 
         Move(inputDirection);
@@ -94,7 +100,11 @@ public class Player : MonoBehaviour
     private void Move(Vector2 inputDirection)
     {
         Vector3 moveDirection = transform.right * inputDirection.x + transform.forward * inputDirection.y;
-        moveDirection *= MoveSpeed;
+
+        if (GetShitftDown())
+            moveDirection *= MoveSpeed * ShiftMultiplayer;
+        else
+            moveDirection *= MoveSpeed;
 
         if (Controller.isGrounded)
         {
@@ -155,7 +165,7 @@ public class Player : MonoBehaviour
         {
             CurrentHealth = 0;
             Controller.enabled = false;
-            transform.position = new Vector3(0f, 25f, 0);
+            transform.position = SpawnPoints[UnityEngine.Random.Range(0, SpawnPoints.Length)];
             RatingManager.KillAndDeath(attackerPlayerId, Id);
             ServerSend.UpdateRatingTable(attackerPlayerId, Id);
             ServerSend.PlayerPosition(this);
@@ -173,4 +183,6 @@ public class Player : MonoBehaviour
         Controller.enabled = true;
         ServerSend.PlayerRespawn(this);
     }
+
+    private bool GetShitftDown() => _inputs[5];
 }

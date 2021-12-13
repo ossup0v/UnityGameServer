@@ -5,7 +5,7 @@ public class GunWeapon : WeaponBase
     public GunWeapon()
     {
         Damage = 20;
-        Radius = 25;
+        Radius = 100;
         RadiusOfDamage = 10;
     }
 
@@ -19,11 +19,11 @@ public class GunWeapon : WeaponBase
             if (hit.collider.TryGetComponent<HitRegistration>(out var hitRegistration))
             {
                 hitRegistration.RegisterHit(GetDamage(owner), owner.Id);
-                ServerSend.PlayerHitTCP(owner, Kind, hit.transform.position);
+                ServerSend.PlayerHitTCP(owner, Kind, hit.point);
                 return;
             }
 
-            ServerSend.PlayerHitUDP(owner, Kind, hit.transform.position);
+            ServerSend.PlayerHitUDP(owner, Kind, hit.point);
         }
     }
 }
