@@ -32,7 +32,7 @@ public class RatingManager
         Rating[playerId].Killed++;
     }
 
-    private static void AddDeath(int playerId)
+    public static void AddDeath(int playerId)
     {
         if (!Rating.ContainsKey(playerId))
         {

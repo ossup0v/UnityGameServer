@@ -283,9 +283,19 @@ public class ServerSend
 
     public static void UpdateRatingTable(int playerKillerId, int playerDieId)
     {
-        using (Packet packet = new Packet(ServerPackets.ratingTableUpdate))
+        using (Packet packet = new Packet(ServerPackets.ratingTableUpdateDeath))
         {
             packet.Write(playerKillerId);
+            packet.Write(playerDieId);
+
+            SendTCPDataToAll(packet);
+        }
+    }
+
+    public static void UpdateRatingTableDeath(int playerDieId)
+    {
+        using (Packet packet = new Packet(ServerPackets.ratingTableUpdateDeath))
+        {
             packet.Write(playerDieId);
 
             SendTCPDataToAll(packet);
