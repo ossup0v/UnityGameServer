@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     public float ThrowForce = 600f * 2 * 4 * 10;
     public float ShiftMultiplayer = 2f;
     public Vector3[] SpawnPoints;
-
+    public float RespawnTime = 0.5f;
     public bool IsALife => CurrentHealth > 0;
     public bool IsDie => CurrentHealth <= 0;
     public int itemAmount = 0;
@@ -166,8 +166,18 @@ public class Player : MonoBehaviour
             CurrentHealth = 0;
             Controller.enabled = false;
             transform.position = SpawnPoints[UnityEngine.Random.Range(0, SpawnPoints.Length)];
-            RatingManager.KillAndDeath(attackerPlayerId, Id);
-            ServerSend.UpdateRatingTable(attackerPlayerId, Id);
+
+            if (attackerPlayerId != Id)
+            {
+                RatingManager.KillAndDeath(attackerPlayerId, Id);
+                ServerSend.UpdateRatingTable(attackerPlayerId, Id);
+            }
+            else
+            { 
+                RatingManager.AddDeath(Id);
+                ServerSend.UpdateRatingTableDeath(Id);
+            }
+
             ServerSend.PlayerPosition(this);
             StartCoroutine(Respawn());
         }
@@ -177,7 +187,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator Respawn()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(RespawnTime);
 
         CurrentHealth = MaxHealth;
         Controller.enabled = true;
