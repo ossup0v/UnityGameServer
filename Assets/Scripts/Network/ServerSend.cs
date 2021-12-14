@@ -268,7 +268,7 @@ public class ServerSend
         using (Packet packet = new Packet(ServerPackets.ratingTableInit))
         {
             packet.Write(rating.Count);
-            
+
             foreach (var enity in rating.Values)
             {
                 packet.Write(enity.PlayerId);
@@ -281,9 +281,27 @@ public class ServerSend
         }
     }
 
+    public static void UpdateFullRatingTable(Dictionary<int, RatingEntity> rating)
+    {
+        using (Packet packet = new Packet(ServerPackets.ratingTableInit))
+        {
+            packet.Write(rating.Count);
+
+            foreach (var enity in rating.Values)
+            {
+                packet.Write(enity.PlayerId);
+                packet.Write(enity.Username);
+                packet.Write(enity.Killed);
+                packet.Write(enity.Died);
+            }
+
+            SendTCPDataToAll(packet);
+        }
+    }
+
     public static void UpdateRatingTable(int playerKillerId, int playerDieId)
     {
-        using (Packet packet = new Packet(ServerPackets.ratingTableUpdateDeath))
+        using (Packet packet = new Packet(ServerPackets.ratingTableUpdateKillAndDeath))
         {
             packet.Write(playerKillerId);
             packet.Write(playerDieId);
@@ -308,6 +326,17 @@ public class ServerSend
         {
             packet.Write(entity.Id);
             packet.Write(entity.Username);
+
+            SendTCPData(toClient, packet);
+        }
+    }
+
+    public static void PlayerGrenadeCount(int toClient, int grenadeCount)
+    {
+        using (Packet packet = new Packet(ServerPackets.playerGrenadeCount))
+        {
+            packet.Write(toClient);
+            packet.Write(grenadeCount);
 
             SendTCPData(toClient, packet);
         }

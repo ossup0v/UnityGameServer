@@ -6,8 +6,8 @@ public class RocketLaucnherWeapon : WeaponBase
     {
         Damage = 50;
         Radius = 100;
-        RadiusOfDamage = 10;
-        ImpactForce = 60f;
+        RadiusOfDamage = 2f;
+        ImpactForce = 100f;
     }
 
     public override WeaponKind Kind => WeaponKind.RocketLauncher;
@@ -17,20 +17,26 @@ public class RocketLaucnherWeapon : WeaponBase
         ServerSend.PlayerShootUDP(owner);
         if (Physics.Raycast(from, duraction, out var hit, GetRadius(owner)))
         {
-            if (hit.collider.TryGetComponent<HitRegistration>(out var hitRegistration))
+            Collider[] colliders = Physics.OverlapSphere(hit.point, RadiusOfDamage);
+            var hited = false;
+            foreach (var collider in colliders)
             {
-                hitRegistration.RegisterHit(GetDamage(owner), owner.Id);
-                ServerSend.PlayerHitTCP(owner, Kind, hit.point);
-                return;
-
-                //TODO do this from update player position
-                //if (hit.rigidbody != null)
-                //{
-                //    hit.rigidbody.AddForce(-hit.normal * ImpactForce);
-                //}
+                if (collider.TryGetComponent<HitRegistration>(out var hitRegistration))
+                {
+                    hitRegistration.RegisterHit(GetDamage(owner), owner.Id, ImpactForce, hit.normal);
+                    hited = true;
+                }
             }
 
-            ServerSend.PlayerHitUDP(owner, Kind, hit.point);
+            if (hited)
+            {
+                ServerSend.PlayerHitTCP(owner, Kind, hit.point);
+            }
+            else
+            {
+                ServerSend.PlayerHitUDP(owner, Kind, hit.point);
+            }
+
         }
     }
 }

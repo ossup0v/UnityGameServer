@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
 public class ItemSpawner : MonoBehaviour
 {
     public static Dictionary<int, ItemSpawner> ItemSpawners = new Dictionary<int, ItemSpawner>();
@@ -10,13 +11,14 @@ public class ItemSpawner : MonoBehaviour
 
     public int SpawnerId;
     public bool HasItem = false;
-
+    private Collider selfCollider;
     private void Start()
     {
         HasItem = false;
         SpawnerId = nextSpawnerId;
         nextSpawnerId++;
         ItemSpawners.Add(SpawnerId, this);
+        selfCollider = GetComponent<Collider>();
 
         StartCoroutine(SpawnItem());
     }
@@ -25,13 +27,17 @@ public class ItemSpawner : MonoBehaviour
     {
         if (HasItem && other.TryGetComponent<Player>(out var player))
             if (player.AttemptPickupItem())
+            {
+                selfCollider.enabled = false;
                 ItemPickup(player.Id);
+            }
     }
 
     private IEnumerator SpawnItem()
     {
         yield return new WaitForSeconds(5f);
 
+        selfCollider.enabled = true;
         HasItem = true;
         ServerSend.ItemSpawned(SpawnerId);
     }

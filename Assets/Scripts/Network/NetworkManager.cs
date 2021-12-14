@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NetworkManager : MonoBehaviour
 {
-    public static NetworkManager Instance { get; private set; } = new NetworkManager();
+    public static NetworkManager Instance { get; private set; }
     public int Port = 26950;
 
     public GameObject PlayerPrefab;

@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     public float RespawnTime = 0.5f;
     public bool IsALife => CurrentHealth > 0;
     public bool IsDie => CurrentHealth <= 0;
-    public int itemAmount = 0;
+    public int grenadeCount = 0;
     public int maxItemAmount = 3;
 
     private bool[] _inputs;
@@ -39,10 +39,12 @@ public class Player : MonoBehaviour
 
     internal bool AttemptPickupItem()
     {
-        if (itemAmount >= maxItemAmount)
+        if (grenadeCount >= maxItemAmount)
             return false;
 
-        itemAmount++;
+        grenadeCount++;
+        ServerSend.PlayerGrenadeCount(Id, grenadeCount);
+        
         return true;
     }
 
@@ -144,9 +146,10 @@ public class Player : MonoBehaviour
         if (IsDie)
             return;
 
-        if (itemAmount > 0)
+        if (grenadeCount > 0)
         {
-            itemAmount--;
+            grenadeCount--;
+            ServerSend.PlayerGrenadeCount(Id, grenadeCount);
             NetworkManager.Instance.InstantiatePrjectile(ShootOrigin)
                 .Initialize(viewDuraction, ThrowForce, Id);
         }

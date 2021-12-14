@@ -4,6 +4,11 @@ public class RatingManager
 {
     public static Dictionary<int, RatingEntity> Rating = new Dictionary<int, RatingEntity>();
 
+    public static void RemovePlayer(Player player)
+    {
+        Rating.Remove(player.Id);
+    }
+
     public static void InitPlayer(Player player)
     {
         Rating.Add(player.Id, new RatingEntity

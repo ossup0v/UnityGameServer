@@ -223,6 +223,8 @@ public class Client
 
         ThreadManager.ExecuteOnMainThread(()=>
         { 
+            RatingManager.RemovePlayer(player);
+            ServerSend.UpdateFullRatingTable(RatingManager.Rating);
             UnityEngine.Object.Destroy(player.gameObject);
             player = null;
         });
