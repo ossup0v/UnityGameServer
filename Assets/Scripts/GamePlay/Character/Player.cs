@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     public float ThrowForce = 600f * 2 * 4 * 10;
     public float ShiftMultiplayer = 2f;
     public Vector3[] SpawnPoints;
-    public float RespawnTime = 0.5f;
+    public float RespawnTime = 2f;
     public int grenadeCount = 0;
     public int maxItemAmount = 3;
 

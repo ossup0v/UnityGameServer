@@ -198,9 +198,9 @@ MonoBehaviour:
   ShiftMultiplayer: 2
   SpawnPoints:
   - {x: 22, y: 2, z: 0}
-  - {x: -26, y: 3.6, z: 0}
+  - {x: -22, y: 3.6, z: 0}
   - {x: 0, y: 2, z: 0}
-  RespawnTime: 0.5
+  RespawnTime: 3
   grenadeCount: 0
   maxItemAmount: 3
 --- !u!143 &6820213605173019620
