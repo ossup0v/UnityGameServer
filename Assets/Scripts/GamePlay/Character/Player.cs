@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -16,19 +14,19 @@ public class Player : MonoBehaviour
     public float Gravity = -9.81f * 2;
     public float MoveSpeed = 5f;
     public float JumpSpeed = 5f;
-    public float CurrentHealth;
-    public float MaxHealth = 100;
     public float ThrowForce = 600f * 2 * 4 * 10;
     public float ShiftMultiplayer = 2f;
     public Vector3[] SpawnPoints;
     public float RespawnTime = 0.5f;
-    public bool IsALife => CurrentHealth > 0;
-    public bool IsDie => CurrentHealth <= 0;
     public int grenadeCount = 0;
     public int maxItemAmount = 3;
 
     private bool[] _inputs;
     private float yVelocity = 0;
+
+    //health
+    public HealthManager HealthManager = new HealthManager();
+
 
     private void Start()
     {
@@ -52,17 +50,18 @@ public class Player : MonoBehaviour
     {
         Id = id;
         Username = username;
-        CurrentHealth = MaxHealth;
         WeaponController = new WeaponController(new List<WeaponBase> { new GunWeapon(), new RocketLaucnherWeapon() });
         BoosterContainer = new BoosterContainer();
-
+        HealthManager.OwnerId = Id;
         _inputs = new bool[6];
     }
 
     public void FixedUpdate()
     {
-        if (IsDie)
+        if (HealthManager.IsDie)
             return;
+
+        HealthManager.Tick();
 
         Vector2 inputDirection = Vector2.zero;
         if (_inputs[0])
@@ -135,7 +134,7 @@ public class Player : MonoBehaviour
 
     public void Shoot(Vector3 viewDuraction)
     {
-        if (IsDie)
+        if (HealthManager.IsDie)
             return;
 
         WeaponController.GetCurrentWeapon().Shoot(this, viewDuraction, ShootOrigin.position);
@@ -143,7 +142,7 @@ public class Player : MonoBehaviour
 
     public void ThrowItem(Vector3 viewDuraction)
     {
-        if (IsDie)
+        if (HealthManager.IsDie)
             return;
 
         if (grenadeCount > 0)
@@ -159,14 +158,13 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Player taking damage!!");
 
-        if (IsDie )
+        if (HealthManager.IsDie)
             return;
 
-        CurrentHealth -= damage;
+        HealthManager.TakePureDamage(damage);
 
-        if (CurrentHealth <= 0)
+        if (HealthManager.IsDie)
         {
-            CurrentHealth = 0;
             Controller.enabled = false;
             transform.position = SpawnPoints[UnityEngine.Random.Range(0, SpawnPoints.Length)];
 
@@ -185,14 +183,14 @@ public class Player : MonoBehaviour
             StartCoroutine(Respawn());
         }
 
-        ServerSend.PlayerHealth(this);
+        ServerSend.PlayerHealth(HealthManager);
     }
 
     private IEnumerator Respawn()
     {
         yield return new WaitForSeconds(RespawnTime);
 
-        CurrentHealth = MaxHealth;
+        HealthManager.SetPureHealth(HealthManager.MaxHealth);
         Controller.enabled = true;
         ServerSend.PlayerRespawn(this);
     }

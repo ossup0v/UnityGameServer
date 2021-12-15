@@ -194,17 +194,14 @@ MonoBehaviour:
   Gravity: -19.81
   MoveSpeed: 5
   JumpSpeed: 9
-  CurrentHealth: 0
-  MaxHealth: 100
   ThrowForce: 4000
   ShiftMultiplayer: 2
   SpawnPoints:
-  - {x: -25, y: 2.75, z: 12}
-  - {x: 25, y: 2.75, z: 12}
-  - {x: -25, y: 2.75, z: -12}
-  - {x: 25, y: 2.75, z: -12}
+  - {x: 45, y: 2, z: 0}
+  - {x: -45, y: 2, z: 0}
+  - {x: 0, y: 2, z: 0}
   RespawnTime: 0.5
-  itemAmount: 0
+  grenadeCount: 0
   maxItemAmount: 3
 --- !u!143 &6820213605173019620
 CharacterController:

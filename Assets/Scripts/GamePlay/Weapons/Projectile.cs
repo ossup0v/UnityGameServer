@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
     public Rigidbody Body;
     public int ThrowedByPlayer;
     public Vector3 initialForce;
-    public float explotionRaduios = 1.5f;
+    public float explotionRaduios = 3f;
     public float explotionDamage = 75f;
 
     private void Start()
