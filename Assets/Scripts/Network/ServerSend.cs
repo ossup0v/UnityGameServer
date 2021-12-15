@@ -129,12 +129,12 @@ public class ServerSend
         }
     }
 
-    public static void PlayerHealth(Player player)
+    public static void PlayerHealth(HealthManager healthManager)
     {
         using (Packet packet = new Packet(ServerPackets.playerHealth))
         {
-            packet.Write(player.Id);
-            packet.Write(player.CurrentHealth);
+            packet.Write(healthManager.OwnerId);
+            packet.Write(healthManager.CurrentHealth);
 
             SendTCPDataToAll(packet);
         }
