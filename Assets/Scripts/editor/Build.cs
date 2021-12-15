@@ -31,6 +31,7 @@ public class BuildScript
     [MenuItem("Build/Build Server (Linux)")]
     public static void BuildLinuxServer()
     {
+        
         BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
         buildPlayerOptions.scenes = new[] { "Assets/Scenes/Game.unity" };
         buildPlayerOptions.locationPathName = "Builds/Linux/Server/Server.x86_64";

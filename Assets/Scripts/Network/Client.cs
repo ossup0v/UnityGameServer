@@ -187,6 +187,7 @@ public class Client
         player = NetworkManager.Instance.InstantiatePlayer();
         player.Initialize(id, playerName);
 
+
         foreach (Client client in Server.clients.Values)
         {
             if (client.player != null)
@@ -200,6 +201,7 @@ public class Client
 
         RatingManager.InitPlayer(player);
         ServerSend.InitRatingTable(id, RatingManager.Rating);
+        ServerSend.InitMap(id, MapSaveManager.Instance.GetCachedObjects());
 
         foreach (Client client in Server.clients.Values)
         {

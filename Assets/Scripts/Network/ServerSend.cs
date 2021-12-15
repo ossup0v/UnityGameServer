@@ -341,5 +341,15 @@ public class ServerSend
             SendTCPData(toClient, packet);
         }
     }
+
+    public static void InitMap(int toClient, string mapString)
+    {
+        using (Packet packet = new Packet(ServerPackets.initMap))
+        {
+            packet.Write(mapString);
+
+            SendTCPData(toClient, packet);
+        }
+    }
     #endregion
 }
