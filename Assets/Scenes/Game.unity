@@ -223,7 +223,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &192989977
 GameObject:
@@ -334,8 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Transform: {fileID: 192989981}
-  IsColorSelected: 0
-  Color: {r: 0, g: 0, b: 0, a: 0}
+  MaterialId: 2
   MaterialName: 
 --- !u!1 &264878588
 GameObject:
@@ -446,8 +445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Transform: {fileID: 192989981}
-  IsColorSelected: 0
-  Color: {r: 0, g: 0, b: 0, a: 0}
+  MaterialId: 1
   MaterialName: 
 --- !u!1 &388665785
 GameObject:
@@ -479,7 +477,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &388665787
 MonoBehaviour:
@@ -617,8 +615,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Transform: {fileID: 192989981}
-  IsColorSelected: 0
-  Color: {r: 0, g: 0, b: 0, a: 0}
+  MaterialId: 2
   MaterialName: 
 --- !u!1 &636885231
 GameObject:
@@ -729,8 +726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Transform: {fileID: 192989981}
-  IsColorSelected: 0
-  Color: {r: 0, g: 0, b: 0, a: 0}
+  MaterialId: 2
   MaterialName: 
 --- !u!1 &648018597
 GameObject:
@@ -765,8 +761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Transform: {fileID: 192989981}
-  IsColorSelected: 0
-  Color: {r: 0, g: 0, b: 0, a: 0}
+  MaterialId: 1
   MaterialName: 
 --- !u!65 &648018599
 BoxCollider:
@@ -842,7 +837,7 @@ Transform:
   m_LocalScale: {x: 0.15000004, y: 5, z: 8.891}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 14.718, z: 0}
 --- !u!1 &705507993
 GameObject:
@@ -1046,8 +1041,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Transform: {fileID: 192989981}
-  IsColorSelected: 0
-  Color: {r: 0, g: 0, b: 0, a: 0}
+  MaterialId: 1
   MaterialName: 
 --- !u!1 &963194225
 GameObject:
@@ -1241,8 +1235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Transform: {fileID: 192989981}
-  IsColorSelected: 0
-  Color: {r: 0, g: 0, b: 0, a: 0}
+  MaterialId: 2
   MaterialName: 
 --- !u!1 &1187745637
 GameObject:
@@ -1277,8 +1270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Transform: {fileID: 192989981}
-  IsColorSelected: 0
-  Color: {r: 0, g: 0, b: 0, a: 0}
+  MaterialId: 1
   MaterialName: 
 --- !u!65 &1187745639
 BoxCollider:
@@ -1354,7 +1346,7 @@ Transform:
   m_LocalScale: {x: 0.15000004, y: 5, z: 20}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1198115864
 GameObject:
@@ -1495,8 +1487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Transform: {fileID: 192989981}
-  IsColorSelected: 0
-  Color: {r: 0, g: 0, b: 0, a: 0}
+  MaterialId: 1
   MaterialName: 
 --- !u!1 &1203038341
 GameObject:
@@ -1607,8 +1598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Transform: {fileID: 192989981}
-  IsColorSelected: 0
-  Color: {r: 0, g: 0, b: 0, a: 0}
+  MaterialId: 1
   MaterialName: 
 --- !u!1 &1297419354
 GameObject:
@@ -1643,8 +1633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Transform: {fileID: 192989981}
-  IsColorSelected: 0
-  Color: {r: 0, g: 0, b: 0, a: 0}
+  MaterialId: 1
   MaterialName: 
 --- !u!65 &1297419356
 BoxCollider:
@@ -1720,7 +1709,7 @@ Transform:
   m_LocalScale: {x: 0.15000004, y: 5, z: 9.146999}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 137.819, z: 0}
 --- !u!1 &1390468703
 GameObject:
@@ -1831,8 +1820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Transform: {fileID: 192989981}
-  IsColorSelected: 0
-  Color: {r: 0, g: 0, b: 0, a: 0}
+  MaterialId: 1
   MaterialName: 
 --- !u!1 &1462410335
 GameObject:
@@ -1943,8 +1931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Transform: {fileID: 192989981}
-  IsColorSelected: 0
-  Color: {r: 0, g: 0, b: 0, a: 0}
+  MaterialId: 1
   MaterialName: 
 --- !u!1 &1476641896
 GameObject:
@@ -2055,8 +2042,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Transform: {fileID: 192989981}
-  IsColorSelected: 0
-  Color: {r: 0, g: 0, b: 0, a: 0}
+  MaterialId: 1
   MaterialName: 
 --- !u!1 &1508930824
 GameObject:
@@ -2167,8 +2153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Transform: {fileID: 192989981}
-  IsColorSelected: 0
-  Color: {r: 0, g: 0, b: 0, a: 0}
+  MaterialId: 1
   MaterialName: 
 --- !u!1 &1950247499
 GameObject:
@@ -2200,7 +2185,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1950247501
 MonoBehaviour:
@@ -2259,7 +2244,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1962184286
 MonoBehaviour:
@@ -2318,7 +2303,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2060935899
 MonoBehaviour:
@@ -2456,6 +2441,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Transform: {fileID: 192989981}
-  IsColorSelected: 0
-  Color: {r: 0, g: 0, b: 0, a: 0}
+  MaterialId: 2
   MaterialName: 
