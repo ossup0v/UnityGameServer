@@ -241,7 +241,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 1
   MaterialName: 
 --- !u!23 &12921064
@@ -352,7 +351,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &32860864
@@ -506,7 +504,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 8
   MaterialName: 
 --- !u!23 &66065967
@@ -611,7 +608,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 67541806}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 25.58, y: 4, z: 4.87}
+  m_LocalPosition: {x: 21.68, y: 4.5, z: 1.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -676,7 +673,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &101601858
@@ -788,7 +784,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &106250933
@@ -899,7 +894,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &116490375
@@ -1010,7 +1004,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &119675067
@@ -1121,7 +1114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 5
   MaterialName: 
 --- !u!23 &119782343
@@ -1232,7 +1224,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &128706273
@@ -1343,7 +1334,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &150385504
@@ -1454,7 +1444,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &150887139
@@ -1565,7 +1554,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &167036961
@@ -1676,7 +1664,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &181506124
@@ -1787,7 +1774,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &186216924
@@ -1898,7 +1884,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &194618275
@@ -2009,7 +1994,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 1
   MaterialName: 
 --- !u!23 &204213967
@@ -2120,7 +2104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 5
   MaterialName: 
 --- !u!23 &212724686
@@ -2218,7 +2201,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!65 &223764016
@@ -2328,7 +2310,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 6
   MaterialName: 
 --- !u!23 &243769426
@@ -2387,16 +2368,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243769423}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.182001, y: -2.4440002, z: 15.09}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -19.427717, y: -5.326357, z: 7.7823987}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 931359548}
   - {fileID: 914557231}
   - {fileID: 1755883367}
   - {fileID: 827436350}
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_Father: {fileID: 1808840985}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &248088401
 GameObject:
@@ -2457,7 +2438,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 1
   MaterialName: 
 --- !u!23 &248088405
@@ -2568,7 +2548,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &264393401
@@ -2679,7 +2658,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &265429704
@@ -2790,7 +2768,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &268806032
@@ -2901,7 +2878,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 8
   MaterialName: 
 --- !u!23 &281552221
@@ -3012,7 +2988,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &282833239
@@ -3123,7 +3098,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &290337672
@@ -3234,7 +3208,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &291541794
@@ -3332,7 +3305,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!65 &300129016
@@ -3443,7 +3415,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!65 &318394822
@@ -3567,7 +3538,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &320967871
@@ -3678,7 +3648,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &338403939
@@ -3783,7 +3752,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345669237}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -21.78, y: 1, z: -5.92}
+  m_LocalPosition: {x: -21.78, y: -3, z: -5.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3848,7 +3817,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 8
   MaterialName: 
 --- !u!23 &356044241
@@ -3960,7 +3928,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &357165218
@@ -4072,7 +4039,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &366242028
@@ -4184,7 +4150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 8
   MaterialName: 
 --- !u!23 &366342623
@@ -4295,7 +4260,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &384938661
@@ -4373,7 +4337,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 388665785}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.660417, y: 1.5310307, z: 5.533803}
+  m_LocalPosition: {x: -7.660417, y: -0.77, z: 5.533803}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4452,7 +4416,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!65 &388691844
@@ -4576,7 +4539,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 5
   MaterialName: 
 --- !u!23 &392745689
@@ -4687,7 +4649,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &393018325
@@ -4798,7 +4759,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &405003542
@@ -4909,7 +4869,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &410468123
@@ -5020,7 +4979,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &414622050
@@ -5131,7 +5089,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &430116825
@@ -5242,7 +5199,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 8
   MaterialName: 
 --- !u!23 &433253195
@@ -5353,7 +5309,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &458794800
@@ -5464,7 +5419,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &473305637
@@ -5575,7 +5529,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &502293939
@@ -5673,7 +5626,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 0
   MaterialName: 
 --- !u!65 &515949281
@@ -5797,7 +5749,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &554105847
@@ -5908,7 +5859,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 8
   MaterialName: 
 --- !u!23 &564016799
@@ -6020,7 +5970,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &575722304
@@ -6131,7 +6080,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &580778927
@@ -6243,7 +6191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &581877112
@@ -6354,7 +6301,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &583115317
@@ -6465,7 +6411,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 8
   MaterialName: 
 --- !u!23 &595932823
@@ -6576,7 +6521,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &603249095
@@ -6769,7 +6713,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!65 &628423917
@@ -6880,7 +6823,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!65 &636027099
@@ -6992,7 +6934,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 0
   MaterialName: 
 --- !u!65 &666103869
@@ -7020,7 +6961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &666103871
@@ -7118,7 +7058,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!65 &681587942
@@ -7242,7 +7181,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 8
   MaterialName: 
 --- !u!23 &682323849
@@ -7339,7 +7277,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 7
   MaterialName: 
 --- !u!23 &687420575
@@ -7398,8 +7335,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 687420572}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.982, y: -2.742, z: 15.114}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -22.227716, y: -5.6243567, z: 7.806399}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 1369828463}
@@ -7407,8 +7344,8 @@ Transform:
   - {fileID: 1630036987}
   - {fileID: 2119493735}
   - {fileID: 1973886633}
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_Father: {fileID: 1808840985}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &691505152
 GameObject:
@@ -7469,7 +7406,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &691505156
@@ -7567,7 +7503,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!65 &700674819
@@ -7691,7 +7626,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &701885819
@@ -7895,7 +7829,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 6
   MaterialName: 
 --- !u!23 &717611343
@@ -8006,7 +7939,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 8
   MaterialName: 
 --- !u!23 &743931025
@@ -8117,7 +8049,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 8
   MaterialName: 
 --- !u!23 &770487830
@@ -8228,7 +8159,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &788274361
@@ -8339,7 +8269,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &803774641
@@ -8450,7 +8379,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 6
   MaterialName: 
 --- !u!23 &827436353
@@ -8562,7 +8490,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &828695589
@@ -8659,7 +8586,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &841134656
@@ -8718,8 +8644,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 841134653}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3779993, y: -2.5640001, z: 14.96}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.8677173, y: -5.446357, z: 7.6523986}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 66065964}
@@ -8853,8 +8779,8 @@ Transform:
   - {fileID: 581877109}
   - {fileID: 106250930}
   - {fileID: 870371077}
-  m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_Father: {fileID: 1808840985}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &870371076
 GameObject:
@@ -8916,7 +8842,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &870371080
@@ -9014,7 +8939,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!65 &879934825
@@ -9138,7 +9062,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &882269104
@@ -9249,7 +9172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &882270896
@@ -9360,7 +9282,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &885219488
@@ -9471,7 +9392,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &891931261
@@ -9569,7 +9489,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!65 &906316107
@@ -9693,7 +9612,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &912912657
@@ -9804,7 +9722,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 6
   MaterialName: 
 --- !u!23 &914557234
@@ -9915,7 +9832,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 5
   MaterialName: 
 --- !u!23 &926192670
@@ -10026,7 +9942,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 6
   MaterialName: 
 --- !u!23 &931359551
@@ -10137,7 +10052,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 8
   MaterialName: 
 --- !u!23 &935780926
@@ -10331,7 +10245,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &969978784
@@ -10429,7 +10342,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!65 &975928953
@@ -10553,7 +10465,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 6
   MaterialName: 
 --- !u!23 &984868935
@@ -10664,7 +10575,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &988326468
@@ -10775,7 +10685,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &989619216
@@ -10886,7 +10795,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 8
   MaterialName: 
 --- !u!23 &998454927
@@ -10997,7 +10905,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 6
   MaterialName: 
 --- !u!23 &1003429798
@@ -11108,7 +11015,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1005205696
@@ -11220,7 +11126,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1006970394
@@ -11331,7 +11236,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1010666339
@@ -11442,7 +11346,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1047037381
@@ -11526,7 +11429,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 1
   MaterialName: 
 --- !u!65 &1054430829
@@ -11598,8 +11500,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054430827}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.732, y: -2.5100002, z: 15.052}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -28.977716, y: -5.392357, z: 7.7443986}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 204213964}
@@ -11610,8 +11512,8 @@ Transform:
   - {fileID: 1253634040}
   - {fileID: 12921061}
   - {fileID: 1749841413}
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_Father: {fileID: 1808840985}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1060131208
 GameObject:
@@ -11672,7 +11574,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1060131212
@@ -11783,7 +11684,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1072491258
@@ -11894,7 +11794,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1074822754
@@ -11992,7 +11891,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!65 &1078271018
@@ -12116,7 +12014,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1089344843
@@ -12227,7 +12124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &1121834574
@@ -12433,7 +12329,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1169179969
@@ -12544,7 +12439,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &1191841231
@@ -12685,7 +12579,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 8
   MaterialName: 
 --- !u!23 &1216092190
@@ -12796,7 +12689,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1241049201
@@ -12907,7 +12799,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 1
   MaterialName: 
 --- !u!23 &1253634043
@@ -13018,7 +12909,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 1
   MaterialName: 
 --- !u!23 &1308010835
@@ -13115,7 +13005,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 3
   MaterialName: 
 --- !u!23 &1314951075
@@ -13174,14 +13063,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1314951072}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.1860003, y: -2.435, z: 15.03}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -12.431717, y: -5.3173566, z: 7.7223983}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 366342620}
   - {fileID: 1839050774}
-  m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_Father: {fileID: 1808840985}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1327766719
 GameObject:
@@ -13242,7 +13131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1327766723
@@ -13353,7 +13241,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1334260558
@@ -13464,7 +13351,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1336938913
@@ -13575,7 +13461,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1338463830
@@ -13686,7 +13571,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &1348579807
@@ -13797,7 +13681,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &1361293261
@@ -13895,7 +13778,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!65 &1364022389
@@ -14019,7 +13901,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 7
   MaterialName: 
 --- !u!23 &1369828466
@@ -14130,7 +14011,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &1377812799
@@ -14228,7 +14108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!65 &1392412741
@@ -14352,7 +14231,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 8
   MaterialName: 
 --- !u!23 &1398687538
@@ -14463,7 +14341,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 8
   MaterialName: 
 --- !u!23 &1402707571
@@ -14574,7 +14451,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1408312421
@@ -14672,7 +14548,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!65 &1428932904
@@ -14796,7 +14671,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 5
   MaterialName: 
 --- !u!23 &1433040121
@@ -14907,7 +14781,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 5
   MaterialName: 
 --- !u!23 &1436367399
@@ -15018,7 +14891,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 5
   MaterialName: 
 --- !u!23 &1442572346
@@ -15129,7 +15001,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 8
   MaterialName: 
 --- !u!23 &1461306885
@@ -15240,7 +15111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 1
   MaterialName: 
 --- !u!23 &1470711981
@@ -15338,7 +15208,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!65 &1475139738
@@ -15449,7 +15318,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!65 &1477862066
@@ -15573,7 +15441,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1484012241
@@ -15684,7 +15551,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &1495148503
@@ -15795,7 +15661,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1513476031
@@ -15906,7 +15771,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 8
   MaterialName: 
 --- !u!23 &1522197040
@@ -16004,7 +15868,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!65 &1522418049
@@ -16128,7 +15991,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 8
   MaterialName: 
 --- !u!23 &1547758443
@@ -16226,7 +16088,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!65 &1590464937
@@ -16350,7 +16211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 8
   MaterialName: 
 --- !u!23 &1609202140
@@ -16448,7 +16308,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!65 &1610750872
@@ -16572,7 +16431,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1613282710
@@ -16683,7 +16541,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 8
   MaterialName: 
 --- !u!23 &1613341802
@@ -16794,7 +16651,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &1621073463
@@ -16899,7 +16755,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628229711}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.728, y: 1, z: 0.498}
+  m_LocalPosition: {x: 20.178, y: -0.77, z: 0.892}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -16964,7 +16820,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 7
   MaterialName: 
 --- !u!23 &1630036990
@@ -17075,7 +16930,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &1634825656
@@ -17186,7 +17040,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1650381711
@@ -17297,7 +17150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &1660657969
@@ -17408,7 +17260,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &1667232256
@@ -17519,7 +17370,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 5
   MaterialName: 
 --- !u!23 &1686802033
@@ -17630,7 +17480,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &1689154328
@@ -17741,7 +17590,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1690299738
@@ -17852,7 +17700,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 7
   MaterialName: 
 --- !u!23 &1690608509
@@ -17963,7 +17810,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 8
   MaterialName: 
 --- !u!23 &1692109930
@@ -18061,7 +17907,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!65 &1697143805
@@ -18185,7 +18030,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1700189557
@@ -18296,7 +18140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 5
   MaterialName: 
 --- !u!23 &1722252587
@@ -18407,7 +18250,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &1724639453
@@ -18518,7 +18360,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 1
   MaterialName: 
 --- !u!23 &1749841416
@@ -18629,7 +18470,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1750184417
@@ -18740,7 +18580,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 6
   MaterialName: 
 --- !u!23 &1755883370
@@ -18851,7 +18690,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1779510808
@@ -18962,7 +18800,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1792873941
@@ -19067,11 +18904,49 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1794042760}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.78, y: 1, z: 6.98}
+  m_LocalPosition: {x: 6.78, y: -3, z: 6.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1808840984
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1808840985}
+  m_Layer: 0
+  m_Name: map
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1808840985
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808840984}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.2457166, y: 2.8823566, z: 7.3076015}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_Children:
+  - {fileID: 1054430832}
+  - {fileID: 2114248603}
+  - {fileID: 687420577}
+  - {fileID: 243769428}
+  - {fileID: 2059541098}
+  - {fileID: 1314951077}
+  - {fileID: 2134470820}
+  - {fileID: 841134658}
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1810615214
 GameObject:
@@ -19132,7 +19007,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1810615218
@@ -19243,7 +19117,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 8
   MaterialName: 
 --- !u!23 &1815741608
@@ -19341,7 +19214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!65 &1827358281
@@ -19465,7 +19337,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1829404184
@@ -19570,7 +19441,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1830952940}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -21.07, y: 1, z: 8.04}
+  m_LocalPosition: {x: -21.07, y: -3, z: 8.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -19636,7 +19507,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 3
   MaterialName: 
 --- !u!23 &1839050777
@@ -19747,7 +19617,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1844391238
@@ -19858,7 +19727,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &1867835111
@@ -19969,7 +19837,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 6
   MaterialName: 
 --- !u!23 &1872177353
@@ -20080,7 +19947,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 5
   MaterialName: 
 --- !u!23 &1876459352
@@ -20191,7 +20057,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1876614627
@@ -20302,7 +20167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &1878858929
@@ -20508,7 +20372,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1898498358
@@ -20619,7 +20482,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1899015445
@@ -20717,7 +20579,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!65 &1905697412
@@ -20828,7 +20689,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!65 &1909315116
@@ -20952,7 +20812,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &1912811592
@@ -21063,7 +20922,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 5
   MaterialName: 
 --- !u!23 &1922811578
@@ -21174,7 +21032,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &1925432847
@@ -21285,7 +21142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &1949082567
@@ -21396,7 +21252,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 8
   MaterialName: 
 --- !u!23 &1971327293
@@ -21507,7 +21362,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &1972176688
@@ -21618,7 +21472,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 7
   MaterialName: 
 --- !u!23 &1973886636
@@ -21729,7 +21582,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &1999658285
@@ -21840,7 +21692,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &2000735348
@@ -22046,7 +21897,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &2016788083
@@ -22144,7 +21994,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!65 &2020460078
@@ -22268,7 +22117,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 5
   MaterialName: 
 --- !u!23 &2026448062
@@ -22379,7 +22227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &2030283641
@@ -22476,7 +22323,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 5
   MaterialName: 
 --- !u!23 &2059541096
@@ -22535,8 +22381,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2059541093}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.85, y: -2.42, z: 15.053}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -16.095716, y: -5.3023567, z: 7.745399}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 1433040118}
@@ -22552,8 +22398,8 @@ Transform:
   - {fileID: 1442572343}
   - {fileID: 1686802030}
   - {fileID: 212724683}
-  m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_Father: {fileID: 1808840985}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2060935897
 GameObject:
@@ -22673,7 +22519,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 1
   MaterialName: 
 --- !u!23 &2074357937
@@ -22784,7 +22629,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &2081159863
@@ -22895,7 +22739,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &2082720242
@@ -23006,7 +22849,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &2085463814
@@ -23117,7 +22959,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &2086123332
@@ -23228,7 +23069,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &2087664807
@@ -23326,7 +23166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!65 &2095010930
@@ -23423,7 +23262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 6
   MaterialName: 
 --- !u!65 &2114248600
@@ -23495,8 +23333,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2114248598}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.544, y: -2.6399999, z: 14.958}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -25.789717, y: -5.5223565, z: 7.6503987}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 1003429795}
@@ -23507,8 +23345,8 @@ Transform:
   - {fileID: 2015763952}
   - {fileID: 1148932238}
   - {fileID: 1892611926}
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_Father: {fileID: 1808840985}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2115877931
 GameObject:
@@ -23569,7 +23407,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 4
   MaterialName: 
 --- !u!23 &2115877935
@@ -23680,7 +23517,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 7
   MaterialName: 
 --- !u!23 &2119493738
@@ -23821,7 +23657,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2122517593}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 47.18, y: 1.33, z: -0.82}
+  m_LocalPosition: {x: -50, y: -3, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -23886,7 +23722,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &2123873336
@@ -23984,7 +23819,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!65 &2130179316
@@ -24108,7 +23942,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 5
   MaterialName: 
 --- !u!23 &2134440197
@@ -24248,8 +24081,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2134470816}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.5720005, y: -2.584, z: 15.132}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -9.817717, y: -5.4663568, z: 7.8243985}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 1690299735}
@@ -24283,8 +24116,8 @@ Transform:
   - {fileID: 1689154325}
   - {fileID: 1999658282}
   - {fileID: 935780923}
-  m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_Father: {fileID: 1808840985}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2138483933
 GameObject:
@@ -24345,7 +24178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9e7fe1521fc34468c3b93e8c713dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Transform: {fileID: 0}
   MaterialId: 2
   MaterialName: 
 --- !u!23 &2138483937

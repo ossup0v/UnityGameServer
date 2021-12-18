@@ -197,9 +197,8 @@ MonoBehaviour:
   ThrowForce: 4000
   ShiftMultiplayer: 2
   SpawnPoints:
-  - {x: 22, y: 2, z: 0}
-  - {x: -22, y: 3.6, z: 0}
-  - {x: 0, y: 2, z: 0}
+  - {x: 45, y: 4.5, z: -6}
+  - {x: -50, y: -3, z: -7}
   RespawnTime: 3
   grenadeCount: 0
   maxItemAmount: 3

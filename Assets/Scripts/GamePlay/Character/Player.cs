@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
     {
         Id = id;
         Username = username;
-        WeaponController = new WeaponController(new List<WeaponBase> { new GunWeapon(), new RocketLaucnherWeapon(), new TeleportWeapon() });
+        WeaponController = new WeaponController(new List<WeaponBase> { new RocketLaucnherWeapon(), new TeleportWeapon() });
         BoosterContainer = new BoosterContainer();
         HealthManager.OwnerId = Id;
         _inputs = new bool[6];
