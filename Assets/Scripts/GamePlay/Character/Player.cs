@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
     {
         Id = id;
         Username = username;
-        WeaponController = new WeaponController(new List<WeaponBase> { new GunWeapon(), new RocketLaucnherWeapon() });
+        WeaponController = new WeaponController(new List<WeaponBase> { new GunWeapon(), new RocketLaucnherWeapon(), new TeleportWeapon() });
         BoosterContainer = new BoosterContainer();
         HealthManager.OwnerId = Id;
         _inputs = new bool[6];
@@ -126,6 +126,13 @@ public class Player : MonoBehaviour
         ServerSend.PlayerRotation(this);
     }
 
+    public void MoveTo(Vector3 position)
+    {
+        Controller.enabled = false;
+        transform.position = position;
+        Controller.enabled = true;
+    }
+
     public void SetInput(bool[] inputs, Quaternion rotation)
     {
         _inputs = inputs;
@@ -154,7 +161,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage, int attackerPlayerId)
+    public void TakeDamage(float damage, int? attackerPlayerId)
     {
         Debug.Log("Player taking damage!!");
 
@@ -168,10 +175,14 @@ public class Player : MonoBehaviour
             Controller.enabled = false;
             transform.position = SpawnPoints[UnityEngine.Random.Range(0, SpawnPoints.Length)];
 
-            if (attackerPlayerId != Id)
+            if (attackerPlayerId.HasValue == false)
+            { 
+                //player suicide
+            }
+            else if (attackerPlayerId != Id)
             {
-                RatingManager.KillAndDeath(attackerPlayerId, Id);
-                ServerSend.UpdateRatingTable(attackerPlayerId, Id);
+                RatingManager.KillAndDeath(attackerPlayerId.Value, Id);
+                ServerSend.UpdateRatingTable(attackerPlayerId.Value, Id);
             }
             else
             { 
@@ -193,6 +204,11 @@ public class Player : MonoBehaviour
         HealthManager.SetPureHealth(HealthManager.MaxHealth);
         Controller.enabled = true;
         ServerSend.PlayerRespawn(this);
+    }
+
+    public void Suicide()
+    {
+        TakeDamage(HealthManager.CurrentHealth, null);
     }
 
     private bool GetShitftDown() => _inputs[5];

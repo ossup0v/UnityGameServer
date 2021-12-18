@@ -16,6 +16,11 @@ public class Server
     private static TcpListener tcpListener;
     private static UdpClient udpListener;
 
+    public static Client GetClient(int clientId)
+    {
+        return clients[clientId];
+    }
+
     public static void Start(int maxPlayers, int port)
     {
         MaxPlayers = maxPlayers;
@@ -133,7 +138,9 @@ public class Server
                 { (int)ClientPackets.playerShooting, ServerHandler.PlayerShooting },
                 { (int)ClientPackets.playerThrowItem, ServerHandler.PlayerThrowItem },
                 { (int)ClientPackets.playerChangeWeapon, ServerHandler.PlayerChangeWeapon },
+                { (int)ClientPackets.playerRespawn, ServerHandler.PlayerRespawn },
             };
+
         Debug.Log("Initialized packets.");
     }
 }

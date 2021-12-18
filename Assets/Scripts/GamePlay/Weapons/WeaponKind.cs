@@ -1,5 +1,6 @@
 ﻿public enum WeaponKind
 {
     Gun,
-    RocketLauncher
+    RocketLauncher,
+    Teleport
 }
