@@ -3,7 +3,7 @@
 [RequireComponent(typeof(Transform))]
 public class MapEntitySaveObject : MonoBehaviour
 {
-    public Transform Transform;
+    private Transform Transform;
     public int MaterialId;
     public string MaterialName;
 
@@ -16,7 +16,7 @@ public class MapEntitySaveObject : MonoBehaviour
     {
         return $"P:{Transform.position.x}!{Transform.position.y}!{Transform.position.z}" +
             $"R:{Transform.rotation.x}!{Transform.rotation.y}!{Transform.rotation.z}!{Transform.rotation.w}" +
-            $"S:{Transform.localScale.x}!{Transform.localScale.y}!{Transform.localScale.z}" +
+            $"S:{Transform.lossyScale.x}!{Transform.lossyScale.y}!{Transform.lossyScale.z}" +
             $"M:{MaterialId};";
     }
 }
