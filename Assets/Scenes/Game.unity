@@ -2374,7 +2374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Transform: {fileID: 0}
-  MaterialId: 2
+  MaterialId: 3
   MaterialName: 
 --- !u!65 &363851710
 BoxCollider:
@@ -8522,7 +8522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Transform: {fileID: 0}
-  MaterialId: 2
+  MaterialId: 3
   MaterialName: 
 --- !u!65 &1429845783
 BoxCollider:
@@ -8966,7 +8966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Transform: {fileID: 0}
-  MaterialId: 2
+  MaterialId: 3
   MaterialName: 
 --- !u!65 &1540539449
 BoxCollider:
@@ -11585,7 +11585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Transform: {fileID: 0}
-  MaterialId: 2
+  MaterialId: 3
   MaterialName: 
 --- !u!65 &1968256684
 BoxCollider:
