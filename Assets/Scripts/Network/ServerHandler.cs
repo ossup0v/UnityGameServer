@@ -44,10 +44,15 @@ public class ServerHandler
         Server.clients[fromClient].player.ThrowItem(direction);
     }
 
-    internal static void PlayerChangeWeapon(int fromClient, Packet packet)
+    public static void PlayerChangeWeapon(int fromClient, Packet packet)
     {
         var leftOrRigth = packet.ReadInt();
 
         Server.clients[fromClient].player.ChooseWeapon(leftOrRigth);
+    }
+
+    public static void PlayerRespawn(int fromClient, Packet packet)
+    {
+        Server.GetClient(fromClient).player.Suicide();
     }
 }

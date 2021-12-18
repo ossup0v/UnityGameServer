@@ -36,7 +36,6 @@ public class RocketLaucnherWeapon : WeaponBase
             {
                 ServerSend.PlayerHitUDP(owner, Kind, hit.point);
             }
-
         }
     }
 }
