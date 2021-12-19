@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BotSpawner : MonoBehaviour
 {
-    public float Frequency = 1f;
+    public float Frequency = 3f;
 
     private void Start()
     {

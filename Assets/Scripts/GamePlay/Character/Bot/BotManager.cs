@@ -2,7 +2,7 @@
 
 public class BotManager
 {
-    public static int MaxBotCount = 50;
+    public static int MaxBotCount = 6;
     private static Dictionary<int, BotBase> _bots = new Dictionary<int, BotBase>();
     private static int nextBotId = 1;
 
