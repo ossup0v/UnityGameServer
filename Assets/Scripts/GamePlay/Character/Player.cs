@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : CharacterBase
 {
+    public MeshRenderer Model;
+
     public string Username;
     public float ThrowForce = 600f * 2 * 4 * 10;
     public float ShiftMultiplayer = 2f;
@@ -11,7 +13,7 @@ public class Player : CharacterBase
     public float RespawnTime = 2f;
     public int grenadeCount = 0;
     public int maxItemAmount = 3;
-
+    float controllHeight;
     private bool[] _inputs;
     private float yVelocity = 0;
 
@@ -31,7 +33,7 @@ public class Player : CharacterBase
 
         grenadeCount++;
         ServerSend.PlayerGrenadeCount(Id, grenadeCount);
-        
+
         return true;
     }
 
@@ -42,7 +44,8 @@ public class Player : CharacterBase
         WeaponController = new WeaponController(new List<WeaponBase> { new RocketLaucnherWeapon(), new TeleportWeapon() });
         BoosterContainer = new BoosterContainer();
         HealthManager.OwnerId = Id;
-        _inputs = new bool[6];
+        _inputs = new bool[7];
+        controllHeight = Controller.height;
     }
 
     public void FixedUpdate()
@@ -74,8 +77,12 @@ public class Player : CharacterBase
             //space
         }
         if (_inputs[5])
-        { 
+        {
             //shift
+        }
+        if (_inputs[6])
+        {
+            //ctrl
         }
 
         Move(inputDirection);
@@ -99,14 +106,26 @@ public class Player : CharacterBase
             }
         }
 
-        yVelocity += Gravity;
+        if (_inputs[6])
+        {
+            Controller.height = controllHeight / 2;
+        }
+        else
+        {
+            Controller.height = controllHeight;
+        }
 
+        Model.transform.lossyScale.Set(Model.transform.lossyScale.x, Controller.height, Model.transform.lossyScale.z);
+
+        yVelocity += Gravity;
+       
         moveDirection.y += yVelocity;
 
         Controller.Move(moveDirection);
 
         ServerSend.PlayerPosition(this);
         ServerSend.PlayerRotation(this);
+        ServerSend.PlayerScale(this);
     }
 
     public void SetInput(bool[] inputs, Quaternion rotation)

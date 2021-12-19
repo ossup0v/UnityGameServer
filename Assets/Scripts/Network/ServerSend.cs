@@ -426,6 +426,17 @@ public class ServerSend
         {
             packet.Write(bot.Id);
             packet.Write(bot.transform.position);
+     
+            SendUDPDataToAll(packet);
+        }
+    }
+  
+    public static void PlayerScale(Player player)
+    {
+        using (Packet packet = new Packet(ServerPackets.playerScale))
+        {
+            packet.Write(player.transform.lossyScale);
+            packet.Write(player.Id);
 
             SendUDPDataToAll(packet);
         }
@@ -452,5 +463,6 @@ public class ServerSend
             SendTCPDataToAll(packet);
         }
     }
+  
     #endregion
 }
