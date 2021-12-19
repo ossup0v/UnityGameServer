@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     public float RespawnTime = 2f;
     public int grenadeCount = 0;
     public int maxItemAmount = 3;
-
+    float lossyScaleY;
     private bool[] _inputs;
     private float yVelocity = 0;
 
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
 
         grenadeCount++;
         ServerSend.PlayerGrenadeCount(Id, grenadeCount);
-        
+
         return true;
     }
 
@@ -53,7 +53,8 @@ public class Player : MonoBehaviour
         WeaponController = new WeaponController(new List<WeaponBase> { new RocketLaucnherWeapon(), new TeleportWeapon() });
         BoosterContainer = new BoosterContainer();
         HealthManager.OwnerId = Id;
-        _inputs = new bool[6];
+        _inputs = new bool[7];
+        lossyScaleY = transform.lossyScale.y;
     }
 
     public void FixedUpdate()
@@ -85,7 +86,7 @@ public class Player : MonoBehaviour
             //space
         }
         if (_inputs[5])
-        { 
+        {
             //shift
         }
 
@@ -116,14 +117,24 @@ public class Player : MonoBehaviour
             }
         }
 
+        if (_inputs[6])
+        {
+            Controller.height = lossyScaleY / 2;
+        }
+        else
+        {
+            Controller.height = lossyScaleY;
+        }
+        transform.lossyScale.Set(transform.lossyScale.x, Controller.height, transform.lossyScale.z);
         yVelocity += Gravity;
-
+       
         moveDirection.y += yVelocity;
 
         Controller.Move(moveDirection);
 
         ServerSend.PlayerPosition(this);
         ServerSend.PlayerRotation(this);
+        ServerSend.PlayerScale(this);
     }
 
     public void MoveTo(Vector3 position)
@@ -176,7 +187,7 @@ public class Player : MonoBehaviour
             transform.position = SpawnPoints[UnityEngine.Random.Range(0, SpawnPoints.Length)];
 
             if (attackerPlayerId.HasValue == false)
-            { 
+            {
                 //player suicide
             }
             else if (attackerPlayerId != Id)
@@ -185,7 +196,7 @@ public class Player : MonoBehaviour
                 ServerSend.UpdateRatingTable(attackerPlayerId.Value, Id);
             }
             else
-            { 
+            {
                 RatingManager.AddDeath(Id);
                 ServerSend.UpdateRatingTableDeath(Id);
             }

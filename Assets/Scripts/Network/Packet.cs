@@ -27,7 +27,8 @@ public enum ServerPackets
     ratingTableUpdateKillAndDeath,
     ratingTableUpdateDeath,
     playerGrenadeCount,
-    initMap
+    initMap,
+    playerScale
 }
 
 /// <summary>Sent from client to server.</summary>
