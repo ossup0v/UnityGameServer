@@ -11,19 +11,19 @@ public class GunWeapon : WeaponBase
 
     public override WeaponKind Kind { get; } = WeaponKind.Gun;
 
-    public override void Shoot(Player owner, Vector3 duraction, Vector3 from)
+    public override void Shoot(CharacterBase owner, Vector3 duraction, Vector3 from)
     {
-        ServerSend.PlayerShootUDP(owner);
+        SendShoot(owner);
         if (Physics.Raycast(from, duraction, out var hit, GetRadius(owner)))
         {
             if (hit.collider.TryGetComponent<HitRegistration>(out var hitRegistration))
             {
-                hitRegistration.RegisterHit(GetDamage(owner), owner.Id);
-                ServerSend.PlayerHitTCP(owner, Kind, hit.point);
+                hitRegistration.RegisterHit(GetDamage(owner), owner);
+                SendHit(owner, Kind, hit.point);
                 return;
             }
 
-            ServerSend.PlayerHitUDP(owner, Kind, hit.point);
+            SendHit(owner, Kind, hit.point);
         }
     }
 }

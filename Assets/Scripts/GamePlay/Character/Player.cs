@@ -2,20 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : CharacterBase
 {
-    public WeaponController WeaponController;
-    public BoosterContainer BoosterContainer;
-
     public MeshRenderer Model;
 
-    public int Id;
     public string Username;
-    public CharacterController Controller;
-    public Transform ShootOrigin;
-    public float Gravity = -9.81f * 2;
-    public float MoveSpeed = 5f;
-    public float JumpSpeed = 5f;
     public float ThrowForce = 600f * 2 * 4 * 10;
     public float ShiftMultiplayer = 2f;
     public Vector3[] SpawnPoints;
@@ -26,9 +17,7 @@ public class Player : MonoBehaviour
     private bool[] _inputs;
     private float yVelocity = 0;
 
-    //health
-    public HealthManager HealthManager = new HealthManager();
-
+    public override CharacterKind CharacterKind { get; } = CharacterKind.player;
 
     private void Start()
     {
@@ -37,7 +26,7 @@ public class Player : MonoBehaviour
         JumpSpeed *= Time.fixedDeltaTime;
     }
 
-    internal bool AttemptPickupItem()
+    public bool AttemptPickupItem()
     {
         if (grenadeCount >= maxItemAmount)
             return false;
@@ -99,12 +88,6 @@ public class Player : MonoBehaviour
         Move(inputDirection);
     }
 
-    public void ChooseWeapon(int leftOrRigth)
-    {
-        WeaponController.ChangeWeapon(leftOrRigth);
-        ServerSend.PlayerChooseWeapon(this);
-    }
-
     private void Move(Vector2 inputDirection)
     {
         Vector3 moveDirection = transform.right * inputDirection.x + transform.forward * inputDirection.y;
@@ -145,25 +128,10 @@ public class Player : MonoBehaviour
         ServerSend.PlayerScale(this);
     }
 
-    public void MoveTo(Vector3 position)
-    {
-        Controller.enabled = false;
-        transform.position = position;
-        Controller.enabled = true;
-    }
-
     public void SetInput(bool[] inputs, Quaternion rotation)
     {
         _inputs = inputs;
         transform.rotation = rotation;
-    }
-
-    public void Shoot(Vector3 viewDuraction)
-    {
-        if (HealthManager.IsDie)
-            return;
-
-        WeaponController.GetCurrentWeapon().Shoot(this, viewDuraction, ShootOrigin.position);
     }
 
     public void ThrowItem(Vector3 viewDuraction)
@@ -176,35 +144,43 @@ public class Player : MonoBehaviour
             grenadeCount--;
             ServerSend.PlayerGrenadeCount(Id, grenadeCount);
             NetworkManager.Instance.InstantiatePrjectile(ShootOrigin)
-                .Initialize(viewDuraction, ThrowForce, Id);
+                .Initialize(viewDuraction, ThrowForce, this);
         }
     }
 
-    public void TakeDamage(float damage, int? attackerPlayerId)
+    protected override void TakeDamagePostprocess(CharacterBase attacker)
     {
-        Debug.Log("Player taking damage!!");
-
-        if (HealthManager.IsDie)
-            return;
-
-        HealthManager.TakePureDamage(damage);
+        ServerSend.PlayerHealth(HealthManager);
 
         if (HealthManager.IsDie)
         {
             Controller.enabled = false;
             transform.position = SpawnPoints[UnityEngine.Random.Range(0, SpawnPoints.Length)];
 
-            if (attackerPlayerId.HasValue == false)
+            if (attacker == null)
             {
                 //player suicide
             }
-            else if (attackerPlayerId != Id)
+            else if (attacker.Id != Id)
             {
-                RatingManager.KillAndDeath(attackerPlayerId.Value, Id);
-                ServerSend.UpdateRatingTable(attackerPlayerId.Value, Id);
+                if (attacker.CharacterKind == CharacterKind.player)
+                {
+                    RatingManager.KillAndDeath(attacker.Id, Id);
+                    ServerSend.UpdateRatingTable(attacker.Id, Id);
+                }
+                else if (attacker.CharacterKind == CharacterKind.bot)
+                {
+                    RatingManager.AddDeath(Id);
+                    ServerSend.UpdateRatingTableDeath(Id);
+                }
+                else
+                {
+                    Debug.LogError($"Unknow character kind {attacker.CharacterKind}");
+                }
             }
             else
             {
+                //player kill self
                 RatingManager.AddDeath(Id);
                 ServerSend.UpdateRatingTableDeath(Id);
             }
@@ -212,8 +188,6 @@ public class Player : MonoBehaviour
             ServerSend.PlayerPosition(this);
             StartCoroutine(Respawn());
         }
-
-        ServerSend.PlayerHealth(HealthManager);
     }
 
     private IEnumerator Respawn()

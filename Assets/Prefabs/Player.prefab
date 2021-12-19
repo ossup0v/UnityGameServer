@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 1196549336624664971}
   - component: {fileID: 6820213605173019620}
   - component: {fileID: 4470186398895843104}
-  - component: {fileID: 7118095439931802411}
+  - component: {fileID: 1348062586597902618}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -161,12 +161,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Model: {fileID: 6955419040855305980}
   Id: 0
-  Username: 
   Controller: {fileID: 6820213605173019620}
   ShootOrigin: {fileID: 867503216000339035}
   Gravity: -19.81
   MoveSpeed: 5
   JumpSpeed: 9
+  Username: 
   ThrowForce: 4000
   ShiftMultiplayer: 2
   SpawnPoints:
@@ -209,7 +209,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &7118095439931802411
+--- !u!114 &1348062586597902618
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -220,5 +220,5 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7570ca0810b75248a36e7165a244312, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1196549336624664971}
+  m_EditorClassIdentifier:
+  defender: {fileID: 1196549336624664971}

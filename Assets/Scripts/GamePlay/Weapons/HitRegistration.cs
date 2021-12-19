@@ -2,11 +2,17 @@ using UnityEngine;
 
 public class HitRegistration : MonoBehaviour
 {
-    public Player player;
+    public CharacterBase defender;
 
-    public void RegisterHit(float damage, int attackerPlayerId, float impactForce = 0, Vector3 normal = default(Vector3))
+    public void RegisterHit(float damage, CharacterBase attacker, float impactForce = 0, Vector3 normal = default(Vector3))
     {
-        player.TakeDamage(damage, attackerPlayerId);
+        // bot can't attack bot
+        if ((defender.CharacterKind == CharacterKind.bot && attacker.CharacterKind != CharacterKind.bot) 
+            //every only can attack player (
+            || defender.CharacterKind == CharacterKind.player)
+        {
+            defender.TakeDamage(damage, attacker);
+        }
 
         if (impactForce != 0 && normal != default(Vector3))
         {

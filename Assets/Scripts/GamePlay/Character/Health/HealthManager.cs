@@ -46,12 +46,12 @@ public class HealthManager
         SetPureHealth(CurrentHealth - pureDamage);
     }
 
-    public void SetPureHealth(float newPlayerHealth)
+    public void SetPureHealth(float newHealth)
     {
-        if (newPlayerHealth == CurrentHealth)
+        if (newHealth == CurrentHealth)
             return;
 
-        var isTakingDamage = newPlayerHealth < _currentPlayerHealth;
+        var isTakingDamage = newHealth < _currentPlayerHealth;
 
         if (isTakingDamage) //damage here 
         {
@@ -61,16 +61,16 @@ public class HealthManager
         }
         else { } //heal here 
 
-        CurrentHealth = newPlayerHealth;
+        CurrentHealth = newHealth;
+
+        if (CurrentHealth < MinHealth)
+            CurrentHealth = MinHealth;
 
         if (Math.Abs(lastPlayerHealthUpdate - CurrentHealth) > 1 || CurrentHealth == MinHealth || CurrentHealth == MaxHealth)
         {
-            CurrentHealth = GetNormalizedHealth(newPlayerHealth);
+            CurrentHealth = GetNormalizedHealth(newHealth);
             lastPlayerHealthUpdate = CurrentHealth;
             HealthChanged(CurrentHealth);
-
-            if (OwnerId != 0)
-                ServerSend.PlayerHealth(this);
         }
     }
 
