@@ -14,7 +14,7 @@ public class RocketLaucnherWeapon : WeaponBase
 
     public override void Shoot(CharacterBase owner, Vector3 duraction, Vector3 from)
     {
-        ServerSend.PlayerShootUDP(owner);
+        SendShoot(owner);
         if (Physics.Raycast(from, duraction, out var hit, GetRadius(owner)))
         {
             Collider[] colliders = Physics.OverlapSphere(hit.point, RadiusOfDamage);
@@ -23,18 +23,18 @@ public class RocketLaucnherWeapon : WeaponBase
             {
                 if (collider.TryGetComponent<HitRegistration>(out var hitRegistration))
                 {
-                    hitRegistration.RegisterHit(GetDamage(owner), owner.Id, ImpactForce, hit.normal);
+                    hitRegistration.RegisterHit(GetDamage(owner), owner, ImpactForce, hit.normal);
                     hited = true;
                 }
             }
 
             if (hited)
             {
-                ServerSend.PlayerHitTCP(owner, Kind, hit.point);
+                SendHit(owner, Kind, hit.point);
             }
             else
             {
-                ServerSend.PlayerHitUDP(owner, Kind, hit.point);
+                SendHit(owner, Kind, hit.point);
             }
         }
     }

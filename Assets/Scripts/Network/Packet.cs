@@ -27,7 +27,15 @@ public enum ServerPackets
     ratingTableUpdateKillAndDeath,
     ratingTableUpdateDeath,
     playerGrenadeCount,
-    initMap
+    initMap,
+    spawnBot,
+    botPosition,
+    botRotation,
+    botHealth,
+    botShoot,
+    botChooseWeapon,
+    botHit,
+    ratingTableUpdateKilledBots
 }
 
 /// <summary>Sent from client to server.</summary>

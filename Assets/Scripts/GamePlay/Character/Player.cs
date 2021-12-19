@@ -15,6 +15,8 @@ public class Player : CharacterBase
     private bool[] _inputs;
     private float yVelocity = 0;
 
+    public override CharacterKind CharacterKind { get; } = CharacterKind.player;
+
     private void Start()
     {
         Gravity *= Time.fixedDeltaTime * Time.fixedDeltaTime;
@@ -123,28 +125,43 @@ public class Player : CharacterBase
             grenadeCount--;
             ServerSend.PlayerGrenadeCount(Id, grenadeCount);
             NetworkManager.Instance.InstantiatePrjectile(ShootOrigin)
-                .Initialize(viewDuraction, ThrowForce, Id);
+                .Initialize(viewDuraction, ThrowForce, this);
         }
     }
 
-    protected override void TakeDamagePostprocess(int? attackerId)
+    protected override void TakeDamagePostprocess(CharacterBase attacker)
     {
+        ServerSend.PlayerHealth(HealthManager);
+
         if (HealthManager.IsDie)
         {
             Controller.enabled = false;
             transform.position = SpawnPoints[UnityEngine.Random.Range(0, SpawnPoints.Length)];
 
-            if (attackerId.HasValue == false)
+            if (attacker == null)
             {
                 //player suicide
             }
-            else if (attackerId != Id)
+            else if (attacker.Id != Id)
             {
-                RatingManager.KillAndDeath(attackerId.Value, Id);
-                ServerSend.UpdateRatingTable(attackerId.Value, Id);
+                if (attacker.CharacterKind == CharacterKind.player)
+                {
+                    RatingManager.KillAndDeath(attacker.Id, Id);
+                    ServerSend.UpdateRatingTable(attacker.Id, Id);
+                }
+                else if (attacker.CharacterKind == CharacterKind.bot)
+                {
+                    RatingManager.AddDeath(Id);
+                    ServerSend.UpdateRatingTableDeath(Id);
+                }
+                else
+                {
+                    Debug.LogError($"Unknow character kind {attacker.CharacterKind}");
+                }
             }
             else
             {
+                //player kill self
                 RatingManager.AddDeath(Id);
                 ServerSend.UpdateRatingTableDeath(Id);
             }

@@ -217,13 +217,17 @@ public class Client
             ServerSend.CreateItemSpawner(id, itemSpawner.SpawnerId, itemSpawner.transform.position, itemSpawner.HasItem);
         }
 
+        foreach (var bot in BotManager.GetBots().Values)
+        {
+            ServerSend.SpawnBot(id, bot);
+        }
     }
 
     private void Disconnect()
     {
         Debug.Log($"{tcp.Socket.Client.RemoteEndPoint} was disconnected");
 
-        ThreadManager.ExecuteOnMainThread(()=>
+        ThreadManager.ExecuteOnMainThread(() =>
         { 
             RatingManager.RemovePlayer(player);
             ServerSend.UpdateFullRatingTable(RatingManager.Rating);

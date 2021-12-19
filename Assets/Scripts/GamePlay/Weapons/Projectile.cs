@@ -10,7 +10,7 @@ public class Projectile : MonoBehaviour
 
     public int Id;
     public Rigidbody Body;
-    public int ThrowedByPlayer;
+    public CharacterBase ThrowedByCharacter;
     public Vector3 initialForce;
     public float explotionRaduios = 3f;
     public float explotionDamage = 75f;
@@ -21,7 +21,7 @@ public class Projectile : MonoBehaviour
         nextPjectileId++;
         Projectiles.Add(Id, this);
         Body.AddForce(initialForce);
-        ServerSend.SpawnProjectile(this, ThrowedByPlayer);
+        ServerSend.SpawnProjectile(this, ThrowedByCharacter.Id);
         StartCoroutine(ExplodeAfterTime());
     }
 
@@ -35,10 +35,10 @@ public class Projectile : MonoBehaviour
         Explode();
     }
 
-    public void Initialize(Vector3 initialMovementDuraction, float initialForceStrength, int throwedByPlayer)
+    public void Initialize(Vector3 initialMovementDuraction, float initialForceStrength, CharacterBase throwedByCharacter)
     {
         initialForce = initialForceStrength * initialMovementDuraction;
-        ThrowedByPlayer = throwedByPlayer; 
+        ThrowedByCharacter = throwedByCharacter; 
     }
 
     private void Explode()
@@ -51,7 +51,7 @@ public class Projectile : MonoBehaviour
         {
             if (collider.TryGetComponent<Player>(out var player))
             {
-                player.TakeDamage(explotionDamage, ThrowedByPlayer);
+                player.TakeDamage(explotionDamage, ThrowedByCharacter);
             }
         }
 

@@ -7,6 +7,7 @@ public class NetworkManager : MonoBehaviour
     public static NetworkManager Instance { get; private set; }
     public int Port = 26950;
 
+    public GameObject BotPrefab;
     public GameObject PlayerPrefab;
     public GameObject ProjectilePrefab;
 
@@ -33,6 +34,11 @@ public class NetworkManager : MonoBehaviour
     private void OnApplicationQuit()
     {
         Server.Stop();
+    }
+
+    public BotBase InstantiateBot(Vector3 spawnPoint)
+    {
+        return Instantiate(BotPrefab, spawnPoint, Quaternion.identity).GetComponent<BotBase>();
     }
 
     public Player InstantiatePlayer()

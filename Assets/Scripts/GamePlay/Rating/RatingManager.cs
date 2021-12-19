@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 public class RatingManager
 {
@@ -37,6 +38,17 @@ public class RatingManager
         Rating[playerId].Killed++;
     }
 
+    public static void AddKillBot(int playerId)
+    {
+        if (!Rating.ContainsKey(playerId))
+        {
+            System.Console.WriteLine("ERROR add AddBot!");
+            return;
+        }
+
+        Rating[playerId].KilledBots++;
+    }
+
     public static void AddDeath(int playerId)
     {
         if (!Rating.ContainsKey(playerId))
@@ -46,5 +58,10 @@ public class RatingManager
         }
 
         Rating[playerId].Died++;
+    }
+
+    public static RatingEntity GetPlayerEntity(int playerId)
+    {
+        return Rating[playerId];
     }
 }
