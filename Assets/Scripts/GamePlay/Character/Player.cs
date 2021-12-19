@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     public WeaponController WeaponController;
     public BoosterContainer BoosterContainer;
 
+    public MeshRenderer Model;
+
     public int Id;
     public string Username;
     public CharacterController Controller;
@@ -20,7 +22,7 @@ public class Player : MonoBehaviour
     public float RespawnTime = 2f;
     public int grenadeCount = 0;
     public int maxItemAmount = 3;
-    float lossyScaleY;
+    float controllHeight;
     private bool[] _inputs;
     private float yVelocity = 0;
 
@@ -54,7 +56,7 @@ public class Player : MonoBehaviour
         BoosterContainer = new BoosterContainer();
         HealthManager.OwnerId = Id;
         _inputs = new bool[7];
-        lossyScaleY = transform.lossyScale.y;
+        controllHeight = Controller.height;
     }
 
     public void FixedUpdate()
@@ -89,6 +91,10 @@ public class Player : MonoBehaviour
         {
             //shift
         }
+        if (_inputs[6])
+        {
+            //ctrl
+        }
 
         Move(inputDirection);
     }
@@ -119,13 +125,15 @@ public class Player : MonoBehaviour
 
         if (_inputs[6])
         {
-            Controller.height = lossyScaleY / 2;
+            Controller.height = controllHeight / 2;
         }
         else
         {
-            Controller.height = lossyScaleY;
+            Controller.height = controllHeight;
         }
-        transform.lossyScale.Set(transform.lossyScale.x, Controller.height, transform.lossyScale.z);
+
+        Model.transform.lossyScale.Set(Model.transform.lossyScale.x, Controller.height, Model.transform.lossyScale.z);
+
         yVelocity += Gravity;
        
         moveDirection.y += yVelocity;
