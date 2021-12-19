@@ -11,7 +11,7 @@ public class GunWeapon : WeaponBase
 
     public override WeaponKind Kind { get; } = WeaponKind.Gun;
 
-    public override void Shoot(Player owner, Vector3 duraction, Vector3 from)
+    public override void Shoot(CharacterBase owner, Vector3 duraction, Vector3 from)
     {
         ServerSend.PlayerShootUDP(owner);
         if (Physics.Raycast(from, duraction, out var hit, GetRadius(owner)))

@@ -12,7 +12,7 @@ public class RocketLaucnherWeapon : WeaponBase
 
     public override WeaponKind Kind => WeaponKind.RocketLauncher;
 
-    public override void Shoot(Player owner, Vector3 duraction, Vector3 from)
+    public override void Shoot(CharacterBase owner, Vector3 duraction, Vector3 from)
     {
         ServerSend.PlayerShootUDP(owner);
         if (Physics.Raycast(from, duraction, out var hit, GetRadius(owner)))

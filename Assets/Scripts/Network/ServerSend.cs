@@ -86,36 +86,36 @@ public class ServerSend
         }
     }
 
-    public static void PlayerPosition(Player player)
+    public static void PlayerPosition(CharacterBase character)
     {
         using (Packet packet = new Packet((int)ServerPackets.playerPosition))
         {
-            packet.Write(player.Id);
-            packet.Write(player.transform.position);
+            packet.Write(character.Id);
+            packet.Write(character.transform.position);
 
             SendUDPDataToAll(packet);
         }
     }
 
-    public static void PlayerChooseWeapon(Player player)
+    public static void PlayerChooseWeapon(CharacterBase character)
     {
         using (Packet packet = new Packet((int)ServerPackets.playerChooseWeapon))
         {
-            packet.Write(player.Id);
-            packet.Write((int)player.WeaponController.GetCurrentWeapon().Kind);
+            packet.Write(character.Id);
+            packet.Write((int)character.WeaponController.GetCurrentWeapon().Kind);
 
             SendTCPDataToAll(packet);
         }
     }
 
-    public static void PlayerRotation(Player player)
+    public static void PlayerRotation(CharacterBase character)
     {
         using (Packet packet = new Packet((int)ServerPackets.playerRotation))
         {
-            packet.Write(player.Id);
-            packet.Write(player.transform.rotation);
+            packet.Write(character.Id);
+            packet.Write(character.transform.rotation);
 
-            SendUDPDataToAll(player.Id, packet);
+            SendUDPDataToAll(character.Id, packet);
         }
     }
 
@@ -218,31 +218,31 @@ public class ServerSend
         }
     }
 
-    public static void PlayerShootUDP(Player player)
+    public static void PlayerShootUDP(CharacterBase character)
     {
         using (var packet = new Packet(ServerPackets.playerShooting))
         {
-            packet.Write(player.Id);
+            packet.Write(character.Id);
 
             SendUDPDataToAll(packet);
         }
     }
 
-    public static void PlayerShootTCP(Player player)
+    public static void PlayerShootTCP(CharacterBase character)
     {
         using (var packet = new Packet(ServerPackets.playerShooting))
         {
-            packet.Write(player.Id);
+            packet.Write(character.Id);
 
             SendTCPDataToAll(packet);
         }
     }
 
-    public static void PlayerHitUDP(Player player, WeaponKind hitBy, Vector3 position)
+    public static void PlayerHitUDP(CharacterBase character, WeaponKind hitBy, Vector3 position)
     {
         using (var packet = new Packet(ServerPackets.playerHit))
         {
-            packet.Write(player.Id);
+            packet.Write(character.Id);
             packet.Write((int) hitBy);
             packet.Write(position);
 
@@ -250,11 +250,11 @@ public class ServerSend
         }
     }
 
-    public static void PlayerHitTCP(Player player, WeaponKind hitBy, Vector3 position)
+    public static void PlayerHitTCP(CharacterBase character, WeaponKind hitBy, Vector3 position)
     {
         using (var packet = new Packet(ServerPackets.playerHit))
         {
-            packet.Write(player.Id);
+            packet.Write(character.Id);
             packet.Write((int) hitBy);
             packet.Write(position);
 
