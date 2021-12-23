@@ -7,8 +7,13 @@ public class ServerHandler
     {
         Debug.Log("Welcome received");
         Guid clientIdCheck = packet.ReadGuid();
-        string username = packet.ReadString();
+        string username = "test"; /* packet.ReadString();*/
 
+        Debug.Log($"Welcome received from id on server {fromClient}, in packet {clientIdCheck}");
+        //Server.clients.Remove(fromClient);
+        //var newClient = new Client(clientIdCheck);
+        //
+        //Server.clients.Add(clientIdCheck, );
         Debug.Log($"{Server.clients[fromClient].tcp.Socket.Client.RemoteEndPoint} connected successfully and is now player {fromClient}.");
         if (fromClient != clientIdCheck)
         {

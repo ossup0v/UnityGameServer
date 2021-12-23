@@ -67,6 +67,7 @@ public class ServerSend
         {
             packet.Write(msg);
             packet.Write(toClient);
+            packet.Write(2);
 
             SendTCPData(toClient, packet);
         }

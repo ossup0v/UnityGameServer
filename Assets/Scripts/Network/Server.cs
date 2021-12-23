@@ -57,13 +57,13 @@ public class Server
 
         Debug.Log($"Incoming connection from {client.Client.RemoteEndPoint}...");
 
-        foreach (var clientt in clients.Values)
+        if (clients.Count < MaxPlayers)
         {
-            if (clientt.tcp.Socket == null)
-            {
-                clientt.tcp.Connect(client);
-                return;
-            }
+            var newGuid = Guid.NewGuid();
+            var newClient = new Client(newGuid);
+            clients.Add(newGuid, newClient);
+            newClient.tcp.Connect(client);
+            return;
         }
 
         Debug.LogError($"{client.Client.RemoteEndPoint} failed to connect: Server full!");
@@ -126,21 +126,14 @@ public class Server
 
     private static void InitializeServerData()
     {
-
-        for (int i = 1; i <= MaxPlayers; i++)
-        {
-            var newGuid = Guid.NewGuid();
-            clients.Add(newGuid, new Client(newGuid));
-        }
-
         packetHandlers = new Dictionary<int, PacketHandler>()
             {
-                { (int)ClientPackets.welcomeReceived, ServerHandler.WelcomeReceived },
-                { (int)ClientPackets.playerMovement, ServerHandler.PlayerMovement },
-                { (int)ClientPackets.playerShooting, ServerHandler.PlayerShooting },
-                { (int)ClientPackets.playerThrowItem, ServerHandler.PlayerThrowItem },
-                { (int)ClientPackets.playerChangeWeapon, ServerHandler.PlayerChangeWeapon },
-                { (int)ClientPackets.playerRespawn, ServerHandler.PlayerRespawn },
+                { (int)ClientToGameRoom.welcomeReceived, ServerHandler.WelcomeReceived },
+                { (int)ClientToGameRoom.playerMovement, ServerHandler.PlayerMovement },
+                { (int)ClientToGameRoom.playerShooting, ServerHandler.PlayerShooting },
+                { (int)ClientToGameRoom.playerThrowItem, ServerHandler.PlayerThrowItem },
+                { (int)ClientToGameRoom.playerChangeWeapon, ServerHandler.PlayerChangeWeapon },
+                { (int)ClientToGameRoom.playerRespawn, ServerHandler.PlayerRespawn },
             };
 
         Debug.Log("Initialized packets.");
