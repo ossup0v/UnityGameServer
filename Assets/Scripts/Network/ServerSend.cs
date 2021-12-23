@@ -5,13 +5,13 @@ using UnityEngine;
 public class ServerSend
 {
     #region SendBase
-    private static void SendTCPData(int toClient, Packet packet)
+    private static void SendTCPData(Guid toClient, Packet packet)
     {
         packet.WriteLength();
         Server.clients[toClient].tcp.SendData(packet);
     }
 
-    private static void SendUDPData(int toClient, Packet packet)
+    private static void SendUDPData(Guid toClient, Packet packet)
     {
         packet.WriteLength();
         Server.clients[toClient].udp.SendData(packet);
@@ -20,48 +20,48 @@ public class ServerSend
     private static void SendTCPDataToAll(Packet packet)
     {
         packet.WriteLength();
-        for (int i = 1; i <= Server.MaxPlayers; i++)
+        foreach (var client in Server.clients.Values)
         {
-            Server.clients[i].tcp.SendData(packet);
+            client.tcp.SendData(packet);
         }
     }
 
-    private static void SendTCPDataToAll(int exceptClient, Packet packet)
+    private static void SendTCPDataToAll(Guid exceptClient, Packet packet)
     {
         packet.WriteLength();
-        for (int i = 1; i <= Server.MaxPlayers; i++)
+        foreach (var client in Server.clients.Values)
         {
-            if (i != exceptClient)
+            if (client.id != exceptClient)
             {
-                Server.clients[i].tcp.SendData(packet);
+                client.tcp.SendData(packet);
             }
         }
-    } 
+    }
 
     private static void SendUDPDataToAll(Packet packet)
     {
         packet.WriteLength();
-        for (int i = 1; i <= Server.MaxPlayers; i++)
+        foreach (var client in Server.clients.Values)
         {
-            Server.clients[i].udp.SendData(packet);
+            client.udp.SendData(packet);
         }
     }
 
-    private static void SendUDPDataToAll(int exceptClient, Packet packet)
+    private static void SendUDPDataToAll(Guid exceptClient, Packet packet)
     {
         packet.WriteLength();
-        for (int i = 1; i <= Server.MaxPlayers; i++)
+        foreach (var client in Server.clients.Values)
         {
-            if (i != exceptClient)
+            if (client.id != exceptClient)
             {
-                Server.clients[i].udp.SendData(packet);
+                client.udp.SendData(packet);
             }
         }
     }
     #endregion
 
     #region Packets
-    public static void Welcome(int toClient, string msg)
+    public static void Welcome(Guid toClient, string msg)
     {
         using (Packet packet = new Packet((int)ServerPackets.welcome))
         {
@@ -72,7 +72,7 @@ public class ServerSend
         }
     }
 
-    public static void SpawnPlayer(int toClient, Player player)
+    public static void SpawnPlayer(Guid toClient, Player player)
     {
         using (Packet packet = new Packet((int)ServerPackets.spawnPlayer))
         {
@@ -119,7 +119,7 @@ public class ServerSend
         }
     }
 
-    public static void PlayerDisconnected(int playerId)
+    public static void PlayerDisconnected(Guid playerId)
     {
         using (Packet packet = new Packet(ServerPackets.playerDisconnected))
         {
@@ -150,7 +150,7 @@ public class ServerSend
         }
     }
 
-    public static void CreateItemSpawner(int toClient, int spawnerId, Vector3 position, bool hasItem)
+    public static void CreateItemSpawner(Guid toClient, int spawnerId, Vector3 position, bool hasItem)
     {
         using (Packet packet = new Packet(ServerPackets.createItemSpawner))
         {
@@ -172,7 +172,7 @@ public class ServerSend
         }
     }
 
-    public static void ItemPickup(int spawnerId, int playerId)
+    public static void ItemPickup(int spawnerId, Guid playerId)
     {
         using (Packet packet = new Packet(ServerPackets.itemPickup))
         {
@@ -185,7 +185,7 @@ public class ServerSend
 
     #region Shooting
 
-    public static void SpawnProjectile(Projectile projectile, int throwedById)
+    public static void SpawnProjectile(Projectile projectile, Guid throwedById)
     {
         using (var packet = new Packet(ServerPackets.spawnProjectile))
         {
@@ -243,7 +243,7 @@ public class ServerSend
         using (var packet = new Packet(ServerPackets.playerHit))
         {
             packet.Write(character.Id);
-            packet.Write((int) hitBy);
+            packet.Write((int)hitBy);
             packet.Write(position);
 
             SendUDPDataToAll(packet);
@@ -296,7 +296,7 @@ public class ServerSend
     }
     #endregion
 
-    public static void InitRatingTable(int toClient, Dictionary<int, RatingEntity> rating)
+    public static void InitRatingTable(Guid toClient, Dictionary<Guid, RatingEntity> rating)
     {
         using (Packet packet = new Packet(ServerPackets.ratingTableInit))
         {
@@ -314,7 +314,7 @@ public class ServerSend
         }
     }
 
-    public static void UpdateFullRatingTable(Dictionary<int, RatingEntity> rating)
+    public static void UpdateFullRatingTable(Dictionary<Guid, RatingEntity> rating)
     {
         using (Packet packet = new Packet(ServerPackets.ratingTableInit))
         {
@@ -332,7 +332,7 @@ public class ServerSend
         }
     }
 
-    public static void UpdateRatingTable(int playerKillerId, int playerDieId)
+    public static void UpdateRatingTable(Guid playerKillerId, Guid playerDieId)
     {
         using (Packet packet = new Packet(ServerPackets.ratingTableUpdateKillAndDeath))
         {
@@ -343,7 +343,7 @@ public class ServerSend
         }
     }
 
-    public static void UpdateRatingTableBotsKills(int botsCount, int playerKillerId)
+    public static void UpdateRatingTableBotsKills(int botsCount, Guid playerKillerId)
     {
         using (Packet packet = new Packet(ServerPackets.ratingTableUpdateKilledBots))
         {
@@ -354,7 +354,7 @@ public class ServerSend
         }
     }
 
-    public static void UpdateRatingTableDeath(int playerDieId)
+    public static void UpdateRatingTableDeath(Guid playerDieId)
     {
         using (Packet packet = new Packet(ServerPackets.ratingTableUpdateDeath))
         {
@@ -364,7 +364,7 @@ public class ServerSend
         }
     }
 
-    public static void AddPlayerRatingTable(int toClient, Player entity)
+    public static void AddPlayerRatingTable(Guid toClient, Player entity)
     {
         using (Packet packet = new Packet(ServerPackets.ratingTableNewPlayer))
         {
@@ -375,7 +375,7 @@ public class ServerSend
         }
     }
 
-    public static void PlayerGrenadeCount(int toClient, int grenadeCount)
+    public static void PlayerGrenadeCount(Guid toClient, int grenadeCount)
     {
         using (Packet packet = new Packet(ServerPackets.playerGrenadeCount))
         {
@@ -386,7 +386,7 @@ public class ServerSend
         }
     }
 
-    public static void InitMap(int toClient, string mapString)
+    public static void InitMap(Guid toClient, string mapString)
     {
         using (Packet packet = new Packet(ServerPackets.initMap))
         {
@@ -408,7 +408,7 @@ public class ServerSend
         }
     }
 
-    public static void SpawnBot(int toClient, BotBase bot)
+    public static void SpawnBot(Guid toClient, BotBase bot)
     {
         using (Packet packet = new Packet(ServerPackets.spawnBot))
         {
@@ -426,11 +426,11 @@ public class ServerSend
         {
             packet.Write(bot.Id);
             packet.Write(bot.transform.position);
-     
+
             SendUDPDataToAll(packet);
         }
     }
-  
+
     public static void PlayerScale(Player player)
     {
         using (Packet packet = new Packet(ServerPackets.playerScale))
@@ -463,6 +463,6 @@ public class ServerSend
             SendTCPDataToAll(packet);
         }
     }
-  
+
     #endregion
 }

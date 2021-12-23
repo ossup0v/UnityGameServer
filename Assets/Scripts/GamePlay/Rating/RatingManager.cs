@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class RatingManager
 {
-    public static Dictionary<int, RatingEntity> Rating = new Dictionary<int, RatingEntity>();
+    public static Dictionary<Guid, RatingEntity> Rating = new Dictionary<Guid, RatingEntity>();
 
     public static void RemovePlayer(Player player)
     {
@@ -21,13 +21,13 @@ public class RatingManager
         });
     }
 
-    public static void KillAndDeath(int playerKillerId, int playerDieId)
+    public static void KillAndDeath(Guid playerKillerId, Guid playerDieId)
     {
         AddKill(playerKillerId);
         AddDeath(playerDieId);
     }
 
-    private static void AddKill(int playerId)
+    private static void AddKill(Guid playerId)
     {
         if (!Rating.ContainsKey(playerId))
         {
@@ -38,7 +38,7 @@ public class RatingManager
         Rating[playerId].Killed++;
     }
 
-    public static void AddKillBot(int playerId)
+    public static void AddKillBot(Guid playerId)
     {
         if (!Rating.ContainsKey(playerId))
         {
@@ -49,7 +49,7 @@ public class RatingManager
         Rating[playerId].KilledBots++;
     }
 
-    public static void AddDeath(int playerId)
+    public static void AddDeath(Guid playerId)
     {
         if (!Rating.ContainsKey(playerId))
         {
@@ -60,7 +60,7 @@ public class RatingManager
         Rating[playerId].Died++;
     }
 
-    public static RatingEntity GetPlayerEntity(int playerId)
+    public static RatingEntity GetPlayerEntity(Guid playerId)
     {
         return Rating[playerId];
     }

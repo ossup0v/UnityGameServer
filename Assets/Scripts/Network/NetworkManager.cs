@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,7 +29,17 @@ public class NetworkManager : MonoBehaviour
     {
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
-        Server.Start(50, Port);
+        var port = Port;
+        try
+        {
+            var args = Environment.GetCommandLineArgs();
+            port = int.Parse(args[1]);
+        }
+        catch (Exception)
+        {
+
+        }
+        Server.Start(50, port);
     }
 
     private void OnApplicationQuit()

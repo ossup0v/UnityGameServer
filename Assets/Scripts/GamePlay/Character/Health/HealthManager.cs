@@ -8,7 +8,7 @@ public class HealthManager
 
     public event Action<float> HealthChanged = delegate { };
 
-    public int OwnerId;
+    public Guid OwnerId;
 
     private int regenRate = 5;
     private float regenCooldown = 3.0f;

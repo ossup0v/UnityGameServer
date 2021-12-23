@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,7 +38,7 @@ public class Player : CharacterBase
         return true;
     }
 
-    public void Initialize(int id, string username)
+    public void Initialize(Guid id, string username)
     {
         Id = id;
         Username = username;

@@ -9,14 +9,14 @@ public class Server
 {
     public static int MaxPlayers { get; private set; }
     public static int Port { get; private set; }
-    public static Dictionary<int, Client> clients = new Dictionary<int, Client>();
-    public delegate void PacketHandler(int fromClient, Packet packet);
+    public static Dictionary<Guid, Client> clients = new Dictionary<Guid, Client>();
+    public delegate void PacketHandler(Guid fromClient, Packet packet);
     public static Dictionary<int, PacketHandler> packetHandlers;
 
     private static TcpListener tcpListener;
     private static UdpClient udpListener;
 
-    public static Client GetClient(int clientId)
+    public static Client GetClient(Guid clientId)
     {
         return clients[clientId];
     }
@@ -57,11 +57,11 @@ public class Server
 
         Debug.Log($"Incoming connection from {client.Client.RemoteEndPoint}...");
 
-        for (int i = 1; i <= MaxPlayers; i++)
+        foreach (var clientt in clients.Values)
         {
-            if (clients[i].tcp.Socket == null)
+            if (clientt.tcp.Socket == null)
             {
-                clients[i].tcp.Connect(client);
+                clientt.tcp.Connect(client);
                 return;
             }
         }
@@ -84,9 +84,9 @@ public class Server
 
             using (Packet packet = new Packet(data))
             {
-                int clientId = packet.ReadInt();
+                Guid clientId = packet.ReadGuid();
 
-                if (clientId == 0)
+                if (clientId == default(Guid))
                 {
                     return;
                 }
@@ -126,9 +126,11 @@ public class Server
 
     private static void InitializeServerData()
     {
+
         for (int i = 1; i <= MaxPlayers; i++)
         {
-            clients.Add(i, new Client(i));
+            var newGuid = Guid.NewGuid();
+            clients.Add(newGuid, new Client(newGuid));
         }
 
         packetHandlers = new Dictionary<int, PacketHandler>()
