@@ -42,9 +42,10 @@ public class Player : CharacterBase
     {
         Id = id;
         Username = username;
+        HealthManager = new HealthManager(true);
+        HealthManager.OwnerId = Id;
         WeaponController = new WeaponController(new List<WeaponBase> { new RocketLaucnherWeapon(), new TeleportWeapon() });
         BoosterContainer = new BoosterContainer();
-        HealthManager.OwnerId = Id;
         _inputs = new bool[7];
         controllHeight = Controller.height;
     }

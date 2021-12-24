@@ -8,7 +8,7 @@ public abstract class CharacterBase : MonoBehaviour
     public WeaponController WeaponController;
     public BoosterContainer BoosterContainer;
     public CharacterController Controller;
-    public HealthManager HealthManager = new HealthManager();
+    public HealthManager HealthManager;
     public Transform ShootOrigin;
     public abstract CharacterKind CharacterKind { get; }
 

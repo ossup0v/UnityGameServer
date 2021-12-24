@@ -19,6 +19,7 @@ public class HealthManager
     private float _currentPlayerHealth = 100.0f;
     private float lastPlayerHealthUpdate;
 
+    private bool _isPlayer;
     public float CurrentHealth
     {
         get
@@ -34,8 +35,9 @@ public class HealthManager
     public float MaxHealth { get; private set; } = 100;
     public float MinHealth { get; private set; } = 0;
 
-    public HealthManager(float maxPlayerHealth = 100)
+    public HealthManager(bool isPlayer, float maxPlayerHealth = 100)
     {
+        _isPlayer = isPlayer;
         MaxHealth = maxPlayerHealth;
         _currentPlayerHealth = maxPlayerHealth;
         lastPlayerHealthUpdate = maxPlayerHealth;
@@ -71,6 +73,9 @@ public class HealthManager
             CurrentHealth = GetNormalizedHealth(newHealth);
             lastPlayerHealthUpdate = CurrentHealth;
             HealthChanged(CurrentHealth);
+
+            if (_isPlayer)
+                ServerSend.PlayerHealth(this);
         }
     }
 

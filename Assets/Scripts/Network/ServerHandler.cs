@@ -7,7 +7,7 @@ public class ServerHandler
     {
         Debug.Log("Welcome received");
         Guid clientIdCheck = packet.ReadGuid();
-        string username = "test"; /* packet.ReadString();*/
+        string username = packet.ReadString();
 
         Debug.Log($"Welcome received from id on server {fromClient}, in packet {clientIdCheck}");
         //Server.clients.Remove(fromClient);
