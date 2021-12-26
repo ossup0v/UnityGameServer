@@ -18,7 +18,8 @@ public class Server
 
     public static Client GetClient(Guid clientId)
     {
-        return clients[clientId];
+        clients.TryGetValue(clientId, out var client);
+        return client;
     }
 
     public static void Start(int maxPlayers, int port)

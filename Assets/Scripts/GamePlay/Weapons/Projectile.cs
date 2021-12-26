@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
     public Rigidbody Body;
     public CharacterBase ThrowedByCharacter;
     public Vector3 initialForce;
-    public float explotionRaduios = 3f;
+    public float explotionRaduios = 5f;
     public float explotionDamage = 75f;
 
     private void Start()
@@ -49,9 +49,9 @@ public class Projectile : MonoBehaviour
 
         foreach (var collider in colliders)
         {
-            if (collider.TryGetComponent<Player>(out var player))
+            if (collider.TryGetComponent<HitRegistration>(out var hitRegistration))
             {
-                player.TakeDamage(explotionDamage, ThrowedByCharacter);
+                hitRegistration.RegisterHit(explotionDamage, ThrowedByCharacter);
             }
         }
 
