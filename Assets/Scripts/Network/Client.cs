@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using UnityEngine;
@@ -9,12 +7,12 @@ public class Client
 {
     public static int dataBufferSize = 4096;
 
-    public int id;
+    public Guid id;
     public Player player;
     public TCP tcp;
     public UDP udp;
 
-    public Client(int clientId)
+    public Client(Guid clientId)
     {
         id = clientId;
         tcp = new TCP(id);
@@ -25,12 +23,12 @@ public class Client
     {
         public TcpClient Socket;
 
-        private readonly int _id;
+        private readonly Guid _id;
         private NetworkStream stream;
         private Packet receivedData;
         private byte[] receiveBuffer;
 
-        public TCP(int id)
+        public TCP(Guid id)
         {
             _id = id;
         }
@@ -147,9 +145,9 @@ public class Client
     {
         public IPEndPoint EndPoint;
 
-        private int Id;
+        private Guid Id;
 
-        public UDP(int id)
+        public UDP(Guid id)
         {
             Id = id;
         }

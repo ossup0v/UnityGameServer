@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,13 +38,14 @@ public class Player : CharacterBase
         return true;
     }
 
-    public void Initialize(int id, string username)
+    public void Initialize(Guid id, string username)
     {
         Id = id;
         Username = username;
+        HealthManager = new HealthManager(true);
+        HealthManager.OwnerId = Id;
         WeaponController = new WeaponController(new List<WeaponBase> { new RocketLaucnherWeapon(), new TeleportWeapon() });
         BoosterContainer = new BoosterContainer();
-        HealthManager.OwnerId = Id;
         _inputs = new bool[7];
         controllHeight = Controller.height;
     }

@@ -1,13 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 public abstract class CharacterBase : MonoBehaviour
 {
-    public int Id;
+    public Guid Id;
     public WeaponController WeaponController;
     public BoosterContainer BoosterContainer;
     public CharacterController Controller;
-    public HealthManager HealthManager = new HealthManager();
+    public HealthManager HealthManager;
     public Transform ShootOrigin;
     public abstract CharacterKind CharacterKind { get; }
 

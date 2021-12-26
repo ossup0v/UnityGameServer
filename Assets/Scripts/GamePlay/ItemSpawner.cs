@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,7 +43,7 @@ public class ItemSpawner : MonoBehaviour
         ServerSend.ItemSpawned(SpawnerId);
     }
 
-    private void ItemPickup(int playerId)
+    private void ItemPickup(Guid playerId)
     {
         HasItem = false;
         ServerSend.ItemPickup(SpawnerId, playerId);

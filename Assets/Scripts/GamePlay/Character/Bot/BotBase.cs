@@ -32,9 +32,11 @@ public class BotBase : CharacterBase
 
         Id = BotManager.GetNextId();
         BotManager.AddBot(Id, this);
+        HealthManager = new HealthManager(false);
+        HealthManager.OwnerId = Id;
+
         WeaponController = new WeaponController(new List<WeaponBase> { new GunWeapon() });
         BoosterContainer = new BoosterContainer();
-        HealthManager.OwnerId = Id;
 
         ServerSend.SpawnBot(this);
 

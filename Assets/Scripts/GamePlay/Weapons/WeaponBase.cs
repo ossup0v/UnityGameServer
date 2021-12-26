@@ -7,6 +7,7 @@ public abstract class WeaponBase
     public float Radius;
     public float RadiusOfDamage;
     public float ImpactForce;
+    protected Timer _timer;
 
     protected float GetDamage(CharacterBase owner)
     {
@@ -29,12 +30,22 @@ public abstract class WeaponBase
             ServerSend.BotShoot(owner);
     }
 
-    //удали этот говно код, плс
-    protected void SendHit(CharacterBase owner, WeaponKind weaponKind, Vector3 pos)
+#warning боже, как же это плохо..
+    protected void SendHit(CharacterBase owner, WeaponKind weaponKind, Vector3 pos, bool isHited)
     {
-        if (owner.CharacterKind == CharacterKind.player)
-            ServerSend.PlayerHitTCP(owner, weaponKind, pos);
-        if (owner.CharacterKind == CharacterKind.bot)
-            ServerSend.BotHit(owner, weaponKind, pos);
+        if (isHited)
+        {
+            if (owner.CharacterKind == CharacterKind.player)
+                ServerSend.PlayerHitTCP(owner, weaponKind, pos);
+            if (owner.CharacterKind == CharacterKind.bot)
+                ServerSend.BotHit(owner, weaponKind, pos);
+        }
+        else 
+        {
+            if (owner.CharacterKind == CharacterKind.player)
+                ServerSend.PlayerHitUDP(owner, weaponKind, pos);
+            if (owner.CharacterKind == CharacterKind.bot)
+                ServerSend.BotHit(owner, weaponKind, pos);
+        }
     }
 }

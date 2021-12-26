@@ -9,16 +9,17 @@ public class Server
 {
     public static int MaxPlayers { get; private set; }
     public static int Port { get; private set; }
-    public static Dictionary<int, Client> clients = new Dictionary<int, Client>();
-    public delegate void PacketHandler(int fromClient, Packet packet);
+    public static Dictionary<Guid, Client> clients = new Dictionary<Guid, Client>();
+    public delegate void PacketHandler(Guid fromClient, Packet packet);
     public static Dictionary<int, PacketHandler> packetHandlers;
 
     private static TcpListener tcpListener;
     private static UdpClient udpListener;
 
-    public static Client GetClient(int clientId)
+    public static Client GetClient(Guid clientId)
     {
-        return clients[clientId];
+        clients.TryGetValue(clientId, out var client);
+        return client;
     }
 
     public static void Start(int maxPlayers, int port)
@@ -57,13 +58,13 @@ public class Server
 
         Debug.Log($"Incoming connection from {client.Client.RemoteEndPoint}...");
 
-        for (int i = 1; i <= MaxPlayers; i++)
+        if (clients.Count < MaxPlayers)
         {
-            if (clients[i].tcp.Socket == null)
-            {
-                clients[i].tcp.Connect(client);
-                return;
-            }
+            var newGuid = Guid.NewGuid();
+            var newClient = new Client(newGuid);
+            clients.Add(newGuid, newClient);
+            newClient.tcp.Connect(client);
+            return;
         }
 
         Debug.LogError($"{client.Client.RemoteEndPoint} failed to connect: Server full!");
@@ -84,9 +85,9 @@ public class Server
 
             using (Packet packet = new Packet(data))
             {
-                int clientId = packet.ReadInt();
+                Guid clientId = packet.ReadGuid();
 
-                if (clientId == 0)
+                if (clientId == default(Guid))
                 {
                     return;
                 }
@@ -126,19 +127,14 @@ public class Server
 
     private static void InitializeServerData()
     {
-        for (int i = 1; i <= MaxPlayers; i++)
-        {
-            clients.Add(i, new Client(i));
-        }
-
         packetHandlers = new Dictionary<int, PacketHandler>()
             {
-                { (int)ClientPackets.welcomeReceived, ServerHandler.WelcomeReceived },
-                { (int)ClientPackets.playerMovement, ServerHandler.PlayerMovement },
-                { (int)ClientPackets.playerShooting, ServerHandler.PlayerShooting },
-                { (int)ClientPackets.playerThrowItem, ServerHandler.PlayerThrowItem },
-                { (int)ClientPackets.playerChangeWeapon, ServerHandler.PlayerChangeWeapon },
-                { (int)ClientPackets.playerRespawn, ServerHandler.PlayerRespawn },
+                { (int)ClientToGameRoom.welcomeReceived, ServerHandler.WelcomeReceived },
+                { (int)ClientToGameRoom.playerMovement, ServerHandler.PlayerMovement },
+                { (int)ClientToGameRoom.playerShooting, ServerHandler.PlayerShooting },
+                { (int)ClientToGameRoom.playerThrowItem, ServerHandler.PlayerThrowItem },
+                { (int)ClientToGameRoom.playerChangeWeapon, ServerHandler.PlayerChangeWeapon },
+                { (int)ClientToGameRoom.playerRespawn, ServerHandler.PlayerRespawn },
             };
 
         Debug.Log("Initialized packets.");

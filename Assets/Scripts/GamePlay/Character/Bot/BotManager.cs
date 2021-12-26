@@ -1,28 +1,27 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 public class BotManager
 {
     public static int MaxBotCount = 6;
-    private static Dictionary<int, BotBase> _bots = new Dictionary<int, BotBase>();
-    private static int nextBotId = 1;
+    private static Dictionary<Guid, BotBase> _bots = new Dictionary<Guid, BotBase>();
 
-    public static int GetNextId()
+    public static Guid GetNextId()
     {
-        nextBotId++;
-        return nextBotId;
+        return Guid.NewGuid();
     }
 
-    public static IReadOnlyDictionary<int, BotBase> GetBots() 
+    public static IReadOnlyDictionary<Guid, BotBase> GetBots() 
     {
         return _bots;
     }
 
-    public static void AddBot(int id, BotBase bot)
+    public static void AddBot(Guid id, BotBase bot)
     {
         _bots.Add(id, bot);
     }
 
-    public static void RemoveBot(int id)
+    public static void RemoveBot(Guid id)
     {
         _bots.Remove(id);
     }
