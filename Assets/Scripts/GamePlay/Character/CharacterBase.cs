@@ -19,7 +19,7 @@ public abstract class CharacterBase : MonoBehaviour
     public void ChooseWeapon(int leftOrRigth)
     {
         WeaponController.ChangeWeapon(leftOrRigth);
-        ServerSend.PlayerChooseWeapon(this);
+        RoomSendClient.PlayerChooseWeapon(this);
     }
 
     public void MoveTo(Vector3 position)
@@ -28,7 +28,7 @@ public abstract class CharacterBase : MonoBehaviour
         transform.position = position;
         Controller.enabled = true;
 
-        ServerSend.PlayerPosition(this);
+        RoomSendClient.PlayerPosition(this);
     }
 
     public void Shoot(Vector3 viewDuraction)

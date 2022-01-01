@@ -75,7 +75,7 @@ public class HealthManager
             HealthChanged(CurrentHealth);
 
             if (_isPlayer)
-                ServerSend.PlayerHealth(this);
+                RoomSendClient.PlayerHealth(this);
         }
     }
 

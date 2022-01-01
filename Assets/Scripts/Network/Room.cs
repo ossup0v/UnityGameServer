@@ -5,16 +5,22 @@ using System.Net;
 using System.Net.Sockets;
 using UnityEngine;
 
-public class Server 
+public class Room
 {
     public static int MaxPlayers { get; private set; }
-    public static int Port { get; private set; }
+    public static int PortForClients { get; private set; }
+    public static int PortForServer { get; private set; }
     public static Dictionary<Guid, Client> clients = new Dictionary<Guid, Client>();
     public delegate void PacketHandler(Guid fromClient, Packet packet);
     public static Dictionary<int, PacketHandler> packetHandlers;
+    private static NetworkListener _clientsListener;
 
-    private static TcpListener tcpListener;
-    private static UdpClient udpListener;
+    public static string Mode;
+    public static string Title;
+
+    public static NetworkClient Server;
+    public static Guid RoomId;
+    public static Guid CreatorId;
 
     public static Client GetClient(Guid clientId)
     {
@@ -22,37 +28,47 @@ public class Server
         return client;
     }
 
-    public static void Start(int maxPlayers, int port)
+    public static void Start(int maxPlayers, 
+        int portForClients, 
+        int portForServer, 
+        Guid roomId,
+        Guid creatorId,
+        string mode,
+        string title)
     {
         MaxPlayers = maxPlayers;
-        Port = port;
+        PortForClients = portForClients;
+        PortForServer = portForServer;
+        RoomId = roomId;
+        CreatorId = creatorId;
+        Title = title;
+        Mode = mode;
 
         Debug.Log("Starting server...");
         InitializeServerData();
 
-        tcpListener = new TcpListener(IPAddress.Any, Port);
-        tcpListener.Start();
-        tcpListener.BeginAcceptTcpClient(TCPConnectCallback, null);
+        Server = new NetworkClient();
+        Server.ConnectToServer("127.0.0.1", PortForServer);
 
-        udpListener = new UdpClient(Port);
-        udpListener.BeginReceive(UDPReceiveCallback, null);
+        _clientsListener = new NetworkListener(PortForClients, TCPClientConnectCallback, UDPReceiveClientsCallback);
 
-        Debug.Log($"Server started on port {Port}.");
+        _clientsListener.StartListen();
+
+        Debug.Log($"Server started on port {PortForClients}.");
     }
 
-    internal static void Stop()
+    public static void Stop()
     {
-        tcpListener.Stop();
-        udpListener.Close();
+        _clientsListener.StopListen();
     }
 
-    private static void TCPConnectCallback(IAsyncResult result)
+    private static void TCPClientConnectCallback(IAsyncResult result)
     {
         var client = default(TcpClient);
         try
         {
-            client = tcpListener.EndAcceptTcpClient(result);
-            tcpListener.BeginAcceptTcpClient(TCPConnectCallback, null);
+            client = _clientsListener.GetTcpListener().EndAcceptTcpClient(result);
+            _clientsListener.GetTcpListener().BeginAcceptTcpClient(TCPClientConnectCallback, null);
         }
         catch (Exception ex) { }
 
@@ -70,13 +86,13 @@ public class Server
         Debug.LogError($"{client.Client.RemoteEndPoint} failed to connect: Server full!");
     }
 
-    private static void UDPReceiveCallback(IAsyncResult _result)
+    private static void UDPReceiveClientsCallback(IAsyncResult _result)
     {
         try
         {
             IPEndPoint clientEndPoint = new IPEndPoint(IPAddress.Any, 0);
-            byte[] data = udpListener.EndReceive(_result, ref clientEndPoint);
-            udpListener.BeginReceive(UDPReceiveCallback, null);
+            byte[] data = _clientsListener.GetUdpListener().EndReceive(_result, ref clientEndPoint);
+            _clientsListener.GetUdpListener().BeginReceive(UDPReceiveClientsCallback, null);
 
             if (data.Length < 4)
             {
@@ -92,15 +108,16 @@ public class Server
                     return;
                 }
 
+                //process client udp packets here
                 if (clients[clientId].udp.EndPoint == null)
                 {
                     clients[clientId].udp.Connect(clientEndPoint);
-                    return;
                 }
 
                 if (clients[clientId].udp.EndPoint.ToString() == clientEndPoint.ToString())
                 {
                     clients[clientId].udp.HandleData(packet);
+                    return;
                 }
             }
         }
@@ -110,13 +127,13 @@ public class Server
         }
     }
 
-    public static void SendUDPData(IPEndPoint clientEndPoint, Packet packet)
+    public static void SendClientUDPData(IPEndPoint clientEndPoint, Packet packet)
     {
         try
         {
             if (clientEndPoint != null)
             {
-                udpListener.BeginSend(packet.ToArray(), packet.Length(), clientEndPoint, null, null);
+                _clientsListener.GetUdpListener().BeginSend(packet.ToArray(), packet.Length(), clientEndPoint, null, null);
             }
         }
         catch (Exception ex)
@@ -129,12 +146,12 @@ public class Server
     {
         packetHandlers = new Dictionary<int, PacketHandler>()
             {
-                { (int)ClientToGameRoom.welcomeReceived, ServerHandler.WelcomeReceived },
-                { (int)ClientToGameRoom.playerMovement, ServerHandler.PlayerMovement },
-                { (int)ClientToGameRoom.playerShooting, ServerHandler.PlayerShooting },
-                { (int)ClientToGameRoom.playerThrowItem, ServerHandler.PlayerThrowItem },
-                { (int)ClientToGameRoom.playerChangeWeapon, ServerHandler.PlayerChangeWeapon },
-                { (int)ClientToGameRoom.playerRespawn, ServerHandler.PlayerRespawn },
+                { (int)ToGameRoom.welcomeReceived, RoomClientHandler.WelcomeReceived },
+                { (int)ToGameRoom.playerMovement, RoomClientHandler.PlayerMovement },
+                { (int)ToGameRoom.playerShooting, RoomClientHandler.PlayerShooting },
+                { (int)ToGameRoom.playerThrowItem, RoomClientHandler.PlayerThrowItem },
+                { (int)ToGameRoom.playerChangeWeapon, RoomClientHandler.PlayerChangeWeapon },
+                { (int)ToGameRoom.playerRespawn, RoomClientHandler.PlayerRespawn },
             };
 
         Debug.Log("Initialized packets.");

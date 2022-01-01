@@ -33,7 +33,7 @@ public class Player : CharacterBase
             return false;
 
         grenadeCount++;
-        ServerSend.PlayerGrenadeCount(Id, grenadeCount);
+        RoomSendClient.PlayerGrenadeCount(Id, grenadeCount);
 
         return true;
     }
@@ -125,9 +125,9 @@ public class Player : CharacterBase
 
         Controller.Move(moveDirection);
 
-        ServerSend.PlayerPosition(this);
-        ServerSend.PlayerRotation(this);
-        ServerSend.PlayerScale(this);
+        RoomSendClient.PlayerPosition(this);
+        RoomSendClient.PlayerRotation(this);
+        RoomSendClient.PlayerScale(this);
     }
 
     public void SetInput(bool[] inputs, Quaternion rotation)
@@ -144,7 +144,7 @@ public class Player : CharacterBase
         if (grenadeCount > 0)
         {
             grenadeCount--;
-            ServerSend.PlayerGrenadeCount(Id, grenadeCount);
+            RoomSendClient.PlayerGrenadeCount(Id, grenadeCount);
             NetworkManager.Instance.InstantiatePrjectile(ShootOrigin)
                 .Initialize(viewDuraction, ThrowForce, this);
         }
@@ -152,7 +152,7 @@ public class Player : CharacterBase
 
     protected override void TakeDamagePostprocess(CharacterBase attacker)
     {
-        ServerSend.PlayerHealth(HealthManager);
+        RoomSendClient.PlayerHealth(HealthManager);
 
         if (HealthManager.IsDie)
         {
@@ -168,12 +168,12 @@ public class Player : CharacterBase
                 if (attacker.CharacterKind == CharacterKind.player)
                 {
                     RatingManager.KillAndDeath(attacker.Id, Id);
-                    ServerSend.UpdateRatingTable(attacker.Id, Id);
+                    RoomSendClient.UpdateRatingTable(attacker.Id, Id);
                 }
                 else if (attacker.CharacterKind == CharacterKind.bot)
                 {
                     RatingManager.AddDeath(Id);
-                    ServerSend.UpdateRatingTableDeath(Id);
+                    RoomSendClient.UpdateRatingTableDeath(Id);
                 }
                 else
                 {
@@ -184,10 +184,10 @@ public class Player : CharacterBase
             {
                 //player kill self
                 RatingManager.AddDeath(Id);
-                ServerSend.UpdateRatingTableDeath(Id);
+                RoomSendClient.UpdateRatingTableDeath(Id);
             }
 
-            ServerSend.PlayerPosition(this);
+            RoomSendClient.PlayerPosition(this);
             StartCoroutine(Respawn());
         }
     }
@@ -198,7 +198,7 @@ public class Player : CharacterBase
 
         HealthManager.SetPureHealth(HealthManager.MaxHealth);
         Controller.enabled = true;
-        ServerSend.PlayerRespawn(this);
+        RoomSendClient.PlayerRespawn(this);
     }
 
     public void Suicide()

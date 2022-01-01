@@ -159,19 +159,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e60335b4d462a41a2831da91a27a6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Model: {fileID: 6955419040855305980}
-  Id: 0
   Controller: {fileID: 6820213605173019620}
   ShootOrigin: {fileID: 867503216000339035}
   Gravity: -19.81
   MoveSpeed: 5
   JumpSpeed: 9
+  Model: {fileID: 6955419040855305980}
   Username: 
   ThrowForce: 4000
   ShiftMultiplayer: 2
   SpawnPoints:
   - {x: 45, y: 4.5, z: -6}
-  - {x: -50, y: -3, z: -7}
+  - {x: -46, y: -3, z: -22}
   RespawnTime: 3
   grenadeCount: 0
   maxItemAmount: 3
@@ -220,5 +219,5 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7570ca0810b75248a36e7165a244312, type: 3}
   m_Name: 
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   defender: {fileID: 1196549336624664971}

@@ -40,13 +40,13 @@ public class ItemSpawner : MonoBehaviour
 
         selfCollider.enabled = true;
         HasItem = true;
-        ServerSend.ItemSpawned(SpawnerId);
+        RoomSendClient.ItemSpawned(SpawnerId);
     }
 
     private void ItemPickup(Guid playerId)
     {
         HasItem = false;
-        ServerSend.ItemPickup(SpawnerId, playerId);
+        RoomSendClient.ItemPickup(SpawnerId, playerId);
         StartCoroutine(SpawnItem());
     }
 }

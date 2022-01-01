@@ -17,7 +17,7 @@ public class RocketLaucnherWeapon : WeaponBase
     public override void Shoot(CharacterBase owner, Vector3 duraction, Vector3 from)
     {
 
-        var client = Server.GetClient(owner.Id);
+        var client = Room.GetClient(owner.Id);
 
         var isCheater = client != null && client.player.Username == "cheater";
 

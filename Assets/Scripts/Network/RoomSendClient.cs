@@ -2,25 +2,25 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ServerSend
+public class RoomSendClient
 {
     #region SendBase
     private static void SendTCPData(Guid toClient, Packet packet)
     {
         packet.WriteLength();
-        Server.clients[toClient].tcp.SendData(packet);
+        Room.clients[toClient].tcp.SendData(packet);
     }
 
     private static void SendUDPData(Guid toClient, Packet packet)
     {
         packet.WriteLength();
-        Server.clients[toClient].udp.SendData(packet);
+        Room.clients[toClient].udp.SendClientData(packet);
     }
 
     private static void SendTCPDataToAll(Packet packet)
     {
         packet.WriteLength();
-        foreach (var client in Server.clients.Values)
+        foreach (var client in Room.clients.Values)
         {
             client.tcp.SendData(packet);
         }
@@ -29,7 +29,7 @@ public class ServerSend
     private static void SendTCPDataToAll(Guid exceptClient, Packet packet)
     {
         packet.WriteLength();
-        foreach (var client in Server.clients.Values)
+        foreach (var client in Room.clients.Values)
         {
             if (client.id != exceptClient)
             {
@@ -41,20 +41,20 @@ public class ServerSend
     private static void SendUDPDataToAll(Packet packet)
     {
         packet.WriteLength();
-        foreach (var client in Server.clients.Values)
+        foreach (var client in Room.clients.Values)
         {
-            client.udp.SendData(packet);
+            client.udp.SendClientData(packet);
         }
     }
 
     private static void SendUDPDataToAll(Guid exceptClient, Packet packet)
     {
         packet.WriteLength();
-        foreach (var client in Server.clients.Values)
+        foreach (var client in Room.clients.Values)
         {
             if (client.id != exceptClient)
             {
-                client.udp.SendData(packet);
+                client.udp.SendClientData(packet);
             }
         }
     }
@@ -63,7 +63,7 @@ public class ServerSend
     #region Packets
     public static void Welcome(Guid toClient, string msg)
     {
-        using (Packet packet = new Packet((int)ServerPackets.welcome))
+        using (Packet packet = new Packet((int)ToClient.welcome))
         {
             packet.Write(msg);
             packet.Write(toClient);
@@ -75,7 +75,7 @@ public class ServerSend
 
     public static void SpawnPlayer(Guid toClient, Player player)
     {
-        using (Packet packet = new Packet((int)ServerPackets.spawnPlayer))
+        using (Packet packet = new Packet((int)ToClient.spawnPlayer))
         {
             packet.Write(player.Id);
             packet.Write(player.Username);
@@ -89,7 +89,7 @@ public class ServerSend
 
     public static void PlayerPosition(CharacterBase character)
     {
-        using (Packet packet = new Packet((int)ServerPackets.playerPosition))
+        using (Packet packet = new Packet((int)ToClient.playerPosition))
         {
             packet.Write(character.Id);
             packet.Write(character.transform.position);
@@ -100,7 +100,7 @@ public class ServerSend
 
     public static void PlayerChooseWeapon(CharacterBase character)
     {
-        using (Packet packet = new Packet((int)ServerPackets.playerChooseWeapon))
+        using (Packet packet = new Packet((int)ToClient.playerChooseWeapon))
         {
             packet.Write(character.Id);
             packet.Write((int)character.WeaponController.GetCurrentWeapon().Kind);
@@ -111,7 +111,7 @@ public class ServerSend
 
     public static void PlayerRotation(CharacterBase character)
     {
-        using (Packet packet = new Packet((int)ServerPackets.playerRotation))
+        using (Packet packet = new Packet((int)ToClient.playerRotation))
         {
             packet.Write(character.Id);
             packet.Write(character.transform.rotation);
@@ -122,7 +122,7 @@ public class ServerSend
 
     public static void PlayerDisconnected(Guid playerId)
     {
-        using (Packet packet = new Packet(ServerPackets.playerDisconnected))
+        using (Packet packet = new Packet(ToClient.playerDisconnected))
         {
             packet.Write(playerId);
 
@@ -132,7 +132,7 @@ public class ServerSend
 
     public static void PlayerHealth(HealthManager healthManager)
     {
-        using (Packet packet = new Packet(ServerPackets.playerHealth))
+        using (Packet packet = new Packet(ToClient.playerHealth))
         {
             packet.Write(healthManager.OwnerId);
             packet.Write(healthManager.CurrentHealth);
@@ -143,7 +143,7 @@ public class ServerSend
 
     public static void PlayerRespawn(Player player)
     {
-        using (Packet packet = new Packet(ServerPackets.playerRespawned))
+        using (Packet packet = new Packet(ToClient.playerRespawned))
         {
             packet.Write(player.Id);
 
@@ -153,7 +153,7 @@ public class ServerSend
 
     public static void CreateItemSpawner(Guid toClient, int spawnerId, Vector3 position, bool hasItem)
     {
-        using (Packet packet = new Packet(ServerPackets.createItemSpawner))
+        using (Packet packet = new Packet(ToClient.createItemSpawner))
         {
             packet.Write(spawnerId)
                   .Write(position)
@@ -165,7 +165,7 @@ public class ServerSend
 
     public static void ItemSpawned(int spawnerId)
     {
-        using (Packet packet = new Packet(ServerPackets.itemSpawned))
+        using (Packet packet = new Packet(ToClient.itemSpawned))
         {
             packet.Write(spawnerId);
 
@@ -175,7 +175,7 @@ public class ServerSend
 
     public static void ItemPickup(int spawnerId, Guid playerId)
     {
-        using (Packet packet = new Packet(ServerPackets.itemPickup))
+        using (Packet packet = new Packet(ToClient.itemPickup))
         {
             packet.Write(spawnerId);
             packet.Write(playerId);
@@ -188,7 +188,7 @@ public class ServerSend
 
     public static void SpawnProjectile(Projectile projectile, Guid throwedById)
     {
-        using (var packet = new Packet(ServerPackets.spawnProjectile))
+        using (var packet = new Packet(ToClient.spawnProjectile))
         {
             packet.Write(projectile.Id);
             packet.Write(projectile.transform.position);
@@ -199,7 +199,7 @@ public class ServerSend
     }
     public static void ProjectilePosition(Projectile projectile)
     {
-        using (var packet = new Packet(ServerPackets.projectilePosition))
+        using (var packet = new Packet(ToClient.projectilePosition))
         {
             packet.Write(projectile.Id);
             packet.Write(projectile.transform.position);
@@ -210,7 +210,7 @@ public class ServerSend
 
     public static void ProjectileExploded(Projectile projectile)
     {
-        using (var packet = new Packet(ServerPackets.projectileExploded))
+        using (var packet = new Packet(ToClient.projectileExploded))
         {
             packet.Write(projectile.Id);
             packet.Write(projectile.transform.position);
@@ -221,7 +221,7 @@ public class ServerSend
 
     public static void PlayerShootUDP(CharacterBase character)
     {
-        using (var packet = new Packet(ServerPackets.playerShooting))
+        using (var packet = new Packet(ToClient.playerShooting))
         {
             packet.Write(character.Id);
 
@@ -231,7 +231,7 @@ public class ServerSend
 
     public static void PlayerShootTCP(CharacterBase character)
     {
-        using (var packet = new Packet(ServerPackets.playerShooting))
+        using (var packet = new Packet(ToClient.playerShooting))
         {
             packet.Write(character.Id);
 
@@ -241,7 +241,7 @@ public class ServerSend
 
     public static void PlayerHitUDP(CharacterBase character, WeaponKind hitBy, Vector3 position)
     {
-        using (var packet = new Packet(ServerPackets.playerHit))
+        using (var packet = new Packet(ToClient.playerHit))
         {
             packet.Write(character.Id);
             packet.Write((int)hitBy);
@@ -253,7 +253,7 @@ public class ServerSend
 
     public static void PlayerHitTCP(CharacterBase character, WeaponKind hitBy, Vector3 position)
     {
-        using (var packet = new Packet(ServerPackets.playerHit))
+        using (var packet = new Packet(ToClient.playerHit))
         {
             packet.Write(character.Id);
             packet.Write((int)hitBy);
@@ -265,7 +265,7 @@ public class ServerSend
 
     public static void BotShoot(CharacterBase character)
     {
-        using (var packet = new Packet(ServerPackets.botShoot))
+        using (var packet = new Packet(ToClient.botShoot))
         {
             packet.Write(character.Id);
 
@@ -275,7 +275,7 @@ public class ServerSend
 
     public static void BotHit(CharacterBase character, WeaponKind hitBy, Vector3 position)
     {
-        using (var packet = new Packet(ServerPackets.botHit))
+        using (var packet = new Packet(ToClient.botHit))
         {
             packet.Write(character.Id);
             packet.Write((int)hitBy);
@@ -287,7 +287,7 @@ public class ServerSend
 
     public static void BotChooseWeapon(CharacterBase character)
     {
-        using (Packet packet = new Packet((int)ServerPackets.botChooseWeapon))
+        using (Packet packet = new Packet((int)ToClient.botChooseWeapon))
         {
             packet.Write(character.Id);
             packet.Write((int)character.WeaponController.GetCurrentWeapon().Kind);
@@ -299,7 +299,7 @@ public class ServerSend
 
     public static void InitRatingTable(Guid toClient, Dictionary<Guid, RatingEntity> rating)
     {
-        using (Packet packet = new Packet(ServerPackets.ratingTableInit))
+        using (Packet packet = new Packet(ToClient.ratingTableInit))
         {
             packet.Write(rating.Count);
 
@@ -317,7 +317,7 @@ public class ServerSend
 
     public static void UpdateFullRatingTable(Dictionary<Guid, RatingEntity> rating)
     {
-        using (Packet packet = new Packet(ServerPackets.ratingTableInit))
+        using (Packet packet = new Packet(ToClient.ratingTableInit))
         {
             packet.Write(rating.Count);
 
@@ -335,7 +335,7 @@ public class ServerSend
 
     public static void UpdateRatingTable(Guid playerKillerId, Guid playerDieId)
     {
-        using (Packet packet = new Packet(ServerPackets.ratingTableUpdateKillAndDeath))
+        using (Packet packet = new Packet(ToClient.ratingTableUpdateKillAndDeath))
         {
             packet.Write(playerKillerId);
             packet.Write(playerDieId);
@@ -346,7 +346,7 @@ public class ServerSend
 
     public static void UpdateRatingTableBotsKills(int botsCount, Guid playerKillerId)
     {
-        using (Packet packet = new Packet(ServerPackets.ratingTableUpdateKilledBots))
+        using (Packet packet = new Packet(ToClient.ratingTableUpdateKilledBots))
         {
             packet.Write(playerKillerId);
             packet.Write(botsCount);
@@ -357,7 +357,7 @@ public class ServerSend
 
     public static void UpdateRatingTableDeath(Guid playerDieId)
     {
-        using (Packet packet = new Packet(ServerPackets.ratingTableUpdateDeath))
+        using (Packet packet = new Packet(ToClient.ratingTableUpdateDeath))
         {
             packet.Write(playerDieId);
 
@@ -367,7 +367,7 @@ public class ServerSend
 
     public static void AddPlayerRatingTable(Guid toClient, Player entity)
     {
-        using (Packet packet = new Packet(ServerPackets.ratingTableNewPlayer))
+        using (Packet packet = new Packet(ToClient.ratingTableNewPlayer))
         {
             packet.Write(entity.Id);
             packet.Write(entity.Username);
@@ -378,7 +378,7 @@ public class ServerSend
 
     public static void PlayerGrenadeCount(Guid toClient, int grenadeCount)
     {
-        using (Packet packet = new Packet(ServerPackets.playerGrenadeCount))
+        using (Packet packet = new Packet(ToClient.playerGrenadeCount))
         {
             packet.Write(toClient);
             packet.Write(grenadeCount);
@@ -389,7 +389,7 @@ public class ServerSend
 
     public static void InitMap(Guid toClient, string mapString)
     {
-        using (Packet packet = new Packet(ServerPackets.initMap))
+        using (Packet packet = new Packet(ToClient.initMap))
         {
             packet.Write(mapString);
 
@@ -399,7 +399,7 @@ public class ServerSend
 
     public static void SpawnBot(BotBase bot)
     {
-        using (Packet packet = new Packet(ServerPackets.spawnBot))
+        using (Packet packet = new Packet(ToClient.spawnBot))
         {
             packet.Write(bot.Id);
             packet.Write(bot.transform.position);
@@ -411,7 +411,7 @@ public class ServerSend
 
     public static void SpawnBot(Guid toClient, BotBase bot)
     {
-        using (Packet packet = new Packet(ServerPackets.spawnBot))
+        using (Packet packet = new Packet(ToClient.spawnBot))
         {
             packet.Write(bot.Id);
             packet.Write(bot.transform.position);
@@ -423,7 +423,7 @@ public class ServerSend
 
     public static void BotPosition(BotBase bot)
     {
-        using (Packet packet = new Packet(ServerPackets.botPosition))
+        using (Packet packet = new Packet(ToClient.botPosition))
         {
             packet.Write(bot.Id);
             packet.Write(bot.transform.position);
@@ -434,7 +434,7 @@ public class ServerSend
 
     public static void PlayerScale(Player player)
     {
-        using (Packet packet = new Packet(ServerPackets.playerScale))
+        using (Packet packet = new Packet(ToClient.playerScale))
         {
             packet.Write(player.transform.lossyScale);
             packet.Write(player.Id);
@@ -445,7 +445,7 @@ public class ServerSend
 
     public static void BotRotation(BotBase bot)
     {
-        using (Packet packet = new Packet(ServerPackets.botRotation))
+        using (Packet packet = new Packet(ToClient.botRotation))
         {
             packet.Write(bot.Id);
             packet.Write(bot.transform.rotation);
@@ -456,7 +456,7 @@ public class ServerSend
 
     public static void BotHealth(HealthManager healthManager)
     {
-        using (Packet packet = new Packet(ServerPackets.botHealth))
+        using (Packet packet = new Packet(ToClient.botHealth))
         {
             packet.Write(healthManager.OwnerId);
             packet.Write(healthManager.CurrentHealth);

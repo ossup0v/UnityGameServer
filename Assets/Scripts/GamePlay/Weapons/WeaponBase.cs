@@ -25,9 +25,9 @@ public abstract class WeaponBase
     protected void SendShoot(CharacterBase owner)
     {
         if (owner.CharacterKind == CharacterKind.player)
-            ServerSend.PlayerShootTCP(owner);
+            RoomSendClient.PlayerShootTCP(owner);
         if (owner.CharacterKind == CharacterKind.bot)
-            ServerSend.BotShoot(owner);
+            RoomSendClient.BotShoot(owner);
     }
 
 #warning боже, как же это плохо..
@@ -36,16 +36,16 @@ public abstract class WeaponBase
         if (isHited)
         {
             if (owner.CharacterKind == CharacterKind.player)
-                ServerSend.PlayerHitTCP(owner, weaponKind, pos);
+                RoomSendClient.PlayerHitTCP(owner, weaponKind, pos);
             if (owner.CharacterKind == CharacterKind.bot)
-                ServerSend.BotHit(owner, weaponKind, pos);
+                RoomSendClient.BotHit(owner, weaponKind, pos);
         }
         else 
         {
             if (owner.CharacterKind == CharacterKind.player)
-                ServerSend.PlayerHitUDP(owner, weaponKind, pos);
+                RoomSendClient.PlayerHitUDP(owner, weaponKind, pos);
             if (owner.CharacterKind == CharacterKind.bot)
-                ServerSend.BotHit(owner, weaponKind, pos);
+                RoomSendClient.BotHit(owner, weaponKind, pos);
         }
     }
 }

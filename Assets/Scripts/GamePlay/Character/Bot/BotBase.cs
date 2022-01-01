@@ -38,7 +38,7 @@ public class BotBase : CharacterBase
         WeaponController = new WeaponController(new List<WeaponBase> { new GunWeapon() });
         BoosterContainer = new BoosterContainer();
 
-        ServerSend.SpawnBot(this);
+        RoomSendClient.SpawnBot(this);
 
         _state = BotState.patrol;
     }
@@ -69,9 +69,9 @@ public class BotBase : CharacterBase
 
     private bool LookForPlayer()
     {
-        foreach (Client client in Server.clients.Values)
+        foreach (Client client in Room.clients.Values)
         {
-            if (client.player != null)
+            if (client.player != null && client.player.CharacterKind == CharacterKind.player)
             {
                 Vector3 enemyToPlayer = client.player.transform.position - transform.position;
                 if (enemyToPlayer.magnitude <= detectionRange)
@@ -185,20 +185,20 @@ public class BotBase : CharacterBase
         movement.y = yVelocity;
         Controller.Move(movement);
 
-        ServerSend.BotPosition(this);
-        ServerSend.BotRotation(this);
+        RoomSendClient.BotPosition(this);
+        RoomSendClient.BotRotation(this);
     }
 
     protected override void TakeDamagePostprocess(CharacterBase attacker)
     {
-        ServerSend.BotHealth(HealthManager);
+        RoomSendClient.BotHealth(HealthManager);
 
         if (HealthManager.IsDie)
         {
             if (attacker != null)
             {
                 RatingManager.AddKillBot(attacker.Id);
-                ServerSend.UpdateRatingTableBotsKills(RatingManager.GetPlayerEntity(attacker.Id).KilledBots, attacker.Id);
+                RoomSendClient.UpdateRatingTableBotsKills(RatingManager.GetPlayerEntity(attacker.Id).KilledBots, attacker.Id);
             }
 
             BotManager.RemoveBot(Id);

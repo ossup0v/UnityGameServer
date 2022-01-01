@@ -46,7 +46,7 @@ public class Client
 
             stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
 
-            ServerSend.Welcome(_id, "Welcome to the server!");
+            RoomSendClient.Welcome(_id, "Welcome to the server!");
         }
 
         public void SendData(Packet packet)
@@ -71,7 +71,7 @@ public class Client
                 int byteLength = stream.EndRead(result);
                 if (byteLength <= 0)
                 {
-                    Server.clients[_id].Disconnect();
+                    Room.clients[_id].Disconnect();
                     return;
                 }
 
@@ -83,7 +83,7 @@ public class Client
             }
             catch (Exception ex)
             {
-                Server.clients[_id].Disconnect();
+                Room.clients[_id].Disconnect();
                 Debug.Log($"Error receiving TCP data: {ex}");
             }
         }
@@ -111,7 +111,7 @@ public class Client
                     using (Packet packet = new Packet(packetBytes))
                     {
                         int packetId = packet.ReadInt();
-                        Server.packetHandlers[packetId](_id, packet);
+                        Room.packetHandlers[packetId](_id, packet);
                     }
                 });
 
@@ -157,9 +157,9 @@ public class Client
             EndPoint = endPoint;
         }
 
-        public void SendData(Packet packet)
+        public void SendClientData(Packet packet)
         {
-            Server.SendUDPData(EndPoint, packet);
+            Room.SendClientUDPData(EndPoint, packet);
         }
 
         public void HandleData(Packet packetData)
@@ -172,7 +172,7 @@ public class Client
                 using (Packet packet = new Packet(packetBytes))
                 {
                     int packetId = packet.ReadInt();
-                    Server.packetHandlers[packetId](Id, packet);
+                    Room.packetHandlers[packetId](Id, packet);
                 }
             });
         }
@@ -186,38 +186,38 @@ public class Client
         player.Initialize(id, playerName);
 
 
-        foreach (Client client in Server.clients.Values)
+        foreach (Client client in Room.clients.Values)
         {
             if (client.player != null)
             {
                 if (client.id != id)
                 {
-                    ServerSend.SpawnPlayer(id, client.player);
+                    RoomSendClient.SpawnPlayer(id, client.player);
                 }
             }
         }
 
         RatingManager.InitPlayer(player);
-        ServerSend.InitRatingTable(id, RatingManager.Rating);
-        ServerSend.InitMap(id, MapSaveManager.Instance.GetCachedObjects());
+        RoomSendClient.InitRatingTable(id, RatingManager.Rating);
+        RoomSendClient.InitMap(id, MapSaveManager.Instance.GetCachedObjects());
 
-        foreach (Client client in Server.clients.Values)
+        foreach (Client client in Room.clients.Values)
         {
             if (client.player != null)
             {
-                ServerSend.SpawnPlayer(client.id, player);
-                ServerSend.AddPlayerRatingTable(client.id, player);
+                RoomSendClient.SpawnPlayer(client.id, player);
+                RoomSendClient.AddPlayerRatingTable(client.id, player);
             }
         }
 
         foreach (var itemSpawner in ItemSpawner.ItemSpawners.Values)
         {
-            ServerSend.CreateItemSpawner(id, itemSpawner.SpawnerId, itemSpawner.transform.position, itemSpawner.HasItem);
+            RoomSendClient.CreateItemSpawner(id, itemSpawner.SpawnerId, itemSpawner.transform.position, itemSpawner.HasItem);
         }
 
         foreach (var bot in BotManager.GetBots().Values)
         {
-            ServerSend.SpawnBot(id, bot);
+            RoomSendClient.SpawnBot(id, bot);
         }
     }
 
@@ -228,13 +228,13 @@ public class Client
         ThreadManager.ExecuteOnMainThread(() =>
         { 
             RatingManager.RemovePlayer(player);
-            ServerSend.UpdateFullRatingTable(RatingManager.Rating);
+            RoomSendClient.UpdateFullRatingTable(RatingManager.Rating);
             UnityEngine.Object.Destroy(player.gameObject);
             player = null;
         });
 
         tcp.Dispose();
 
-        ServerSend.PlayerDisconnected(id);
+        RoomSendClient.PlayerDisconnected(id);
     }
 }

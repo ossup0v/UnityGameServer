@@ -6,7 +6,8 @@ using UnityEngine;
 public class NetworkManager : MonoBehaviour
 {
     public static NetworkManager Instance { get; private set; }
-    public int Port = 26950;
+    private int ClientsPort = 26954;
+    public int ServerPort = 26949;
 
     public GameObject BotPrefab;
     public GameObject PlayerPrefab;
@@ -29,22 +30,39 @@ public class NetworkManager : MonoBehaviour
     {
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
-        var port = Port;
+        var clientsPort = ClientsPort;
+        var serverPort = ServerPort;
+        var roomId = default(Guid);
+        var mode = "ModeTest";
+        var title = "TitleTest";
+        var maxPlayersCount = 20;
+        var creatorId = default(Guid);
         try
         {
+#warning не, ну это полная дичь, просто используй newtonsoft.json, пожалусйта
             var args = Environment.GetCommandLineArgs();
-            port = int.Parse(args[1]);
+            Debug.Log(string.Join(" ", args));
+            var argsArray = args[1].Split(';');
+            clientsPort = int.Parse(argsArray[0]);
+            serverPort = int.Parse(argsArray[1]);
+            roomId = Guid.Parse(argsArray[2]);
+            mode = argsArray[3];
+            title = argsArray[4];
+            maxPlayersCount = int.Parse(argsArray[5]);
+            creatorId = Guid.Parse(argsArray[6]);
         }
         catch (Exception)
         {
-
+            Debug.LogError("can't read environment args");
         }
-        Server.Start(50, port);
+
+        Debug.Log($"Game created by {creatorId}");
+        Room.Start(maxPlayersCount, clientsPort, serverPort, roomId, creatorId, mode, title);
     }
 
     private void OnApplicationQuit()
     {
-        Server.Stop();
+        Room.Stop();
     }
 
     public BotBase InstantiateBot(Vector3 spawnPoint)
