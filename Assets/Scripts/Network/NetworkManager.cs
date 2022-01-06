@@ -32,7 +32,7 @@ public class NetworkManager : MonoBehaviour
         Application.targetFrameRate = 60;
         var clientsPort = ClientsPort;
         var serverPort = ServerPort;
-        var roomId = default(Guid);
+        var metagameRoomId = default(Guid);
         var mode = "ModeTest";
         var title = "TitleTest";
         var maxPlayersCount = 20;
@@ -45,7 +45,7 @@ public class NetworkManager : MonoBehaviour
             var argsArray = args[1].Split(';');
             clientsPort = int.Parse(argsArray[0]);
             serverPort = int.Parse(argsArray[1]);
-            roomId = Guid.Parse(argsArray[2]);
+            metagameRoomId = Guid.Parse(argsArray[2]);
             mode = argsArray[3];
             title = argsArray[4];
             maxPlayersCount = int.Parse(argsArray[5]);
@@ -56,8 +56,8 @@ public class NetworkManager : MonoBehaviour
             Debug.LogError("can't read environment args");
         }
 
-        Debug.Log($"Game created by {creatorId}");
-        Room.Start(maxPlayersCount, clientsPort, serverPort, roomId, creatorId, mode, title);
+        Debug.Log($"Game created by {creatorId}, metagame room Id {metagameRoomId}");
+        Room.Start(maxPlayersCount, clientsPort, serverPort, metagameRoomId, creatorId, mode, title);
     }
 
     private void OnApplicationQuit()

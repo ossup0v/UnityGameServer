@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
@@ -10,7 +9,7 @@ public class Room
     public static int MaxPlayers { get; private set; }
     public static int PortForClients { get; private set; }
     public static int PortForServer { get; private set; }
-    public static Dictionary<Guid, Client> clients = new Dictionary<Guid, Client>();
+    public static Dictionary<Guid, Client> Clients = new Dictionary<Guid, Client>();
     public delegate void PacketHandler(Guid fromClient, Packet packet);
     public static Dictionary<int, PacketHandler> packetHandlers;
     private static NetworkListener _clientsListener;
@@ -20,18 +19,19 @@ public class Room
 
     public static NetworkClient Server;
     public static Guid RoomId;
+    public static Guid MetagameRoomId;
     public static Guid CreatorId;
 
     public static Client GetClient(Guid clientId)
     {
-        clients.TryGetValue(clientId, out var client);
+        Clients.TryGetValue(clientId, out var client);
         return client;
     }
 
     public static void Start(int maxPlayers, 
         int portForClients, 
         int portForServer, 
-        Guid roomId,
+        Guid metagameRoomId,
         Guid creatorId,
         string mode,
         string title)
@@ -39,7 +39,7 @@ public class Room
         MaxPlayers = maxPlayers;
         PortForClients = portForClients;
         PortForServer = portForServer;
-        RoomId = roomId;
+        MetagameRoomId = metagameRoomId;
         CreatorId = creatorId;
         Title = title;
         Mode = mode;
@@ -74,11 +74,11 @@ public class Room
 
         Debug.Log($"Incoming connection from {client.Client.RemoteEndPoint}...");
 
-        if (clients.Count < MaxPlayers)
+        if (Clients.Count < MaxPlayers)
         {
             var newGuid = Guid.NewGuid();
             var newClient = new Client(newGuid);
-            clients.Add(newGuid, newClient);
+            Clients.Add(newGuid, newClient);
             newClient.tcp.Connect(client);
             return;
         }
@@ -109,14 +109,14 @@ public class Room
                 }
 
                 //process client udp packets here
-                if (clients[clientId].udp.EndPoint == null)
+                if (Clients[clientId].udp.EndPoint == null)
                 {
-                    clients[clientId].udp.Connect(clientEndPoint);
+                    Clients[clientId].udp.Connect(clientEndPoint);
                 }
 
-                if (clients[clientId].udp.EndPoint.ToString() == clientEndPoint.ToString())
+                if (Clients[clientId].udp.EndPoint.ToString() == clientEndPoint.ToString())
                 {
-                    clients[clientId].udp.HandleData(packet);
+                    Clients[clientId].udp.HandleData(packet);
                     return;
                 }
             }

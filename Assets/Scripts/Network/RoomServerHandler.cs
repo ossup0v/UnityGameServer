@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RoomServerHandler
 {
@@ -11,6 +10,6 @@ public class RoomServerHandler
 
         Debug.Log("Receive game room id");
 
-        RoomSendServer.RoomIsLaunched(Room.RoomId, Room.CreatorId, Room.Mode, Room.Title, Room.MaxPlayers, Room.PortForClients);
+        RoomSendServer.RoomIsLaunched(Room.RoomId, Room.MetagameRoomId, Room.CreatorId, Room.Mode, Room.Title, Room.MaxPlayers, Room.PortForClients);
     }
 }

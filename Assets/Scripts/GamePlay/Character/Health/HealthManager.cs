@@ -4,7 +4,7 @@ using UnityEngine;
 public class HealthManager
 {
     public bool IsDie => CurrentHealth <= MinHealth;
-    public bool IsALife => CurrentHealth > MinHealth;
+    public bool IsALive => CurrentHealth > MinHealth;
 
     public event Action<float> HealthChanged = delegate { };
 

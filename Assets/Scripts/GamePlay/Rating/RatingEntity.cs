@@ -7,4 +7,5 @@ public class RatingEntity
     public int Killed { get; set; }
     public int KilledBots { get; set; }
     public int Died { get; set; }
+    public int Team { get; set; }
 }

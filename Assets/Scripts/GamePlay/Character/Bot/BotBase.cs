@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BotBase : CharacterBase
 {
+    private float _chaseRange = 10f;
+    private bool isPatrolRoutineRunning;
+    private float yVelocity = 0;
     private BotState _state;
     private Player _target;
 
@@ -12,13 +15,10 @@ public class BotBase : CharacterBase
     public float detectionRange = 15f;
     public float patrolDuration = 3f;
     public float idleDuration = 3f;
-
-    private float _chaseRange = 10f;
-
-    private bool isPatrolRoutineRunning;
-    private float yVelocity = 0;
-
+    
     public override CharacterKind CharacterKind { get; } = CharacterKind.bot;
+
+    public override int Team { get; protected set; } = -1;
 
     private void Start()
     {
@@ -69,7 +69,7 @@ public class BotBase : CharacterBase
 
     private bool LookForPlayer()
     {
-        foreach (Client client in Room.clients.Values)
+        foreach (Client client in Room.Clients.Values)
         {
             if (client.player != null && client.player.CharacterKind == CharacterKind.player)
             {
