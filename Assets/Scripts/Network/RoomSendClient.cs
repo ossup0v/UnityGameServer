@@ -8,19 +8,19 @@ public class RoomSendClient
     private static void SendTCPData(Guid toClient, Packet packet)
     {
         packet.WriteLength();
-        Room.clients[toClient].tcp.SendData(packet);
+        Room.Clients[toClient].tcp.SendData(packet);
     }
 
     private static void SendUDPData(Guid toClient, Packet packet)
     {
         packet.WriteLength();
-        Room.clients[toClient].udp.SendClientData(packet);
+        Room.Clients[toClient].udp.SendClientData(packet);
     }
 
     private static void SendTCPDataToAll(Packet packet)
     {
         packet.WriteLength();
-        foreach (var client in Room.clients.Values)
+        foreach (var client in Room.Clients.Values)
         {
             client.tcp.SendData(packet);
         }
@@ -29,7 +29,7 @@ public class RoomSendClient
     private static void SendTCPDataToAll(Guid exceptClient, Packet packet)
     {
         packet.WriteLength();
-        foreach (var client in Room.clients.Values)
+        foreach (var client in Room.Clients.Values)
         {
             if (client.id != exceptClient)
             {
@@ -41,7 +41,7 @@ public class RoomSendClient
     private static void SendUDPDataToAll(Packet packet)
     {
         packet.WriteLength();
-        foreach (var client in Room.clients.Values)
+        foreach (var client in Room.Clients.Values)
         {
             client.udp.SendClientData(packet);
         }
@@ -50,7 +50,7 @@ public class RoomSendClient
     private static void SendUDPDataToAll(Guid exceptClient, Packet packet)
     {
         packet.WriteLength();
-        foreach (var client in Room.clients.Values)
+        foreach (var client in Room.Clients.Values)
         {
             if (client.id != exceptClient)
             {
@@ -79,6 +79,7 @@ public class RoomSendClient
         {
             packet.Write(player.Id);
             packet.Write(player.Username);
+            packet.Write(player.Team);
             packet.Write(player.transform.position);
             packet.Write(player.transform.rotation);
             packet.Write((int)player.WeaponController.GetCurrentWeapon().Kind);

@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class NetworkManager : MonoBehaviour
@@ -32,11 +30,8 @@ public class NetworkManager : MonoBehaviour
         Application.targetFrameRate = 60;
         var clientsPort = ClientsPort;
         var serverPort = ServerPort;
-        var roomId = default(Guid);
-        var mode = "ModeTest";
-        var title = "TitleTest";
+        var metagameRoomId = default(Guid);
         var maxPlayersCount = 20;
-        var creatorId = default(Guid);
         try
         {
 #warning не, ну это полная дичь, просто используй newtonsoft.json, пожалусйта
@@ -45,19 +40,16 @@ public class NetworkManager : MonoBehaviour
             var argsArray = args[1].Split(';');
             clientsPort = int.Parse(argsArray[0]);
             serverPort = int.Parse(argsArray[1]);
-            roomId = Guid.Parse(argsArray[2]);
-            mode = argsArray[3];
-            title = argsArray[4];
-            maxPlayersCount = int.Parse(argsArray[5]);
-            creatorId = Guid.Parse(argsArray[6]);
+            metagameRoomId = Guid.Parse(argsArray[2]);
+            maxPlayersCount = int.Parse(argsArray[3]);
         }
         catch (Exception)
         {
             Debug.LogError("can't read environment args");
         }
 
-        Debug.Log($"Game created by {creatorId}");
-        Room.Start(maxPlayersCount, clientsPort, serverPort, roomId, creatorId, mode, title);
+        Debug.Log($"Game created by server, metagame room Id {metagameRoomId}");
+        Room.Start(maxPlayersCount, clientsPort, serverPort, metagameRoomId);
     }
 
     private void OnApplicationQuit()
@@ -70,9 +62,9 @@ public class NetworkManager : MonoBehaviour
         return Instantiate(BotPrefab, spawnPoint, Quaternion.identity).GetComponent<BotBase>();
     }
 
-    public Player InstantiatePlayer()
+    public Player InstantiatePlayer(int team)
     {
-        return Instantiate(PlayerPrefab, new Vector3(0, 1f, 0), Quaternion.identity).GetComponent<Player>();
+        return Instantiate(PlayerPrefab, SpawnPointManager.Instance.GetRandomSpawnPoint(team), Quaternion.identity).GetComponent<Player>();
     }
 
     public Projectile InstantiatePrjectile(Transform shootOrigin)

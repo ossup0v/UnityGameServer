@@ -6,8 +6,8 @@ public class RocketLaucnherWeapon : WeaponBase
     public RocketLaucnherWeapon()
     {
         Damage = 50;
-        Radius = 100;
-        RadiusOfDamage = 2f;
+        Radius = 1000;
+        RadiusOfDamage = 4f;
         ImpactForce = 100f;
         _timer = new Timer(TimeSpan.FromSeconds(0.75f));
     }

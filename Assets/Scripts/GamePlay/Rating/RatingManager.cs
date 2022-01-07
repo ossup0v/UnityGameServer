@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class RatingManager
 {
@@ -18,6 +19,7 @@ public class RatingManager
             PlayerId = player.Id,
             Killed = 0,
             Died = 0,
+            Team = player.Team,
         });
     }
 
@@ -31,7 +33,7 @@ public class RatingManager
     {
         if (!Rating.ContainsKey(playerId))
         {
-            System.Console.WriteLine("ERROR add kill!");
+            Debug.LogError("ERROR add kill!");
             return;
         }
 
@@ -42,7 +44,7 @@ public class RatingManager
     {
         if (!Rating.ContainsKey(playerId))
         {
-            System.Console.WriteLine("ERROR add AddBot!");
+            Debug.LogError("ERROR add AddBot!");
             return;
         }
 
@@ -53,7 +55,7 @@ public class RatingManager
     {
         if (!Rating.ContainsKey(playerId))
         {
-            System.Console.WriteLine("ERROR add death!");
+            Debug.LogError("ERROR add death!");
             return;
         }
 

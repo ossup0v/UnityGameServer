@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
@@ -40,7 +39,11 @@ public enum ToClient
     playerScale,
 
     //server packets
-    roomPortToConnect
+    roomPortToConnect,
+    roomList,
+    gameRoomSessionEnd,
+
+    response
 }
 
 
@@ -67,11 +70,16 @@ public enum ToServerFromClient
     welcomeReceived = 1,
     registerUser,
     joinGameRoom,
+    loginUser,
+    createGameRoom,
+    startSearchGameRoom,
+    cancelSearchGameRoom
 }
 
 public enum ToServerFromGameRoom
 {
-    gameRoomLaunched = 1
+    gameRoomLaunched = 1,
+    gameSessionEnded
 }
 
 public class Packet : IDisposable

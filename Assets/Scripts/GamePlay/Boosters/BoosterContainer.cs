@@ -21,4 +21,12 @@ public class BoosterContainer
         else
             boosters[kind] = value;
     }
+
+    public void IncreaseBooster(BoosterKind kind, float value)
+    {
+        if (!boosters.ContainsKey(kind))
+            boosters.Add(kind, value);
+        else
+            boosters[kind] += value;
+    }
 }

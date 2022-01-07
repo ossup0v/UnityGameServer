@@ -6,10 +6,7 @@ public class HitRegistration : MonoBehaviour
 
     public void RegisterHit(float damage, CharacterBase attacker, float impactForce = 0, Vector3 normal = default(Vector3))
     {
-        // bot can't attack bot
-        if ((defender.CharacterKind == CharacterKind.bot && attacker.CharacterKind != CharacterKind.bot) 
-            //every only can attack player (
-            || defender.CharacterKind == CharacterKind.player)
+        if (attacker.IsCanAttackOther(defender))
         {
             defender.TakeDamage(damage, attacker);
         }

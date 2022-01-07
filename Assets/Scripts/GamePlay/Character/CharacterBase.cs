@@ -10,11 +10,29 @@ public abstract class CharacterBase : MonoBehaviour
     public CharacterController Controller;
     public HealthManager HealthManager;
     public Transform ShootOrigin;
-    public abstract CharacterKind CharacterKind { get; }
-
     public float Gravity = -9.81f * 2;
     public float MoveSpeed = 5f;
     public float JumpSpeed = 5f;
+    public abstract CharacterKind CharacterKind { get; }
+    public abstract int Team { get; protected set; }
+
+    public bool IsCanAttackOther(CharacterBase other)
+    {
+        var isBotVsBot = other.CharacterKind == CharacterKind.bot && CharacterKind == CharacterKind.bot;
+
+        // bot can not
+        if (isBotVsBot)
+            return false;
+
+        var isTeammates = other.Team == Team;
+
+        // players in one team can not attack teammate
+        if (isTeammates)
+            return false;
+
+        // in other cases can attack
+        return true;
+    }
 
     public void ChooseWeapon(int leftOrRigth)
     {

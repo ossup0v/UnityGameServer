@@ -71,7 +71,7 @@ public class Client
                 int byteLength = stream.EndRead(result);
                 if (byteLength <= 0)
                 {
-                    Room.clients[_id].Disconnect();
+                    Room.Clients[_id].Disconnect();
                     return;
                 }
 
@@ -83,7 +83,7 @@ public class Client
             }
             catch (Exception ex)
             {
-                Room.clients[_id].Disconnect();
+                Room.Clients[_id].Disconnect();
                 Debug.Log($"Error receiving TCP data: {ex}");
             }
         }
@@ -178,15 +178,15 @@ public class Client
         }
     }
 
-    public void SendIntoGame(string playerName)
+    public void SendIntoGame(string playerName, int team)
     {
         Debug.Log("Send into game");
 
-        player = NetworkManager.Instance.InstantiatePlayer();
-        player.Initialize(id, playerName);
+        player = NetworkManager.Instance.InstantiatePlayer(team);
+        player.Initialize(id, playerName, team);
 
 
-        foreach (Client client in Room.clients.Values)
+        foreach (Client client in Room.Clients.Values)
         {
             if (client.player != null)
             {
@@ -201,7 +201,7 @@ public class Client
         RoomSendClient.InitRatingTable(id, RatingManager.Rating);
         RoomSendClient.InitMap(id, MapSaveManager.Instance.GetCachedObjects());
 
-        foreach (Client client in Room.clients.Values)
+        foreach (Client client in Room.Clients.Values)
         {
             if (client.player != null)
             {

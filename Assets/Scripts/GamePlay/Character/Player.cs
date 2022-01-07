@@ -1,12 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Player : CharacterBase
 {
-    public MeshRenderer Model;
+    private float controllHeight;
+    private bool[] _inputs;
+    private float yVelocity = 0;
 
+    public MeshRenderer Model;
     public string Username;
     public float ThrowForce = 600f * 2 * 4 * 10;
     public float ShiftMultiplayer = 2f;
@@ -14,11 +18,9 @@ public class Player : CharacterBase
     public float RespawnTime = 2f;
     public int grenadeCount = 0;
     public int maxItemAmount = 3;
-    float controllHeight;
-    private bool[] _inputs;
-    private float yVelocity = 0;
-
     public override CharacterKind CharacterKind { get; } = CharacterKind.player;
+
+    public override int Team { get; protected set; } = 0;
 
     private void Start()
     {
@@ -38,10 +40,11 @@ public class Player : CharacterBase
         return true;
     }
 
-    public void Initialize(Guid id, string username)
+    public void Initialize(Guid id, string username, int team)
     {
         Id = id;
         Username = username;
+        Team = team;
         HealthManager = new HealthManager(true);
         HealthManager.OwnerId = Id;
         WeaponController = new WeaponController(new List<WeaponBase> { new RocketLaucnherWeapon(), new TeleportWeapon() });
@@ -120,7 +123,7 @@ public class Player : CharacterBase
         Model.transform.lossyScale.Set(Model.transform.lossyScale.x, Controller.height, Model.transform.lossyScale.z);
 
         yVelocity += Gravity;
-       
+
         moveDirection.y += yVelocity;
 
         Controller.Move(moveDirection);
@@ -157,7 +160,7 @@ public class Player : CharacterBase
         if (HealthManager.IsDie)
         {
             Controller.enabled = false;
-            transform.position = SpawnPoints[UnityEngine.Random.Range(0, SpawnPoints.Length)];
+            //transform.position = SpawnPoints[UnityEngine.Random.Range(0, SpawnPoints.Length)];
 
             if (attacker == null)
             {
@@ -188,8 +191,43 @@ public class Player : CharacterBase
             }
 
             RoomSendClient.PlayerPosition(this);
-            StartCoroutine(Respawn());
+
+            var firstLivePlayer = Room.Clients.Values.FirstOrDefault(x => x.player.HealthManager.IsALive);
+
+            if (firstLivePlayer == null) //game over here
+            {
+                OnGameEnd();
+            }
+
+            var firstLivePlayerInOtherTeam = Room.Clients.Values.FirstOrDefault(x => x.player.HealthManager.IsALive && x.player.Team != firstLivePlayer.player.Team);
+
+            if (firstLivePlayerInOtherTeam == null) //game over here. Team firstLivePlayer.player.Team WIN!
+            {
+                OnGameEnd();
+            }
+#warning you can on respawn here!
+            //StartCoroutine(Respawn());
         }
+    }
+
+    private void OnGameEnd()
+    {
+        RoomSendServer.GameRoomEnd();
+
+        StartCoroutine(Exit());
+    }
+
+    private IEnumerator Exit()
+    {
+        yield return new WaitForSeconds(RespawnTime);
+
+#if UNITY_EDITOR
+        // Application.Quit() does not work in the editor so
+        // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+         Application.Quit();
+#endif
     }
 
     private IEnumerator Respawn()
