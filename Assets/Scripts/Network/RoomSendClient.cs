@@ -220,14 +220,6 @@ public class RoomSendClient
         }
     }
 
-    public static void GameRoomSessopnEnd()
-    {
-        using (var packet = new Packet(ToClient.gameRoomSessionEnd))
-        {
-            SendTCPDataToAll(packet);
-        }
-    }
-
     public static void PlayerShootUDP(CharacterBase character)
     {
         using (var packet = new Packet(ToClient.playerShooting))

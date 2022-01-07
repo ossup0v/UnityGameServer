@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class NetworkManager : MonoBehaviour
@@ -33,10 +31,7 @@ public class NetworkManager : MonoBehaviour
         var clientsPort = ClientsPort;
         var serverPort = ServerPort;
         var metagameRoomId = default(Guid);
-        var mode = "ModeTest";
-        var title = "TitleTest";
         var maxPlayersCount = 20;
-        var creatorId = default(Guid);
         try
         {
 #warning не, ну это полная дичь, просто используй newtonsoft.json, пожалусйта
@@ -46,18 +41,15 @@ public class NetworkManager : MonoBehaviour
             clientsPort = int.Parse(argsArray[0]);
             serverPort = int.Parse(argsArray[1]);
             metagameRoomId = Guid.Parse(argsArray[2]);
-            mode = argsArray[3];
-            title = argsArray[4];
-            maxPlayersCount = int.Parse(argsArray[5]);
-            creatorId = Guid.Parse(argsArray[6]);
+            maxPlayersCount = int.Parse(argsArray[3]);
         }
         catch (Exception)
         {
             Debug.LogError("can't read environment args");
         }
 
-        Debug.Log($"Game created by {creatorId}, metagame room Id {metagameRoomId}");
-        Room.Start(maxPlayersCount, clientsPort, serverPort, metagameRoomId, creatorId, mode, title);
+        Debug.Log($"Game created by server, metagame room Id {metagameRoomId}");
+        Room.Start(maxPlayersCount, clientsPort, serverPort, metagameRoomId);
     }
 
     private void OnApplicationQuit()

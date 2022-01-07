@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 public class RoomSendServer
 {
@@ -16,17 +15,14 @@ public class RoomSendServer
         Room.Server.Udp.SendData(packet);
     }
 
-    public static void RoomIsLaunched(Guid roomId, Guid metagameRoomId, Guid creatorId, string mode, string title, int maxPlayerCount, int port)
+    public static void RoomIsLaunched()
     {
         using (Packet packet = new Packet((int)ToServerFromGameRoom.gameRoomLaunched))
         {
-            packet.Write(roomId);
-            packet.Write(metagameRoomId);
-            packet.Write(creatorId);
-            packet.Write(mode);
-            packet.Write(title);
-            packet.Write(maxPlayerCount);
-            packet.Write(port);
+            packet.Write(Room.RoomId);
+            packet.Write(Room.MetagameRoomId);
+            packet.Write(Room.MaxPlayers);
+            packet.Write(Room.PortForClients);
 
             SendTCPData(packet);
         }

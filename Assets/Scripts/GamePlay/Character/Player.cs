@@ -213,7 +213,13 @@ public class Player : CharacterBase
     private void OnGameEnd()
     {
         RoomSendServer.GameRoomEnd();
-        RoomSendClient.GameRoomSessopnEnd();
+
+        StartCoroutine(Exit());
+    }
+
+    private IEnumerator Exit()
+    {
+        yield return new WaitForSeconds(RespawnTime);
 
 #if UNITY_EDITOR
         // Application.Quit() does not work in the editor so
@@ -222,14 +228,6 @@ public class Player : CharacterBase
 #else
          Application.Quit();
 #endif
-        StartCoroutine(Respawn());
-        //send disconnect to clients
-    }
-
-    private IEnumerable Exit()
-    {
-        yield return new WaitForSeconds(RespawnTime);
-
     }
 
     private IEnumerator Respawn()

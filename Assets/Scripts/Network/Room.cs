@@ -15,13 +15,9 @@ public class Room
     private static NetworkListener _clientsListener;
     private static Dictionary<int, Vector3> _spawnPoints = new Dictionary<int, Vector3>();
 
-    public static string Mode;
-    public static string Title;
-
     public static NetworkClient Server;
     public static Guid RoomId;
     public static Guid MetagameRoomId;
-    public static Guid CreatorId;
 
     public static Client GetClient(Guid clientId)
     {
@@ -32,18 +28,12 @@ public class Room
     public static void Start(int maxPlayers, 
         int portForClients, 
         int portForServer, 
-        Guid metagameRoomId,
-        Guid creatorId,
-        string mode,
-        string title)
+        Guid metagameRoomId)
     {
         MaxPlayers = maxPlayers;
         PortForClients = portForClients;
         PortForServer = portForServer;
         MetagameRoomId = metagameRoomId;
-        CreatorId = creatorId;
-        Title = title;
-        Mode = mode;
 
         Debug.Log("Starting server...");
         InitializeServerData();
