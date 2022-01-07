@@ -70,9 +70,9 @@ public class NetworkManager : MonoBehaviour
         return Instantiate(BotPrefab, spawnPoint, Quaternion.identity).GetComponent<BotBase>();
     }
 
-    public Player InstantiatePlayer()
+    public Player InstantiatePlayer(int team)
     {
-        return Instantiate(PlayerPrefab, new Vector3(0, 1f, 0), Quaternion.identity).GetComponent<Player>();
+        return Instantiate(PlayerPrefab, SpawnPointManager.Instance.GetRandomSpawnPoint(team), Quaternion.identity).GetComponent<Player>();
     }
 
     public Projectile InstantiatePrjectile(Transform shootOrigin)

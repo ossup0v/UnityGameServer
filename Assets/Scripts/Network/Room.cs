@@ -13,6 +13,7 @@ public class Room
     public delegate void PacketHandler(Guid fromClient, Packet packet);
     public static Dictionary<int, PacketHandler> packetHandlers;
     private static NetworkListener _clientsListener;
+    private static Dictionary<int, Vector3> _spawnPoints = new Dictionary<int, Vector3>();
 
     public static string Mode;
     public static string Title;

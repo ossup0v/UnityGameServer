@@ -182,7 +182,7 @@ public class Client
     {
         Debug.Log("Send into game");
 
-        player = NetworkManager.Instance.InstantiatePlayer();
+        player = NetworkManager.Instance.InstantiatePlayer(team);
         player.Initialize(id, playerName, team);
 
 

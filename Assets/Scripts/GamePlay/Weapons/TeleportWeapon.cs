@@ -4,7 +4,7 @@ public class TeleportWeapon : WeaponBase
 {
     public TeleportWeapon()
     {
-        Radius = 100;
+        Radius = 1000;
         _timer = new Timer(0.15f);
     }
 

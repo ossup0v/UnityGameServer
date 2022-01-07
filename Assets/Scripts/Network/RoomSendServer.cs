@@ -36,6 +36,7 @@ public class RoomSendServer
     {
         using (Packet packet = new Packet((int)ToServerFromGameRoom.gameSessionEnded))
         {
+            packet.Write(Room.PortForClients);
             packet.Write(Room.MetagameRoomId);
 
             var teams = new Dictionary<int, TeamScore>(4);
