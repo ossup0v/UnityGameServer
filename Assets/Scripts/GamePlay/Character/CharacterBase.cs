@@ -40,6 +40,16 @@ public abstract class CharacterBase : MonoBehaviour
         RoomSendClient.PlayerChooseWeapon(this);
     }
 
+    protected void TryChooseWeaponByIndex(int index)
+    {
+        WeaponController.TryChooseWeaponByIndex(index, out var result);
+
+        if (result)
+        {
+            RoomSendClient.PlayerChooseWeapon(this);
+        }
+    }
+
     public void MoveTo(Vector3 position)
     {
         Controller.enabled = false;

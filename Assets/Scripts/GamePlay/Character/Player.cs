@@ -49,7 +49,7 @@ public class Player : CharacterBase
         HealthManager.OwnerId = Id;
         WeaponController = new WeaponController(new List<WeaponBase> { new RocketLaucnherWeapon(), new TeleportWeapon() });
         BoosterContainer = new BoosterContainer();
-        _inputs = new bool[7];
+        _inputs = new bool[17];
         controllHeight = Controller.height;
     }
 
@@ -61,34 +61,75 @@ public class Player : CharacterBase
         HealthManager.Tick();
 
         Vector2 inputDirection = Vector2.zero;
-        if (_inputs[0])
+        if (_inputs[0]) //W
         {
             inputDirection.y += 1;
         }
-        if (_inputs[1])
+        if (_inputs[1]) //S
         {
             inputDirection.y -= 1;
         }
-        if (_inputs[2])
+        if (_inputs[2]) //A
         {
             inputDirection.x -= 1;
         }
-        if (_inputs[3])
+        if (_inputs[3]) //D
         {
             inputDirection.x += 1;
         }
-        if (_inputs[4])
+        if (_inputs[4]) //space
         {
-            //space
+            
         }
-        if (_inputs[5])
+        if (_inputs[5]) //shift
         {
-            //shift
+            
         }
-        if (_inputs[6])
+        if (_inputs[6]) //ctrl
         {
-            //ctrl
+            
         }
+        if (_inputs[7]) //Alpha1
+        {
+            TryChooseWeaponByIndex(0);
+        }
+        if (_inputs[8]) //Alpha2
+        {
+            TryChooseWeaponByIndex(1);
+        }
+        if (_inputs[9]) //Alpha3
+        {
+            TryChooseWeaponByIndex(2);
+        }
+        if (_inputs[10]) //Alpha4
+        {
+            TryChooseWeaponByIndex(3);
+        }
+        if (_inputs[11]) //Alpha15
+        {
+            TryChooseWeaponByIndex(4);
+        }
+        if (_inputs[12]) //Alpha6
+        {
+            TryChooseWeaponByIndex(5);
+        }
+        if (_inputs[13]) //Alpha7
+        {
+            TryChooseWeaponByIndex(6);
+        }
+        if (_inputs[14]) //Alpha8
+        {
+            TryChooseWeaponByIndex(7);
+        }
+        if (_inputs[15]) //Alpha9
+        {
+            TryChooseWeaponByIndex(8);
+        }
+        //if (_inputs[16]) //Alpha0
+        //{
+        //    TryChooseWeaponByIndex(0);
+        //}
+
 
         Move(inputDirection);
     }

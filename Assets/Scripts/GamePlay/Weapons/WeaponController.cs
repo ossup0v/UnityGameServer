@@ -17,6 +17,24 @@ public class WeaponController
         return weapons[weaponCurrentIndex];
     }
 
+    public WeaponBase TryChooseWeaponByIndex(int index, out bool result)
+    {
+        result = false;
+        
+        if (index < 0)
+        { 
+            return GetCurrentWeapon();
+        }
+
+        if (weapons.Count > index)
+        {
+            weaponCurrentIndex = index;
+            result = true;
+        }
+
+        return GetCurrentWeapon();
+    }
+
     public WeaponBase ChangeWeapon(int leftOrRigth)
     {
         var weaponCount = weapons.Count - 1;
@@ -26,22 +44,22 @@ public class WeaponController
             if (weaponCurrentIndex == weaponCount)
             {
                 weaponCurrentIndex = 0;
-                return weapons[weaponCurrentIndex];
+                return GetCurrentWeapon();
             }
 
             weaponCurrentIndex++;
-            return weapons[weaponCurrentIndex];
+            return GetCurrentWeapon();
         }
         else
         {
             if (weaponCurrentIndex == 0)
             {
                 weaponCurrentIndex = weaponCount;
-                return weapons[weaponCurrentIndex];
+                return GetCurrentWeapon();
             }
 
             weaponCurrentIndex--;
-            return weapons[weaponCurrentIndex];
+            return GetCurrentWeapon();
         }
     }
 }
