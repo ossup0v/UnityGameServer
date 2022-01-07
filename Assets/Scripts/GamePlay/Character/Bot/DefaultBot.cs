@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BotBase : CharacterBase
+public class DefaultBot : CharacterBase
 {
     private float _chaseRange = 10f;
     private bool isPatrolRoutineRunning;
@@ -10,8 +10,8 @@ public class BotBase : CharacterBase
     private BotState _state;
     private Player _target;
 
-    public float patrolSpeed = 1f;
-    public float chaseSpeed = 1f;
+    private float patrolSpeed = 5f;
+    private float chaseSpeed = 5f;
     public float detectionRange = 15f;
     public float patrolDuration = 3f;
     public float idleDuration = 3f;
@@ -35,7 +35,7 @@ public class BotBase : CharacterBase
         HealthManager = new HealthManager(false);
         HealthManager.OwnerId = Id;
 
-        WeaponController = new WeaponController(new List<WeaponBase> { new GunWeapon() });
+        WeaponController = new WeaponController(new List<WeaponBase> { new GunWeapon(this) });
         BoosterContainer = new BoosterContainer();
 
         RoomSendClient.SpawnBot(this);
@@ -200,6 +200,9 @@ public class BotBase : CharacterBase
                 RatingManager.AddKillBot(attacker.Id);
                 RoomSendClient.UpdateRatingTableBotsKills(RatingManager.GetPlayerEntity(attacker.Id).KilledBots, attacker.Id);
             }
+
+            var itemSpawned = ItemOnMapManager.Instance.CreateNewBullets(transform.position, WeaponKind.RocketLauncher, 5);
+            RoomSendClient.ItemSpawnedOnMap(itemSpawned);
 
             BotManager.RemoveBot(Id);
             Destroy(gameObject);

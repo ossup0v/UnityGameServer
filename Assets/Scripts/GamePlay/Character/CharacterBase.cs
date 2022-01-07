@@ -10,11 +10,12 @@ public abstract class CharacterBase : MonoBehaviour
     public CharacterController Controller;
     public HealthManager HealthManager;
     public Transform ShootOrigin;
-    public float Gravity = -9.81f * 2;
+    protected float Gravity = -9.81f * 2;
     public float MoveSpeed = 5f;
     public float JumpSpeed = 5f;
     public abstract CharacterKind CharacterKind { get; }
     public abstract int Team { get; protected set; }
+    public bool Human => CharacterKind == CharacterKind.player;
 
     public bool IsCanAttackOther(CharacterBase other)
     {
@@ -40,6 +41,26 @@ public abstract class CharacterBase : MonoBehaviour
         RoomSendClient.PlayerChooseWeapon(this);
     }
 
+    public bool TryPickupBullets(BulletsOnMap bulldetsOnMap)
+    {
+        var weapon = WeaponController.TryAddBullets(bulldetsOnMap, out var result);
+
+        if (result)
+            RoomSendClient.PlayerBulletAmount(Id, weapon);
+
+        return result;
+    }
+
+    protected void TryChooseWeaponByIndex(int index)
+    {
+        WeaponController.TryChooseWeaponByIndex(index, out var result);
+
+        if (result)
+        {
+            RoomSendClient.PlayerChooseWeapon(this);
+        }
+    }
+
     public void MoveTo(Vector3 position)
     {
         Controller.enabled = false;
@@ -57,7 +78,7 @@ public abstract class CharacterBase : MonoBehaviour
         Vector3 pos = this.transform.position;
         Debug.DrawLine(pos, pos + viewDuraction * 10, Color.green, Mathf.Infinity);
 
-        WeaponController.GetCurrentWeapon().Shoot(this, viewDuraction, ShootOrigin.position);
+        WeaponController.GetCurrentWeapon().Shoot(viewDuraction, ShootOrigin.position);
     }
 
     public void TakeDamage(float damage, CharacterBase attacker)

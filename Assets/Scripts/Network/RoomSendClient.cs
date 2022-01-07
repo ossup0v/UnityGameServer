@@ -61,6 +61,42 @@ public class RoomSendClient
     #endregion
 
     #region Packets
+
+    public static void ItemOnMapPickup(int itemId)
+    {
+        using (Packet packet = new Packet((int)ToClient.itemOnMapPickup))
+        { 
+            packet.Write(itemId);
+
+            SendTCPDataToAll(packet);
+        }
+    }
+
+    public static void PlayerBulletAmount(Guid toClient, WeaponBase weapon)
+    {
+        using (Packet packet = new Packet((int)ToClient.playerBulletAmount))
+        {
+            packet.Write(toClient);
+            packet.Write((int)weapon.Kind);
+            packet.Write(weapon.MaxBulletAmount);
+            packet.Write(weapon.CurrentBulletAmount);
+
+            SendTCPData(toClient, packet);
+        }
+    }
+
+    public static void ItemSpawnedOnMap(ItemOnMapBase item)
+    {
+        using (Packet packet = new Packet((int)ToClient.itemSpawnedOnMap))
+        {
+            packet.Write(item.Id);
+            packet.Write((int)item.Kind);
+            packet.Write(item.Position);
+
+            SendTCPDataToAll(packet);
+        }
+    }
+
     public static void Welcome(Guid toClient, string msg)
     {
         using (Packet packet = new Packet((int)ToClient.welcome))
@@ -398,7 +434,7 @@ public class RoomSendClient
         }
     }
 
-    public static void SpawnBot(BotBase bot)
+    public static void SpawnBot(DefaultBot bot)
     {
         using (Packet packet = new Packet(ToClient.spawnBot))
         {
@@ -410,7 +446,7 @@ public class RoomSendClient
         }
     }
 
-    public static void SpawnBot(Guid toClient, BotBase bot)
+    public static void SpawnBot(Guid toClient, DefaultBot bot)
     {
         using (Packet packet = new Packet(ToClient.spawnBot))
         {
@@ -422,7 +458,7 @@ public class RoomSendClient
         }
     }
 
-    public static void BotPosition(BotBase bot)
+    public static void BotPosition(DefaultBot bot)
     {
         using (Packet packet = new Packet(ToClient.botPosition))
         {
@@ -444,7 +480,7 @@ public class RoomSendClient
         }
     }
 
-    public static void BotRotation(BotBase bot)
+    public static void BotRotation(DefaultBot bot)
     {
         using (Packet packet = new Packet(ToClient.botRotation))
         {

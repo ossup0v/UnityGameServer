@@ -4,19 +4,19 @@ using System.Collections.Generic;
 public class BotManager
 {
     public static int MaxBotCount = 6;
-    private static Dictionary<Guid, BotBase> _bots = new Dictionary<Guid, BotBase>();
+    private static Dictionary<Guid, DefaultBot> _bots = new Dictionary<Guid, DefaultBot>();
 
     public static Guid GetNextId()
     {
         return Guid.NewGuid();
     }
 
-    public static IReadOnlyDictionary<Guid, BotBase> GetBots() 
+    public static IReadOnlyDictionary<Guid, DefaultBot> GetBots() 
     {
         return _bots;
     }
 
-    public static void AddBot(Guid id, BotBase bot)
+    public static void AddBot(Guid id, DefaultBot bot)
     {
         _bots.Add(id, bot);
     }

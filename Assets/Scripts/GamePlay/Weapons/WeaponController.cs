@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class WeaponController 
+public class WeaponController
 {
     private List<WeaponBase> weapons;
     private int weaponCurrentIndex;
@@ -15,6 +16,24 @@ public class WeaponController
     public WeaponBase GetCurrentWeapon()
     {
         return weapons[weaponCurrentIndex];
+    }
+
+    public WeaponBase TryChooseWeaponByIndex(int index, out bool result)
+    {
+        result = false;
+
+        if (index < 0)
+        {
+            return GetCurrentWeapon();
+        }
+
+        if (weapons.Count > index)
+        {
+            weaponCurrentIndex = index;
+            result = true;
+        }
+
+        return GetCurrentWeapon();
     }
 
     public WeaponBase ChangeWeapon(int leftOrRigth)
@@ -43,5 +62,22 @@ public class WeaponController
             weaponCurrentIndex--;
             return weapons[weaponCurrentIndex];
         }
+    }
+
+    public WeaponBase TryAddBullets(BulletsOnMap bulletsOnMap, out bool result)
+    {
+        var targetWeapon = weapons.FirstOrDefault(x => x.Kind == bulletsOnMap.BulletsFor);
+
+        result = false;
+        if (targetWeapon == null)
+            return null;
+
+        if (targetWeapon.IsBulletsFull)
+            return null;
+        
+        result = true;
+
+        targetWeapon.AddBullets(bulletsOnMap.Amount);
+        return targetWeapon;
     }
 }

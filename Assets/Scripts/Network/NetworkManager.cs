@@ -57,9 +57,9 @@ public class NetworkManager : MonoBehaviour
         Room.Stop();
     }
 
-    public BotBase InstantiateBot(Vector3 spawnPoint)
+    public DefaultBot InstantiateBot(Vector3 spawnPoint)
     {
-        return Instantiate(BotPrefab, spawnPoint, Quaternion.identity).GetComponent<BotBase>();
+        return Instantiate(BotPrefab, spawnPoint, Quaternion.identity).GetComponent<DefaultBot>();
     }
 
     public Player InstantiatePlayer(int team)

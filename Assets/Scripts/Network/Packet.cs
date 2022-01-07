@@ -37,6 +37,9 @@ public enum ToClient
     botHit,
     ratingTableUpdateKilledBots,
     playerScale,
+    itemSpawnedOnMap,
+    playerBulletAmount,
+    itemOnMapPickup,
 
     //server packets
     roomPortToConnect,

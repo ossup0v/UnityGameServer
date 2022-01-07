@@ -47,7 +47,7 @@ public class Player : CharacterBase
         Team = team;
         HealthManager = new HealthManager(true);
         HealthManager.OwnerId = Id;
-        WeaponController = new WeaponController(new List<WeaponBase> { new RocketLaucnherWeapon(), new TeleportWeapon() });
+        WeaponController = new WeaponController(new List<WeaponBase> { new RocketLaucnherWeapon(this), new TeleportWeapon(this) });
         BoosterContainer = new BoosterContainer();
         _inputs = new bool[7];
         controllHeight = Controller.height;
