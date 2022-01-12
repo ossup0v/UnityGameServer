@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using UnityEngine;
@@ -198,7 +199,6 @@ public class Client
         }
 
         RatingManager.InitPlayer(player);
-        RoomSendClient.InitRatingTable(id, RatingManager.Rating);
         RoomSendClient.InitMap(id, MapSaveManager.Instance.GetCachedObjects());
 
         foreach (Client client in Room.Clients.Values)
@@ -206,7 +206,7 @@ public class Client
             if (client.player != null)
             {
                 RoomSendClient.SpawnPlayer(client.id, player);
-                RoomSendClient.AddPlayerRatingTable(client.id, player);
+                //RoomSendClient.AddPlayerRatingTable(client.id, player);
             }
         }
 
@@ -226,7 +226,7 @@ public class Client
         Debug.Log($"{tcp.Socket.Client.RemoteEndPoint} was disconnected");
 
         ThreadManager.ExecuteOnMainThread(() =>
-        { 
+        {
             RatingManager.RemovePlayer(player);
             RoomSendClient.UpdateFullRatingTable(RatingManager.Rating);
             UnityEngine.Object.Destroy(player.gameObject);

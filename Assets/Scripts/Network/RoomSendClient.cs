@@ -334,24 +334,6 @@ public class RoomSendClient
     }
     #endregion
 
-    public static void InitRatingTable(Guid toClient, Dictionary<Guid, RatingEntity> rating)
-    {
-        using (Packet packet = new Packet(ToClient.ratingTableInit))
-        {
-            packet.Write(rating.Count);
-
-            foreach (var enity in rating.Values)
-            {
-                packet.Write(enity.PlayerId);
-                packet.Write(enity.Username);
-                packet.Write(enity.Killed);
-                packet.Write(enity.Died);
-            }
-
-            SendTCPData(toClient, packet);
-        }
-    }
-
     public static void UpdateFullRatingTable(Dictionary<Guid, RatingEntity> rating)
     {
         using (Packet packet = new Packet(ToClient.ratingTableInit))
@@ -364,6 +346,7 @@ public class RoomSendClient
                 packet.Write(enity.Username);
                 packet.Write(enity.Killed);
                 packet.Write(enity.Died);
+                packet.Write(enity.Team);
             }
 
             SendTCPDataToAll(packet);
@@ -408,6 +391,7 @@ public class RoomSendClient
         {
             packet.Write(entity.Id);
             packet.Write(entity.Username);
+            packet.Write(entity.Team);
 
             SendTCPData(toClient, packet);
         }

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 public class RoomClientHandler
@@ -8,11 +9,15 @@ public class RoomClientHandler
         Debug.Log("Welcome received");
 #warning todo сделать отправку этой инфы через сервер
         Guid clientIdCheck = packet.ReadGuid();
+        Debug.Log($"Welcome received {clientIdCheck}");
         string username = packet.ReadString();
+        Debug.Log($"Welcome received {username}");
         int team = packet.ReadInt();
+        Debug.Log($"Welcome received {team}");
 
         Debug.Log($"Welcome received from id on server {fromClient}, in packet {clientIdCheck}, team: {team}");
 
+        Debug.Log($"User {fromClient} team is {team}");
         Debug.Log($"{Room.Clients[fromClient].tcp.Socket.Client.RemoteEndPoint} connected successfully and is now player {fromClient}.");
         if (fromClient != clientIdCheck)
         {
@@ -20,6 +25,13 @@ public class RoomClientHandler
         }
 
         Room.Clients[fromClient].SendIntoGame(username, team);
+
+        if (RatingManager.Rating.Values.Count == Room.MaxPlayers)
+        {
+            Debug.Log($"rating table");
+            Debug.Log(string.Join(" ", RatingManager.Rating.Values.Select(x => $"username {x.Username}; team {x.Team}")));
+            RoomSendClient.UpdateFullRatingTable(RatingManager.Rating);
+        }
     }
 
     public static void PlayerMovement(Guid fromClient, Packet packet)
