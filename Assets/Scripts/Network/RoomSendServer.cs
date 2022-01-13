@@ -21,7 +21,7 @@ public class RoomSendServer
         {
             packet.Write(Room.RoomId);
             packet.Write(Room.MetagameRoomId);
-            packet.Write(Room.MaxPlayers);
+            packet.Write(Room.PlayersAmount);
             packet.Write(Room.PortForClients);
 
             SendTCPData(packet);

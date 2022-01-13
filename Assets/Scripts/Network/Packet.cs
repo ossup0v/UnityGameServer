@@ -40,6 +40,9 @@ public enum ToClient
     itemSpawnedOnMap,
     playerBulletAmount,
     itemOnMapPickup,
+    stageTime,
+    stageChanged,
+    destroyMapItem,
 
     //server packets
     roomPortToConnect,

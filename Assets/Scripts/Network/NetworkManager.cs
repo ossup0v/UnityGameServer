@@ -31,7 +31,7 @@ public class NetworkManager : MonoBehaviour
         var clientsPort = ClientsPort;
         var serverPort = ServerPort;
         var metagameRoomId = default(Guid);
-        var maxPlayersCount = 20;
+        var maxPlayersCount = 1;
         try
         {
 #warning не, ну это полная дичь, просто используй newtonsoft.json, пожалусйта

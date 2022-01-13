@@ -26,11 +26,13 @@ public class RoomClientHandler
 
         Room.Clients[fromClient].SendIntoGame(username, team);
 
-        if (RatingManager.Rating.Values.Count == Room.MaxPlayers)
+        if (RatingManager.Rating.Values.Count == Room.PlayersAmount)
         {
             Debug.Log($"rating table");
             Debug.Log(string.Join(" ", RatingManager.Rating.Values.Select(x => $"username {x.Username}; team {x.Team}")));
             RoomSendClient.UpdateFullRatingTable(RatingManager.Rating);
+
+            UnityGame.Instance.StartGame();
         }
     }
 

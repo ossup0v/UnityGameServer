@@ -206,7 +206,6 @@ public class Client
             if (client.player != null)
             {
                 RoomSendClient.SpawnPlayer(client.id, player);
-                //RoomSendClient.AddPlayerRatingTable(client.id, player);
             }
         }
 

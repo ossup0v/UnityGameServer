@@ -6,9 +6,6 @@ using UnityEngine;
 
 public class Room
 {
-    public static int MaxPlayers { get; private set; }
-    public static int PortForClients { get; private set; }
-    public static int PortForServer { get; private set; }
     public static Dictionary<Guid, Client> Clients = new Dictionary<Guid, Client>();
     public delegate void PacketHandler(Guid fromClient, Packet packet);
     public static Dictionary<int, PacketHandler> packetHandlers;
@@ -18,6 +15,10 @@ public class Room
     public static NetworkClient Server;
     public static Guid RoomId;
     public static Guid MetagameRoomId;
+
+    public static int PlayersAmount;
+    public static int PortForClients;
+    public static int PortForServer;
 
     public static Client GetClient(Guid clientId)
     {
@@ -30,7 +31,7 @@ public class Room
         int portForServer, 
         Guid metagameRoomId)
     {
-        MaxPlayers = maxPlayers;
+        PlayersAmount = maxPlayers;
         PortForClients = portForClients;
         PortForServer = portForServer;
         MetagameRoomId = metagameRoomId;
@@ -65,7 +66,7 @@ public class Room
 
         Debug.Log($"Incoming connection from {client.Client.RemoteEndPoint}...");
 
-        if (Clients.Count < MaxPlayers)
+        if (Clients.Count < PlayersAmount)
         {
             var newGuid = Guid.NewGuid();
             var newClient = new Client(newGuid);

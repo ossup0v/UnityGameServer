@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-public class MapSaveManager : MonoBehaviour 
+public class MapSaveManager : MonoBehaviour
 {
     public static MapSaveManager Instance;
 
@@ -35,7 +35,7 @@ public class MapSaveManager : MonoBehaviour
     }
 
     private void SaveObjectsToString()
-    { 
+    {
         var sb = new StringBuilder();
 
         foreach (var entity in Entities)
@@ -49,5 +49,11 @@ public class MapSaveManager : MonoBehaviour
     public string GetCachedObjects()
     {
         return CachedObjects;
+    }
+
+    public void DestroyItems()
+    {
+        foreach (var item in GameObject.FindObjectsOfType<MapEntityDestroyObject>())
+            Destroy(item.gameObject);
     }
 }

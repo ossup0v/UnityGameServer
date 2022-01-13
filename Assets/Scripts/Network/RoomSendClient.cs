@@ -486,5 +486,35 @@ public class RoomSendClient
         }
     }
 
+    public static void StageTime(long timeTicks)
+    {
+        using (Packet packet = new Packet(ToClient.stageTime))
+        {
+            packet.Write(timeTicks);
+
+            SendTCPDataToAll(packet);
+        }
+    }
+
+    public static void StageChanged(int stageId)
+    {
+        using (Packet packet = new Packet(ToClient.stageChanged))
+        {
+            packet.Write(stageId);
+
+            SendTCPDataToAll(packet);
+        }
+    }
+
+    public static void DestroyMapItem(int itemId)
+    {
+        using (Packet packet = new Packet(ToClient.destroyMapItem))
+        {
+            packet.Write(itemId);
+
+            SendTCPDataToAll(packet);
+        }
+    }
+
     #endregion
 }
