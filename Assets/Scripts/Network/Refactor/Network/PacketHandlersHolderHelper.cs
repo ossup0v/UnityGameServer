@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Refactor;
 
 public static class PacketHandlersHolderHelper
 {
@@ -12,15 +13,15 @@ public static class PacketHandlersHolderHelper
         {
             foreach (var assemblyType in assembly.GetTypes())
             {
-                var networkPacketAttribute = assemblyType.GetCustomAttribute(typeof(NetworkPacketAttribute), false) as NetworkPacketAttribute;
-                if (networkPacketAttribute != null)
+                var initReadPacketHandler = assemblyType.GetCustomAttribute(typeof(InitReadPacketHandler), false) as InitReadPacketHandler;
+                if (initReadPacketHandler != null)
                 {
-                    var isHasInterface = networkPacketAttribute.PacketHandler.GetInterfaces().Contains(typeof(IPacketHandlersHolder));
+                    var isHasInterface = initReadPacketHandler.PacketHandlerType.GetInterfaces().Contains(typeof(IPacketHandlersHolder));
                     if (isHasInterface)
                     {
-                        if (networkPacketAttribute.PacketHandler == packetHandlersHolderType)
+                        if (initReadPacketHandler.PacketHandlerType == packetHandlersHolderType)
                         {
-                            var packetID = networkPacketAttribute.PacketID;
+                            var packetID = initReadPacketHandler.PacketID;
                             var packetHandler = Activator.CreateInstance(assemblyType) as IPacketHandleable;
                             Logger.WriteLog(nameof(FindAllPacketHandlersFor), $"Found {assemblyType} with packetID {packetID} for {packetHandlersHolderType}");
                             packetHandlersByPacketID.Add(packetID, packetHandler);
@@ -33,5 +34,35 @@ public static class PacketHandlersHolderHelper
                 }
             }
         }
+    }
+
+    public static List<IPacketReceiver> Test(IPacketHandlersHolder packetHandlersHolder, Type packetHandlersHolderType)
+    {
+        var result = new List<IPacketReceiver>();
+        foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+        {
+            foreach (var assemblyType in assembly.GetTypes())
+            {
+                var initPacketReceiverAttribute = assemblyType.GetCustomAttribute(typeof(InitPacketReceiverAttribute), false) as InitPacketReceiverAttribute;
+                if (initPacketReceiverAttribute != null)
+                {
+                    var isHasInterface = initPacketReceiverAttribute.PacketHandlerType.GetInterfaces().Contains(typeof(IPacketHandlersHolder));
+                    if (isHasInterface)
+                    {
+                        if (initPacketReceiverAttribute.PacketHandlerType == packetHandlersHolderType)
+                        {
+                            var packetReceiver = Activator.CreateInstance(assemblyType, packetHandlersHolder) as IPacketReceiver;
+                            // Logger.WriteLog(nameof(FindAllPacketHandlersFor), $"Found {assemblyType} with packetID {packetID} for {packetHandlersHolderType}");
+                            result.Add(packetReceiver);
+                        }
+                    }
+                    else
+                    {
+                        Logger.WriteError(nameof(FindAllPacketHandlersFor), $"{assemblyType} has not implementing {nameof(IPacketHandlersHolder)} interface");
+                    }
+                }
+            }
+        }
+        return result;
     }
 }

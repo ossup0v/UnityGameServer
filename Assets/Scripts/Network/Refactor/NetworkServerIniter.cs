@@ -11,8 +11,6 @@ namespace Refactor
 
         private ServerNetworkBytesReader _serverNetworkPacketsReceiver;
 
-        private HelloPacketReceiver helloPacketReceiver;
-
         public int BufferSize { get; } = 1024;
 
         private void Awake()
@@ -21,11 +19,6 @@ namespace Refactor
             _udpServer = new UDPServer(BufferSize, _serverNetworkPacketsReceiver);
             _tcpServer = new TCPServer(BufferSize, _serverNetworkPacketsReceiver);            
             TestBind();
-        }
-
-        private void Start()
-        {
-            helloPacketReceiver = new HelloPacketReceiver(_serverNetworkPacketsReceiver);
         }
 
         private void TestBind()
@@ -37,11 +30,12 @@ namespace Refactor
 
         private void OnDestroy()
         {
-            helloPacketReceiver.Dispose();
+            _serverNetworkPacketsReceiver.Dispose();
         }
     }
 
-    public sealed class HelloPacketReceiver : PacketReceiver<HelloReadPacket>
+    [InitPacketReceiverAttribute(typeof(ServerNetworkBytesReader))]
+    public sealed class HelloPacketReceiver : PacketReceiverBase<HelloReadPacket>
     {
         protected override int _packetID => HelloReadPacket.PacketID_1;
 
@@ -52,6 +46,20 @@ namespace Refactor
         public override void ReceivePacket(HelloReadPacket packet)
         {
             Debug.Log("packed received");
+        }
+    }
+    [InitPacketReceiverAttribute(typeof(ServerNetworkBytesReader))]
+    public sealed class HelloPacketReceiver2 : PacketReceiverBase<HelloReadPacket>
+    {
+        protected override int _packetID => HelloReadPacket.PacketID_1;
+
+        public HelloPacketReceiver2(IPacketHandlersHolder packetHandlersHolder) : base(packetHandlersHolder)
+        {
+        }
+
+        public override void ReceivePacket(HelloReadPacket packet)
+        {
+            Debug.Log("packed received ANOTHER ONE");
         }
     }
 }

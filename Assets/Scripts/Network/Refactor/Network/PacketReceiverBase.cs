@@ -1,13 +1,13 @@
 namespace Refactor
 {
-    public abstract class PacketReceiver<T> : IPacketReceivable<T> where T : ReadPacketBase
+    public abstract class PacketReceiverBase<T> : IPacketReceiver, IPacketReceivable<T> where T : ReadPacketBase
     {
         protected IPacketHandlersHolder _packetHandlersHolder;
         protected abstract int _packetID { get; }
 
         public abstract void ReceivePacket(T packet);
 
-        protected PacketReceiver(IPacketHandlersHolder packetHandlersHolder)
+        protected PacketReceiverBase(IPacketHandlersHolder packetHandlersHolder)
         {
             _packetHandlersHolder = packetHandlersHolder;
             SubscribeToPacketHandler();
@@ -29,5 +29,10 @@ namespace Refactor
             var packetHandler = _packetHandlersHolder.GetPacketHandlerByPacketID(_packetID) as NetworkReadPacketHandler<T>;
             packetHandler.UnsubscribeFromPacketHandler(this);
         }
+    }
+
+    public interface IPacketReceiver
+    {
+        void Dispose();
     }
 }
