@@ -5,9 +5,8 @@ using System.Reflection;
 
 public static class PacketHandlersHolderHelper
 {
-    public static void FindAllPacketHandlersFor<T>(Dictionary<int, IPacketHandleable> packetHandlersByPacketID) where T : class, IPacketHandlersHolder
+    public static void FindAllPacketHandlersFor(Dictionary<int, IPacketHandleable> packetHandlersByPacketID, Type packetHandlersHolderType)
     {
-        var packetHandlersHolderType = typeof(T);
         Logger.WriteLog(nameof(FindAllPacketHandlersFor), $"Searching packet handlers for {packetHandlersHolderType}");
         foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
         {
@@ -19,7 +18,7 @@ public static class PacketHandlersHolderHelper
                     var isHasInterface = networkPacketAttribute.PacketHandler.GetInterfaces().Contains(typeof(IPacketHandlersHolder));
                     if (isHasInterface)
                     {
-                        if (networkPacketAttribute.PacketHandler == typeof(T))
+                        if (networkPacketAttribute.PacketHandler == packetHandlersHolderType)
                         {
                             var packetID = networkPacketAttribute.PacketID;
                             var packetHandler = Activator.CreateInstance(assemblyType) as IPacketHandleable;

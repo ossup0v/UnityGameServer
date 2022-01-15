@@ -3,7 +3,7 @@ using System.Net.Sockets;
 
 namespace Refactor
 {
-    public ref struct SocketData
+    public struct SocketData
     {
         public TcpClient TcpClient { get; private set; }
         public IPEndPoint IPEndPoint { get; private set; }

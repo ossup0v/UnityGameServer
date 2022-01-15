@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace Refactor
 {
-    public abstract class NetworkPacketReceiver<T> : IBytesReadable, IPacketHandlersHolder where T : class, IPacketHandlersHolder
+    public abstract class NetworkPacketsReceiver : IBytesReadable, IPacketHandlersHolder
     {
         private Dictionary<int, IPacketHandleable> _packetHandlersByPacketID = new Dictionary<int, IPacketHandleable>();
 
-        public NetworkPacketReceiver()
+        public NetworkPacketsReceiver()
         {
-            PacketHandlersHolderHelper.FindAllPacketHandlersFor<T>(_packetHandlersByPacketID);
+            PacketHandlersHolderHelper.FindAllPacketHandlersFor(_packetHandlersByPacketID, this.GetType());
         }
 
         public void ReadBytes(ref SocketData socketData, byte[] bytes)
@@ -51,13 +51,12 @@ namespace Refactor
 
         private void PrintCantFindPacket(int packetID)
         {
-            Logger.WriteError(nameof(NetworkServerReceiver), $"Can't find packet handler with ID {packetID}");
+            Logger.WriteError(this.GetType().Name, $"Can't find packet handler with ID {packetID}");
         }
 
         private bool IsPacketHandlersContainsPacketID(int packetID)
         {
             return _packetHandlersByPacketID.ContainsKey(packetID);
         }
-
     }
 }

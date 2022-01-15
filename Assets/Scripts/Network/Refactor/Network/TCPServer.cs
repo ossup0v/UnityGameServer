@@ -59,6 +59,7 @@ namespace Refactor
 
         private void BeginAccept()
         {
+            Logger.WriteLog("", "begin accept");
             _tcpListener.BeginAcceptTcpClient(OnAcceptCompleted, null);
         }
 
@@ -92,7 +93,7 @@ namespace Refactor
             if (readedNumberOfBytes <= 0)
             {
                 Logger.WriteError(nameof(OnReaded), $"Readed {readedNumberOfBytes} bytes.");
-                CloseConnection();
+                // TODO закрыть подключение для юзера
                 return;
             }
             // TODO: нужно будет убрать создание нового массива
