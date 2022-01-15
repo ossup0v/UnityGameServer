@@ -36,9 +36,10 @@ public abstract class WritePacketBase
         WritePosition = 0;
     }
 
-    public void WriteGUIDAndSerializePacket()
+    public void WriteBasePacketDataAndSerializePacket()
     {
         Reset();
+        this.Write(PacketID);
         this.Write(GUID);
         SerializePacket();
     }

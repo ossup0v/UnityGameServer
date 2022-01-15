@@ -59,7 +59,6 @@ namespace Refactor
 
         private void BeginAccept()
         {
-            Logger.WriteLog("", "begin accept");
             _tcpListener.BeginAcceptTcpClient(OnAcceptCompleted, null);
         }
 
@@ -92,7 +91,7 @@ namespace Refactor
 
             if (readedNumberOfBytes <= 0)
             {
-                Logger.WriteError(nameof(OnReaded), $"Readed {readedNumberOfBytes} bytes.");
+                Logger.WriteError(nameof(OnReaded), $"Readed {readedNumberOfBytes} bytes. Client probably disconnected.");
                 // TODO закрыть подключение для юзера
                 return;
             }

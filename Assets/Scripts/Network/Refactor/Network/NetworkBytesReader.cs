@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace Refactor
 {
-    public abstract class NetworkPacketsReceiver : IBytesReadable, IPacketHandlersHolder
+    public abstract class NetworkBytesReader : IBytesReadable, IPacketHandlersHolder
     {
         private Dictionary<int, IPacketHandleable> _packetHandlersByPacketID = new Dictionary<int, IPacketHandleable>();
 
-        public NetworkPacketsReceiver()
+        public NetworkBytesReader()
         {
             PacketHandlersHolderHelper.FindAllPacketHandlersFor(_packetHandlersByPacketID, this.GetType());
         }
