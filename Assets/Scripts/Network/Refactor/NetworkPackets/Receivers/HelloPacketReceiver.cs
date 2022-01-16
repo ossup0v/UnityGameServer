@@ -3,17 +3,19 @@ using UnityEngine;
 namespace Refactor
 {
     // [InitPacketReceiver(typeof(ServerNetworkBytesReader))]
-    public sealed class HelloPacketReceiver : PacketReceiverBase<HelloReadPacket>
+    public sealed class HelloPacketReceiver : PacketReceiverMainThreadBase<HelloReadPacket>
     {
         protected override int _packetID => HelloReadPacket.PacketID_1;
         private NetworkServerPacketsSender _networkServerPacketsSender;
+        private ClientsHolder _clientsHolder;
 
-        public HelloPacketReceiver(IPacketHandlersHolder packetHandlersHolder, NetworkServerPacketsSender networkServerPacketsSender) : base(packetHandlersHolder)
+        public HelloPacketReceiver(ClientsHolder clientsHolder, IPacketHandlersHolder packetHandlersHolder, NetworkServerPacketsSender networkServerPacketsSender) : base(packetHandlersHolder)
         {
             _networkServerPacketsSender = networkServerPacketsSender;
+            _clientsHolder = clientsHolder;
         }
 
-        public override void ReceivePacket(HelloReadPacket packet)
+        protected override void ReceivePacketMainThread(HelloReadPacket packet)
         {
             Debug.Log("got something");
             var helloResponsePacket = new HelloResponseWritePacket();
@@ -21,7 +23,9 @@ namespace Refactor
             helloResponsePacket.GUID = someGUID;
             if (packet.SocketData.IsTcp)
             {
-                // _networkServerPacketsSender.SendTCP(packet.SocketData.TcpClient, helloResponsePacket);
+                _clientsHolder.AddRemoteTcpClient(someGUID, packet.SocketData.TcpClient);
+                var remoteTcpClient = _clientsHolder.GetTcpClient(someGUID);
+                _networkServerPacketsSender.SendTCP(remoteTcpClient, helloResponsePacket);                
             }
             else
             {

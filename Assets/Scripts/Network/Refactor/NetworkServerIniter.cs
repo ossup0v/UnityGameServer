@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Refactor
@@ -12,6 +11,7 @@ namespace Refactor
         private ServerNetworkBytesReader _serverNetworkPacketsReceiver;
         private NetworkServerPacketsSender _networkServerPacketsSender;
         private HelloPacketReceiver _helloPacketReceiver;
+        private ClientsHolder _clientsHolder;
 
         public int BufferSize { get; } = 1024;
 
@@ -21,6 +21,7 @@ namespace Refactor
             _udpServer = new UDPServer(BufferSize, _serverNetworkPacketsReceiver);
             _tcpServer = new TCPServer(BufferSize, _serverNetworkPacketsReceiver);
             _networkServerPacketsSender = new NetworkServerPacketsSender(BufferSize, _udpServer, _tcpServer);
+            _clientsHolder = new ClientsHolder();
             TestBind();
         }
 
@@ -30,7 +31,7 @@ namespace Refactor
             _udpServer.Bind(port);
             _tcpServer.Bind(port);
 
-            _helloPacketReceiver = new HelloPacketReceiver(_serverNetworkPacketsReceiver, _networkServerPacketsSender);
+            _helloPacketReceiver = new HelloPacketReceiver(_clientsHolder, _serverNetworkPacketsReceiver, _networkServerPacketsSender);
         }
 
         private void OnDestroy()
