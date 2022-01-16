@@ -6,12 +6,10 @@ namespace Refactor
     public abstract class NetworkBytesReader : IBytesReadable, IPacketHandlersHolder
     {
         private Dictionary<int, IPacketHandleable> _packetHandlersByPacketID = new Dictionary<int, IPacketHandleable>();
-        private List<IPacketReceiver> _packetReceivers;
 
         public NetworkBytesReader()
         {
             PacketHandlersHolderHelper.FindAllPacketHandlersFor(_packetHandlersByPacketID, this.GetType());
-            _packetReceivers = PacketHandlersHolderHelper.Test(this, this.GetType());
         }
 
         public void ReadBytes(ref SocketData socketData, byte[] bytes)
@@ -63,11 +61,7 @@ namespace Refactor
 
         public void Dispose()
         {
-            foreach (var packetReceiver in _packetReceivers)
-            {
-                packetReceiver.Dispose();
-            }
-            _packetReceivers.Clear();
+            // TODO
         }
     }
 }

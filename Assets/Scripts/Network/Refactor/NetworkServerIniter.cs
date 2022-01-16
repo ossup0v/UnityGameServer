@@ -31,7 +31,7 @@ namespace Refactor
             _udpServer.Bind(port);
             _tcpServer.Bind(port);
 
-            _helloPacketReceiver = new HelloPacketReceiver(_clientsHolder, _serverNetworkPacketsReceiver, _networkServerPacketsSender);
+            _helloPacketReceiver = new HelloPacketReceiver(_clientsHolder, _networkServerPacketsSender, _serverNetworkPacketsReceiver);
         }
 
         private void OnDestroy()

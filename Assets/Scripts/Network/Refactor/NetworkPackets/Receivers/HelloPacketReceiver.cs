@@ -3,16 +3,12 @@ using UnityEngine;
 namespace Refactor
 {
     // [InitPacketReceiver(typeof(ServerNetworkBytesReader))]
-    public sealed class HelloPacketReceiver : PacketReceiverMainThreadBase<HelloReadPacket>
+    public sealed class HelloPacketReceiver : ServerPacketReceiverMainThreadBase<HelloReadPacket>
     {
         protected override int _packetID => HelloReadPacket.PacketID_1;
-        private NetworkServerPacketsSender _networkServerPacketsSender;
-        private ClientsHolder _clientsHolder;
 
-        public HelloPacketReceiver(ClientsHolder clientsHolder, IPacketHandlersHolder packetHandlersHolder, NetworkServerPacketsSender networkServerPacketsSender) : base(packetHandlersHolder)
+        public HelloPacketReceiver(IClientsHolder clientsHolder, INetworkServerPacketsSender networkServerPacketsSender, IPacketHandlersHolder packetHandlersHolder) : base(clientsHolder, networkServerPacketsSender, packetHandlersHolder)
         {
-            _networkServerPacketsSender = networkServerPacketsSender;
-            _clientsHolder = clientsHolder;
         }
 
         protected override void ReceivePacketMainThread(HelloReadPacket packet)
