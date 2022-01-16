@@ -5,6 +5,8 @@ public abstract class NetworkReadPacketHandler<T> : IPacketHandleable where T : 
 {
     protected List<IPacketReceivable<T>> packetReceivables = new List<IPacketReceivable<T>>();
 
+    public abstract int PacketID { get; }
+
     public virtual void SubscribeToPacketHandler(IPacketReceivable<T> packetReceivable)
     {
         packetReceivables.Add(packetReceivable);

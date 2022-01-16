@@ -21,8 +21,8 @@ public static class PacketHandlersHolderHelper
                     {
                         if (initReadPacketHandler.PacketHandlerType == packetHandlersHolderType)
                         {
-                            var packetID = initReadPacketHandler.PacketID;
                             var packetHandler = Activator.CreateInstance(assemblyType) as IPacketHandleable;
+                            var packetID = packetHandler.PacketID;;
                             Logger.WriteLog(nameof(FindAllPacketHandlersFor), $"Found {assemblyType} with packetID {packetID} for {packetHandlersHolderType}");
                             packetHandlersByPacketID.Add(packetID, packetHandler);
                         }

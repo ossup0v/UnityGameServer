@@ -2,15 +2,15 @@ using Refactor;
 
 public abstract class ReadPacketBase
 {
-    protected SocketData _socketData;
     protected byte[] _packetBytes;
 
     public System.Guid GUID { get; set; }
     public int ReadPosition { get; protected set; }
+    public SocketData SocketData { get; protected set; }
 
     public void SetSocketData(ref SocketData socketData)
     {
-        _socketData = socketData;
+        SocketData = socketData;
     }
 
     public void SetBytes(byte[] packetBytes)

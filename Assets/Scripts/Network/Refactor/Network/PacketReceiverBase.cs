@@ -30,9 +30,4 @@ namespace Refactor
             packetHandler.UnsubscribeFromPacketHandler(this);
         }
     }
-
-    public interface IPacketReceiver
-    {
-        void Dispose();
-    }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Net.Sockets;
+using System.Threading.Tasks;
 
 namespace Refactor
 {
@@ -10,6 +11,8 @@ namespace Refactor
         private byte[] _receiveBuffer;
         private IBytesReadable _bytesReadable;
         private readonly int _bufferSize;
+
+        public event Action ConnectedToServer;
 
         public TCPClient(int bufferSize, IBytesReadable bytesReadable)
         {
@@ -24,7 +27,7 @@ namespace Refactor
             _tcpClient.SendBufferSize = _bufferSize;
             _receiveBuffer = new byte[_bufferSize];
             Logger.WriteLog(nameof(Connect), $"TCP Trying connect to server {ip}:{port}");
-            _tcpClient.BeginConnect(ip, port, OnConnected, null);
+            _tcpClient.BeginConnect(ip, port, OnConnected, null);            
         }
 
         public void CloseConnection()
@@ -68,6 +71,7 @@ namespace Refactor
 
             _networkStream = _tcpClient.GetStream();
             BeginRead();
+            ConnectedToServer?.Invoke();
         }
 
         private void BeginRead()
