@@ -26,7 +26,7 @@ public abstract class NetworkReadPacketHandler<T> : IPacketHandleable where T : 
         packet.SetReadPosition(readOffset);
         packet.SetSocketData(ref socketData);
         packet.SetBytes(packetBytes);
-        packet.ReadGUIDAndDeserializePacket();
+        packet.ReadClientIDAndDeserializePacket();
         NotifySubscribers(packet);
     }
 

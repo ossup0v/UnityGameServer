@@ -10,7 +10,7 @@ namespace Refactor
 
         private ServerNetworkBytesReader _serverNetworkPacketsReceiver;
         private NetworkServerPacketsSender _networkServerPacketsSender;
-        private HelloPacketReceiver _helloPacketReceiver;
+        private HelloReadPacketReceiver _helloPacketReceiver;
         private ClientsHolder _clientsHolder;
 
         public int BufferSize { get; } = 1024;
@@ -31,7 +31,7 @@ namespace Refactor
             _udpServer.Bind(port);
             _tcpServer.Bind(port);
 
-            _helloPacketReceiver = new HelloPacketReceiver(_clientsHolder, _networkServerPacketsSender, _serverNetworkPacketsReceiver);
+            _helloPacketReceiver = new HelloReadPacketReceiver(_clientsHolder, _networkServerPacketsSender, _serverNetworkPacketsReceiver);
         }
 
         private void OnDestroy()

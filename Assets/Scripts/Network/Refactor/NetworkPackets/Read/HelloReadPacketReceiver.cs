@@ -3,11 +3,11 @@ using UnityEngine;
 namespace Refactor
 {
     // [InitPacketReceiver(typeof(ServerNetworkBytesReader))]
-    public sealed class HelloPacketReceiver : ServerPacketReceiverMainThreadBase<HelloReadPacket>
+    public sealed class HelloReadPacketReceiver : ServerPacketReceiverMainThreadBase<HelloReadPacket>
     {
         protected override int _packetID => HelloReadPacket.PacketID_1;
 
-        public HelloPacketReceiver(IClientsHolder clientsHolder, INetworkServerPacketsSender networkServerPacketsSender, IPacketHandlersHolder packetHandlersHolder) : base(clientsHolder, networkServerPacketsSender, packetHandlersHolder)
+        public HelloReadPacketReceiver(IClientsHolder clientsHolder, INetworkServerPacketsSender networkServerPacketsSender, IPacketHandlersHolder packetHandlersHolder) : base(clientsHolder, networkServerPacketsSender, packetHandlersHolder)
         {
         }
 
@@ -16,7 +16,7 @@ namespace Refactor
             Debug.Log("got something");
             var helloResponsePacket = new HelloResponseWritePacket();
             var someGUID = System.Guid.NewGuid();
-            helloResponsePacket.GUID = someGUID;
+            helloResponsePacket.ClientID = someGUID;
             if (packet.SocketData.IsTcp)
             {
                 _clientsHolder.AddRemoteTcpClient(someGUID, packet.SocketData.TcpClient);
@@ -27,16 +27,6 @@ namespace Refactor
             {
                 Debug.Log("it is not TCP connection");
             }
-        }
-    }
-
-    public sealed class HelloResponseWritePacket : WritePacketBase
-    {
-        public override int PacketID => 1;
-
-        public override void SerializePacket()
-        {
-            
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Refactor
         private UDPClient _udpClient;
         private TCPClient _tcpClient;
 
-        public Guid ClientGUID { get; private set; }
+        public Guid ClientID { get; private set; }
 
         public NetworkClientPacketsSender(int bufferSize, UDPClient udpClient, TCPClient tcpClient)
         {
@@ -17,21 +17,21 @@ namespace Refactor
             _tcpClient = tcpClient;
         }
 
-        public void SetClientGUID(Guid clientGUID)
+        public void SetClientID(Guid clientID)
         {
-            ClientGUID = clientGUID;
+            ClientID = clientID;
         }
 
         public void SendTCP(WritePacketBase writePacket)
         {
-            writePacket.GUID = ClientGUID;
+            writePacket.ClientID = ClientID;
             var bytesToSend = GetBytesToSend(writePacket);
             _tcpClient.Send(bytesToSend);
         }
 
         public void SendUDP(WritePacketBase writePacket)
         {
-            writePacket.GUID = ClientGUID;
+            writePacket.ClientID = ClientID;
             var bytesToSend = GetBytesToSend(writePacket);
             _udpClient.Send(bytesToSend);
         }

@@ -4,7 +4,7 @@ public abstract class ReadPacketBase
 {
     protected byte[] _packetBytes;
 
-    public System.Guid GUID { get; set; }
+    public System.Guid ClientID { get; set; }
     public int ReadPosition { get; protected set; }
     public SocketData SocketData { get; protected set; }
 
@@ -33,10 +33,10 @@ public abstract class ReadPacketBase
         ReadPosition = 0;
     }
 
-    public void ReadGUIDAndDeserializePacket()
+    public void ReadClientIDAndDeserializePacket()
     {
         Reset();
-        GUID = this.ReadGuid();
+        ClientID = this.ReadGuid();
         DeserializePacket();
     }
 

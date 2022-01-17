@@ -9,7 +9,7 @@ public abstract class WritePacketBase
     public int Lenght => WritePosition;
     public abstract int PacketID { get; }
 
-    public System.Guid GUID { get; set; }
+    public System.Guid ClientID { get; set; }
 
     public void SetSocketData(ref SocketData socketData)
     {
@@ -40,7 +40,7 @@ public abstract class WritePacketBase
     {
         Reset();
         this.Write(PacketID);
-        this.Write(GUID);
+        this.Write(ClientID);
         SerializePacket();
     }
 

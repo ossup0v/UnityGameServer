@@ -6,6 +6,6 @@ namespace Refactor
     {
         void SendTCP(WritePacketBase writePacket);
         void SendUDP(WritePacketBase writePacket);
-        void SetClientGUID(Guid clientGUID);
+        void SetClientID(Guid clientID);
     }
 }
