@@ -32,12 +32,18 @@ namespace Refactor
 
         public void CloseConnection()
         {
-            _networkStream.Close();
-            _networkStream.Dispose();
-            _networkStream = null;
-            _tcpClient.Close();
-            _tcpClient.Dispose();
-            _tcpClient = null;
+            if (_networkStream != null)
+            {
+                _networkStream.Close();
+                _networkStream.Dispose();
+                _networkStream = null;
+            }
+            if (_tcpClient != null)
+            {
+                _tcpClient.Close();
+                _tcpClient.Dispose();
+                _tcpClient = null;
+            }
         }
 
         public void Send(byte[] bytes)

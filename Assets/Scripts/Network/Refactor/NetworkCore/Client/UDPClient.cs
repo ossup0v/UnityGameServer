@@ -33,9 +33,12 @@ namespace Refactor
 
         public void CloseConnection()
         {
-            _udpClient.Close();      
-            _udpClient.Dispose(); 
-            _udpClient = null;     
+            if (_udpClient != null)
+            {
+                _udpClient.Close();      
+                _udpClient.Dispose(); 
+                _udpClient = null;     
+            }
         }
 
         public void Send(byte[] bytes)
