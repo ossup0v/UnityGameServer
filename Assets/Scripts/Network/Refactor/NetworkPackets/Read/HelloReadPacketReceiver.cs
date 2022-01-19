@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace Refactor
 {
-    // [InitPacketReceiver(typeof(ServerNetworkBytesReader))]
     public sealed class HelloReadPacketReceiver : ServerPacketReceiverMainThreadBase<HelloReadPacket>
     {
         protected override int _packetID => HelloReadPacket.PacketID_1;
