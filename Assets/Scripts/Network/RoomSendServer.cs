@@ -28,6 +28,16 @@ public class RoomSendServer
         }
     }
 
+    public static void GameRoomReadyToConnectPlayers()
+    {
+        using (Packet packet = new Packet((int)ToServerFromGameRoom.gameRoomReadyForConnectPlayers))
+        {
+            packet.Write(Room.MetagameRoomId);
+
+            SendTCPData(packet);
+        }
+    }
+
     public static void GameRoomEnd()
     {
         using (Packet packet = new Packet((int)ToServerFromGameRoom.gameSessionEnded))
@@ -35,7 +45,7 @@ public class RoomSendServer
             packet.Write(Room.PortForClients);
             packet.Write(Room.MetagameRoomId);
 
-            var teams = new Dictionary<int, TeamScore>(4);
+            var teams = new Dictionary<int, TeamScore>();
 
             foreach (var entity in RatingManager.Rating.Values)
             {

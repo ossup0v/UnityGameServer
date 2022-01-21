@@ -52,8 +52,6 @@ public enum ToClient
     response
 }
 
-
-/// <summary>Sent from client to server.</summary>
 public enum ToGameRoom
 {
     //client packets
@@ -68,6 +66,7 @@ public enum ToGameRoom
 
     //server packets
     gameRoomData,
+    playersData
 }
 
 public enum ToServerFromClient
@@ -85,6 +84,7 @@ public enum ToServerFromClient
 public enum ToServerFromGameRoom
 {
     gameRoomLaunched = 1,
+    gameRoomReadyForConnectPlayers,
     gameSessionEnded
 }
 

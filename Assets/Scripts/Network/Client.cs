@@ -8,26 +8,39 @@ public class Client
 {
     public static int dataBufferSize = 4096;
 
-    public Guid id;
+    public Guid Id;
     public Player player;
     public TCP tcp;
     public UDP udp;
 
+#warning всем костылям костыль
+    public void SetNewId(Guid id)
+    {
+        Id = id;
+        tcp.SetNewId(id);
+        udp.SetNewId(id);
+    }
+
     public Client(Guid clientId)
     {
-        id = clientId;
-        tcp = new TCP(id);
-        udp = new UDP(id);
+        Id = clientId;
+        tcp = new TCP(Id);
+        udp = new UDP(Id);
     }
 
     public class TCP : IDisposable
     {
         public TcpClient Socket;
 
-        private readonly Guid _id;
+        private Guid _id;
         private NetworkStream stream;
         private Packet receivedData;
         private byte[] receiveBuffer;
+
+        public void SetNewId(Guid id)
+        {
+            _id = id;
+        }
 
         public TCP(Guid id)
         {
@@ -146,13 +159,18 @@ public class Client
     {
         public IPEndPoint EndPoint;
 
-        private Guid Id;
+        private Guid _id;
 
         public UDP(Guid id)
         {
-            Id = id;
+            _id = id;
         }
 
+        public void SetNewId(Guid id)
+        {
+            _id = id;
+        }
+        
         public void Connect(IPEndPoint endPoint)
         {
             EndPoint = endPoint;
@@ -173,7 +191,7 @@ public class Client
                 using (Packet packet = new Packet(packetBytes))
                 {
                     int packetId = packet.ReadInt();
-                    Room.packetHandlers[packetId](Id, packet);
+                    Room.packetHandlers[packetId](_id, packet);
                 }
             });
         }
@@ -184,39 +202,39 @@ public class Client
         Debug.Log("Send into game");
 
         player = NetworkManager.Instance.InstantiatePlayer(team);
-        player.Initialize(id, playerName, team);
+        player.Initialize(Id, playerName, team);
 
 
         foreach (Client client in Room.Clients.Values)
         {
             if (client.player != null)
             {
-                if (client.id != id)
+                if (client.Id != Id)
                 {
-                    RoomSendClient.SpawnPlayer(id, client.player);
+                    RoomSendClient.SpawnPlayer(Id, client.player);
                 }
             }
         }
 
         RatingManager.InitPlayer(player);
-        RoomSendClient.InitMap(id, MapSaveManager.Instance.GetCachedObjects());
+        RoomSendClient.InitMap(Id, MapSaveManager.Instance.GetCachedObjects());
 
         foreach (Client client in Room.Clients.Values)
         {
             if (client.player != null)
             {
-                RoomSendClient.SpawnPlayer(client.id, player);
+                RoomSendClient.SpawnPlayer(client.Id, player);
             }
         }
 
         foreach (var itemSpawner in ItemSpawner.ItemSpawners.Values)
         {
-            RoomSendClient.CreateItemSpawner(id, itemSpawner.SpawnerId, itemSpawner.transform.position, itemSpawner.HasItem);
+            RoomSendClient.CreateItemSpawner(Id, itemSpawner.SpawnerId, itemSpawner.transform.position, itemSpawner.HasItem);
         }
 
         foreach (var bot in BotManager.GetBots().Values)
         {
-            RoomSendClient.SpawnBot(id, bot);
+            RoomSendClient.SpawnBot(Id, bot);
         }
     }
 
@@ -234,6 +252,6 @@ public class Client
 
         tcp.Dispose();
 
-        RoomSendClient.PlayerDisconnected(id);
+        RoomSendClient.PlayerDisconnected(Id);
     }
 }

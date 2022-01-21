@@ -31,7 +31,7 @@ public class RoomSendClient
         packet.WriteLength();
         foreach (var client in Room.Clients.Values)
         {
-            if (client.id != exceptClient)
+            if (client.Id != exceptClient)
             {
                 client.tcp.SendData(packet);
             }
@@ -52,7 +52,7 @@ public class RoomSendClient
         packet.WriteLength();
         foreach (var client in Room.Clients.Values)
         {
-            if (client.id != exceptClient)
+            if (client.Id != exceptClient)
             {
                 client.udp.SendClientData(packet);
             }

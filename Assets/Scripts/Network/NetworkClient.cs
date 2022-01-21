@@ -277,7 +277,8 @@ public class NetworkClient : MonoBehaviour
     {
         PacketHandlers = new Dictionary<int, PacketHandler>
         {
-            [(int)ToGameRoom.gameRoomData] = RoomServerHandler.GameRoomData
+            [(int)ToGameRoom.gameRoomData] = RoomServerHandler.GameRoomData,
+            [(int)ToGameRoom.playersData] = RoomServerHandler.PlayersData
         };
         Debug.Log($"{nameof(InitializeClientData)} was called");
     }

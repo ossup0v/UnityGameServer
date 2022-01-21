@@ -7,24 +7,26 @@ public class RoomClientHandler
     public static void WelcomeReceived(Guid fromClient, Packet packet)
     {
         Debug.Log("Welcome received");
-#warning todo сделать отправку этой инфы через сервер
+        
         Guid clientIdCheck = packet.ReadGuid();
-        Debug.Log($"Welcome received {clientIdCheck}");
-        string username = packet.ReadString();
-        Debug.Log($"Welcome received {username}");
-        int team = packet.ReadInt();
-        Debug.Log($"Welcome received {team}");
+        
+        Room.Clients[fromClient].SetNewId(clientIdCheck);
 
-        Debug.Log($"Welcome received from id on server {fromClient}, in packet {clientIdCheck}, team: {team}");
+        Room.Clients.MoveValueToOtherKey(fromClient, clientIdCheck);
+
+        PlayersManager.Players.MoveValueToOtherKey(fromClient, clientIdCheck);
+
+        string username = PlayersManager.GetPlayer(clientIdCheck)?.Username ?? "TEST1";
+        int team = PlayersManager.GetPlayer(clientIdCheck)?.Team ?? 1;
 
         Debug.Log($"User {fromClient} team is {team}");
-        Debug.Log($"{Room.Clients[fromClient].tcp.Socket.Client.RemoteEndPoint} connected successfully and is now player {fromClient}.");
+        Debug.Log($"{Room.Clients[clientIdCheck].tcp.Socket.Client.RemoteEndPoint} connected successfully and is now player {fromClient}.");
         if (fromClient != clientIdCheck)
         {
             Debug.Log($"Player \"{username}\" (ID: {fromClient}) has assumed the wrong client ID ({clientIdCheck})!");
         }
 
-        Room.Clients[fromClient].SendIntoGame(username, team);
+        Room.Clients[clientIdCheck].SendIntoGame(username, team);
 
         if (RatingManager.Rating.Values.Count == Room.PlayersAmount)
         {
