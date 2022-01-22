@@ -3,10 +3,10 @@ using System;
 [AttributeUsage(AttributeTargets.Class)]
 public class InitReadPacketHandler : Attribute
 {
-    public Type PacketHandlerType { get; private set; }
+    public Type PacketHandlersHolder { get; private set; }
 
-    public InitReadPacketHandler(Type packetHandlerType)
+    public InitReadPacketHandler(Type packetHandlersHolder)
     {
-        PacketHandlerType = packetHandlerType;
+        PacketHandlersHolder = packetHandlersHolder;
     }
 }

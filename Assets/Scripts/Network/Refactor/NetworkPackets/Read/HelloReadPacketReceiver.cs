@@ -16,6 +16,7 @@ namespace Refactor
             var helloResponsePacket = new HelloResponseWritePacket();
             var someGUID = System.Guid.NewGuid();
             helloResponsePacket.ClientID = someGUID;
+            Debug.Log(someGUID + " generated guid");
             if (packet.SocketData.IsTcp)
             {
                 _clientsHolder.AddRemoteTcpClient(someGUID, packet.SocketData.TcpClient);

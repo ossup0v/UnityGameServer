@@ -47,8 +47,11 @@ namespace Refactor
                 connectedTcpClient.Close();
                 connectedTcpClient.Dispose();
             }
-            _tcpListener.Stop();
-            _tcpListener = null;
+            if (_tcpListener != null)
+            {
+                _tcpListener.Stop();
+                _tcpListener = null;
+            }
             connectedTcpClients.Clear();
         }
 

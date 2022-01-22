@@ -12,5 +12,6 @@ namespace Refactor
         void AddRemoteTcpClient(Guid clientID, TcpClient tcpClient);
         void RemoveRemoteIPEndPoint(Guid clientID);
         void RemoveRemoteTcpClient(Guid clientID);
+        bool ContainsClient(Guid clientID);
     }
 }

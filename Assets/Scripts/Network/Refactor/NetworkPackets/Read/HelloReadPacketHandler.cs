@@ -1,4 +1,4 @@
-[InitReadPacketHandler(typeof(Refactor.ServerNetworkBytesReader))]
+[InitReadPacketHandler(typeof(Refactor.ServerRoomNetworkBytesReader))]
 public sealed class HelloReadPacketHandler : NetworkReadPacketHandler<HelloReadPacket>
 {
     public override int PacketID => HelloReadPacket.PacketID_1;

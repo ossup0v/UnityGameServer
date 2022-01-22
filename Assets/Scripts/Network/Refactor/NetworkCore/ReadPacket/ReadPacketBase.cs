@@ -35,7 +35,6 @@ public abstract class ReadPacketBase
 
     public void ReadClientIDAndDeserializePacket()
     {
-        Reset();
         ClientID = this.ReadGuid();
         DeserializePacket();
     }

@@ -61,5 +61,10 @@ namespace Refactor
                 _remoteTcpClientByClientID.Remove(clientID);
             }
         }
+
+        public bool ContainsClient(Guid clientID)
+        {
+            return _remoteIPEndPointByClientID.ContainsKey(clientID) || _remoteTcpClientByClientID.ContainsKey(clientID);
+        }
     }
 }

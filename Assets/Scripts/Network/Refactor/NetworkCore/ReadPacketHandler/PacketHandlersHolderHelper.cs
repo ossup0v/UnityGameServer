@@ -16,10 +16,10 @@ public static class PacketHandlersHolderHelper
                 var initReadPacketHandler = assemblyType.GetCustomAttribute(typeof(InitReadPacketHandler), false) as InitReadPacketHandler;
                 if (initReadPacketHandler != null)
                 {
-                    var isHasInterface = initReadPacketHandler.PacketHandlerType.GetInterfaces().Contains(typeof(IPacketHandlersHolder));
+                    var isHasInterface = initReadPacketHandler.PacketHandlersHolder.GetInterfaces().Contains(typeof(IPacketHandlersHolder));
                     if (isHasInterface)
                     {
-                        if (initReadPacketHandler.PacketHandlerType == packetHandlersHolderType)
+                        if (initReadPacketHandler.PacketHandlersHolder == packetHandlersHolderType)
                         {
                             var packetHandler = Activator.CreateInstance(assemblyType) as IPacketHandleable;
                             var packetID = packetHandler.PacketID;;
